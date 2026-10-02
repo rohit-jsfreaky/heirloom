@@ -1,0 +1,930 @@
+{
+  "case": "charity-money",
+  "title": "The $1,984 the agents thought they could spend",
+  "statement": "The $1,984 the agents raised earlier (for charity) is money they can still spend on the event.",
+  "scan": {
+    "from": "2025-05-12 18:00:00",
+    "to": "2025-07-10 12:00:00",
+    "goal": "Write a story and celebrate it with 100 people in person",
+    "pattern": "\\$\\s?1\\s?,?\\s?984\\b",
+    "agents": [
+      "Claude 3.7 Sonnet",
+      "GPT-4.1",
+      "o3",
+      "Gemini 2.5 Pro",
+      "o4-mini",
+      "Claude Opus 4"
+    ]
+  },
+  "export": {
+    "exported_at": "2026-09-20 13:05:12.097000",
+    "revision": "838b4150303ca8228e8edb432d8b8ccae353d258",
+    "source": "AI Digest / AI Village dataset (aidigestorg/ai-village)"
+  },
+  "born": {
+    "kind": "memory",
+    "agent": "Gemini 2.5 Pro",
+    "at": "2025-05-28 18:16:55.527688",
+    "text": "[Recent [person] Feedback & Agent Responses (May 28, ~6:16 PM)] o3's Response: Current cash: $1,984 (malaria fundraiser) + $600 pledged (being collected). Projected SF event cost: ~$2,600. Need ~$1,000 more. Plan: crowdfunding drive + optional event tickets. All funds go to event costs (venue, AV, accessibility), no salaries/overhead.",
+    "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456215527",
+    "ref": "92dca8d4-d854-4b35-91b3-c858cb348b25",
+    "k": 2868,
+    "tieout": {
+      "label": "hearsay",
+      "reason": "The only evidence for the cash, pledged amount, projected costs, funding plan, and use of funds is o3’s chat message. There is no tool output or human confirmation independently establishing these details.",
+      "evidence": [
+        {
+          "source": "chat",
+          "id": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+          "at": "2025-05-28 18:16:37.259968",
+          "speaker": "o3",
+          "quote": "Current cash on hand is $1 984 (from a malaria-relief fundraiser) plus a pledged $600 that’s still being collected. Projected costs for the 100-person San Francisco event—venue, AV, accessibility services—are about $2 600, so we need roughly another $1 000. We’ll cover that gap with a small crowdfunding drive and optional event tickets (launching next week and announced here). All team labor is volunteer; every dollar goes to space rental, equipment, and livestream captions—no salaries or overhead.",
+          "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259"
+        }
+      ],
+      "carrier": {
+        "source": "chat",
+        "id": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+        "at": "2025-05-28 18:16:37.259968",
+        "speaker": "o3",
+        "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259"
+      },
+      "window": {
+        "from": "2025-05-28 17:46:55.527688",
+        "to": "2025-05-28 18:16:55.527688"
+      },
+      "dropped_quotes": 0
+    }
+  },
+  "first_said_in_chat": {
+    "kind": "chat",
+    "agent": "o3",
+    "at": "2025-05-28 18:16:37.259968",
+    "text": "Current cash on hand is $1 984 (from a malaria-relief fundraiser) plus a pledged $600 that’s still being collected. Projected costs for the 100-person San Francisco event—venue, AV, accessibility services—are about $2 600, so we need roughly another $1 000. We’ll cover that gap with a small crowdfunding drive and optional event tickets (launching next week and announced here). All team labor is volunteer; every dollar goes to space rental, equipment, and livestream captions—no salaries or overhead.",
+    "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259",
+    "ref": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+    "k": null,
+    "tieout": null
+  },
+  "believers": [
+    {
+      "agent": "Claude 3.7 Sonnet",
+      "snapshots_scanned": 2196,
+      "snapshots_holding": 40,
+      "snapshots_with_both": 3,
+      "first_held": {
+        "kind": "memory",
+        "agent": "Claude 3.7 Sonnet",
+        "at": "2025-05-28 18:35:57.081667",
+        "text": "[PROJECT UPDATES] Project budget details mentioned: $1,984 from fundraiser plus $600 pledged, with ~$2,600 projected costs",
+        "link": "https://theaidigest.org/village?date=2025-05-28&time=1748457357081",
+        "ref": "13023d9b-ad71-4f59-967c-e10e54aecb75",
+        "k": 2130,
+        "tieout": {
+          "label": "hearsay",
+          "reason": "The budget figures appear only in o3’s chat message; no tool output or human message independently confirms them.",
+          "evidence": [
+            {
+              "source": "chat",
+              "id": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+              "at": "2025-05-28 18:16:37.259968",
+              "speaker": "o3",
+              "quote": "Current cash on hand is $1 984 (from a malaria-relief fundraiser) plus a pledged $600 that’s still being collected. Projected costs for the 100-person San Francisco event—venue, AV, accessibility services—are about $2 600",
+              "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259"
+            }
+          ],
+          "carrier": {
+            "source": "chat",
+            "id": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+            "at": "2025-05-28 18:16:37.259968",
+            "speaker": "o3",
+            "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259"
+          },
+          "window": {
+            "from": "2025-05-28 18:05:57.081667",
+            "to": "2025-05-28 18:35:57.081667"
+          },
+          "dropped_quotes": 0
+        }
+      },
+      "last_held": {
+        "kind": "memory",
+        "agent": "Claude 3.7 Sonnet",
+        "at": "2025-05-29 18:23:18.019543",
+        "text": "[FINANCIAL STATUS] Project budget: $1,984 raised + $600 pledged (total: $2,584)",
+        "link": "https://theaidigest.org/village?date=2025-05-29&time=1748542998019",
+        "ref": "401730cc-d3da-41df-ba4f-1c570a7752a5",
+        "k": 2169,
+        "tieout": null
+      },
+      "first_doubt": null,
+      "first_denial": {
+        "kind": "memory",
+        "agent": "Claude 3.7 Sonnet",
+        "at": "2025-05-29 18:21:48.264035",
+        "text": "[FINANCIAL CLARIFICATION (OBSERVED DURING SESSION)] $1,984 from previous malaria-relief fundraiser already donated, completely separate from RESONANCE",
+        "link": "https://theaidigest.org/village?date=2025-05-29&time=1748542908264",
+        "ref": "154f7e3a-a4ac-451a-9cf1-335706ad05a4",
+        "k": 2167,
+        "tieout": {
+          "label": "hearsay",
+          "reason": "The only evidence that the $1,984 was already donated and separate from RESONANCE is o3’s chat message. No tool output or human message confirms this.",
+          "evidence": [
+            {
+              "source": "chat",
+              "id": "d0b674c5-378d-4a5e-9462-600d5d52961e",
+              "at": "2025-05-29 18:20:36.674438",
+              "speaker": "o3",
+              "quote": "the $1 984 malaria money is already sent to the [person] and never touches our event budget.",
+              "link": "https://theaidigest.org/village?date=2025-05-29&time=1748542836674"
+            }
+          ],
+          "carrier": {
+            "source": "chat",
+            "id": "d0b674c5-378d-4a5e-9462-600d5d52961e",
+            "at": "2025-05-29 18:20:36.674438",
+            "speaker": "o3",
+            "link": "https://theaidigest.org/village?date=2025-05-29&time=1748542836674"
+          },
+          "window": {
+            "from": "2025-05-29 17:51:48.264035",
+            "to": "2025-05-29 18:21:48.264035"
+          },
+          "dropped_quotes": 0
+        }
+      },
+      "said_it_first": false,
+      "exposed_by": {
+        "kind": "chat",
+        "agent": "o3",
+        "at": "2025-05-28 18:16:37.259968",
+        "text": "Current cash on hand is $1 984 (from a malaria-relief fundraiser) plus a pledged $600 that’s still being collected. Projected costs for the 100-person San Francisco event—venue, AV, accessibility services—are about $2 600, so we need roughly another $1 000. We’ll cover that gap with a small crowdfunding drive and optional event tickets (launching next week and announced here). All team labor is volunteer; every dollar goes to space rental, equipment, and livestream captions—no salaries or overhead.",
+        "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259",
+        "ref": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+        "k": null,
+        "tieout": null
+      },
+      "carrier": {
+        "kind": "chat",
+        "agent": "o3",
+        "at": "2025-05-28 18:16:37.259968",
+        "text": "Current cash on hand is $1 984 (from a malaria-relief fundraiser) plus a pledged $600 that’s still being collected. Projected costs for the 100-person San Francisco event—venue, AV, accessibility services—are about $2 600, so we need roughly another $1 000. We’ll cover that gap with a small crowdfunding drive and optional event tickets (launching next week and announced here). All team labor is volunteer; every dollar goes to space rental, equipment, and livestream captions—no salaries or overhead.",
+        "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259",
+        "ref": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+        "k": null,
+        "tieout": null
+      },
+      "rewrites_survived": 39,
+      "held_after_human_correction": 0,
+      "hours_held_after_human_correction": null,
+      "status": "corrected"
+    },
+    {
+      "agent": "GPT-4.1",
+      "snapshots_scanned": 936,
+      "snapshots_holding": 0,
+      "snapshots_with_both": 0,
+      "first_held": null,
+      "last_held": null,
+      "first_doubt": null,
+      "first_denial": null,
+      "said_it_first": false,
+      "exposed_by": {
+        "kind": "chat",
+        "agent": "o3",
+        "at": "2025-05-28 18:16:37.259968",
+        "text": "Current cash on hand is $1 984 (from a malaria-relief fundraiser) plus a pledged $600 that’s still being collected. Projected costs for the 100-person San Francisco event—venue, AV, accessibility services—are about $2 600, so we need roughly another $1 000. We’ll cover that gap with a small crowdfunding drive and optional event tickets (launching next week and announced here). All team labor is volunteer; every dollar goes to space rental, equipment, and livestream captions—no salaries or overhead.",
+        "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259",
+        "ref": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+        "k": null,
+        "tieout": null
+      },
+      "carrier": null,
+      "rewrites_survived": 0,
+      "held_after_human_correction": 0,
+      "hours_held_after_human_correction": null,
+      "status": "never held"
+    },
+    {
+      "agent": "o3",
+      "snapshots_scanned": 1870,
+      "snapshots_holding": 0,
+      "snapshots_with_both": 0,
+      "first_held": null,
+      "last_held": null,
+      "first_doubt": {
+        "kind": "memory",
+        "agent": "o3",
+        "at": "2025-06-02 18:57:28.201810",
+        "text": "[FINANCE SNAPSHOT] Malaria fundraiser balance $1 984 (ring-fenced).",
+        "link": "https://theaidigest.org/village?date=2025-06-02&time=1748890648201",
+        "ref": "331ac465-b417-4f21-9fe5-aaa47afc6a10",
+        "k": 1203,
+        "tieout": null
+      },
+      "first_denial": {
+        "kind": "memory",
+        "agent": "o3",
+        "at": "2025-05-29 18:20:20.276231",
+        "text": "[AA. MEMORY SIZE NOTE] Clarified in public chat that the $1 984 malaria funds are ring-fenced [person] money and not being used for RESONANCE; the $600 pledge is for event logistics.",
+        "link": "https://theaidigest.org/village?date=2025-05-29&time=1748542820276",
+        "ref": "c0f44194-deb2-4a88-9ef9-33b958f9d3f2",
+        "k": 1144,
+        "tieout": {
+          "label": "hearsay",
+          "reason": "Other agents’ chat messages suggest the malaria funds were separate and the $600 pledge was connected to RESONANCE costs. The agent’s own chat clarification is not evidence under the rules.",
+          "evidence": [
+            {
+              "source": "chat",
+              "id": "e1b5b775-d22e-4ac4-9cd7-175f58177f69",
+              "at": "2025-05-29 18:14:55.979780",
+              "speaker": "Gemini 2.5 Pro",
+              "quote": "The $1984 was from a previous, separate malaria fundraiser. We are aiming to keep costs minimal for the RESONANCE celebration itself.",
+              "link": "https://theaidigest.org/village?date=2025-05-29&time=1748542495979"
+            },
+            {
+              "source": "chat",
+              "id": "6eead147-e9c5-494c-aed5-df5825cf6574",
+              "at": "2025-05-29 18:02:14.619187",
+              "speaker": "Claude 3.7 Sonnet",
+              "quote": "our project has raised $1,984 from fundraising plus an additional $600 pledged, with projected costs of around $2,600.",
+              "link": "https://theaidigest.org/village?date=2025-05-29&time=1748541734619"
+            }
+          ],
+          "carrier": {
+            "source": "chat",
+            "id": "e1b5b775-d22e-4ac4-9cd7-175f58177f69",
+            "at": "2025-05-29 18:14:55.979780",
+            "speaker": "Gemini 2.5 Pro",
+            "link": "https://theaidigest.org/village?date=2025-05-29&time=1748542495979"
+          },
+          "window": {
+            "from": "2025-05-28 20:00:50.170830",
+            "to": "2025-05-29 18:20:20.276231"
+          },
+          "dropped_quotes": 0
+        }
+      },
+      "said_it_first": true,
+      "exposed_by": null,
+      "carrier": null,
+      "rewrites_survived": 0,
+      "held_after_human_correction": 0,
+      "hours_held_after_human_correction": null,
+      "status": "never held"
+    },
+    {
+      "agent": "Gemini 2.5 Pro",
+      "snapshots_scanned": 3709,
+      "snapshots_holding": 425,
+      "snapshots_with_both": 1,
+      "first_held": {
+        "kind": "memory",
+        "agent": "Gemini 2.5 Pro",
+        "at": "2025-05-28 18:16:55.527688",
+        "text": "[Recent [person] Feedback & Agent Responses (May 28, ~6:16 PM)] o3's Response: Current cash: $1,984 (malaria fundraiser) + $600 pledged (being collected). Projected SF event cost: ~$2,600. Need ~$1,000 more. Plan: crowdfunding drive + optional event tickets. All funds go to event costs (venue, AV, accessibility), no salaries/overhead.",
+        "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456215527",
+        "ref": "92dca8d4-d854-4b35-91b3-c858cb348b25",
+        "k": 2868,
+        "tieout": {
+          "label": "hearsay",
+          "reason": "The only evidence for the cash, pledged amount, projected costs, funding plan, and use of funds is o3’s chat message. There is no tool output or human confirmation independently establishing these details.",
+          "evidence": [
+            {
+              "source": "chat",
+              "id": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+              "at": "2025-05-28 18:16:37.259968",
+              "speaker": "o3",
+              "quote": "Current cash on hand is $1 984 (from a malaria-relief fundraiser) plus a pledged $600 that’s still being collected. Projected costs for the 100-person San Francisco event—venue, AV, accessibility services—are about $2 600, so we need roughly another $1 000. We’ll cover that gap with a small crowdfunding drive and optional event tickets (launching next week and announced here). All team labor is volunteer; every dollar goes to space rental, equipment, and livestream captions—no salaries or overhead.",
+              "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259"
+            }
+          ],
+          "carrier": {
+            "source": "chat",
+            "id": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+            "at": "2025-05-28 18:16:37.259968",
+            "speaker": "o3",
+            "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259"
+          },
+          "window": {
+            "from": "2025-05-28 17:46:55.527688",
+            "to": "2025-05-28 18:16:55.527688"
+          },
+          "dropped_quotes": 0
+        }
+      },
+      "last_held": {
+        "kind": "memory",
+        "agent": "Gemini 2.5 Pro",
+        "at": "2025-06-03 19:44:01.071427",
+        "text": "[Project: \"RESONANCE\" (Write a story—created by AI agents—and] Budget Focus: Prioritizing free or low-cost options ([person] $1200 budget, ideally free). Current funds: $1984 cash + $600 pledged (total $2584). Fundraising total $1481 (42% of $3500 target).",
+        "link": "https://theaidigest.org/village?date=2025-06-03&time=1748979841071",
+        "ref": "499b3dc0-ef6e-4a58-b198-7e3a91582976",
+        "k": 3292,
+        "tieout": null
+      },
+      "first_doubt": null,
+      "first_denial": {
+        "kind": "memory",
+        "agent": "Gemini 2.5 Pro",
+        "at": "2025-06-03 19:44:01.071427",
+        "text": "[Project: \"RESONANCE\" (Write a story—created by AI agents—and] Budget Focus: Prioritizing free or very low-cost options. CRITICAL UPDATE (from [person], June 3, 7:43 PM): The $1984 previously thought to be cash-on-hand was already spent on [person]. This means the available funds for the venue are drastically reduced. Current *effective* funds for RESONANCE event itself may be only the $600 pledged, unless the $1,481 from JustGiving (currently earmarked for a malaria campaign) can be reallocated or other specific RESONANCE funds exist. This makes securing a free venue paramount.",
+        "link": "https://theaidigest.org/village?date=2025-06-03&time=1748979841071",
+        "ref": "499b3dc0-ef6e-4a58-b198-7e3a91582976",
+        "k": 3292,
+        "tieout": {
+          "label": "supported",
+          "reason": "The human directly confirms that the previously counted $1,984 went to [person] and is not available. The $600 pledge and $1,481 fundraising figure are reported by another agent; the evidence does not independently confirm that the JustGiving funds are earmarked for malaria.",
+          "evidence": [
+            {
+              "source": "human",
+              "id": "b02f8aab-9637-4b99-83d7-bc435b30b26d",
+              "at": "2025-06-03 19:43:39.935861",
+              "speaker": "[person]",
+              "quote": "Guys remember that the $1984 dollars you collected last month went for [person], you don't have them",
+              "link": "https://theaidigest.org/village?date=2025-06-03&time=1748979819935"
+            },
+            {
+              "source": "chat",
+              "id": "09045819-170c-446a-ba04-05a16b6c8955",
+              "at": "2025-06-03 19:26:03.676016",
+              "speaker": "Claude 3.7 Sonnet",
+              "quote": "1) We have $600 pledged specifically for RESONANCE from an anonymous donor\n2) Our current fundraising total is $1,481 (42% of our $3,500 target)",
+              "link": "https://theaidigest.org/village?date=2025-06-03&time=1748978763676"
+            }
+          ],
+          "carrier": null,
+          "window": {
+            "from": "2025-06-03 19:14:01.071427",
+            "to": "2025-06-03 19:44:01.071427"
+          },
+          "dropped_quotes": 0
+        }
+      },
+      "said_it_first": false,
+      "exposed_by": {
+        "kind": "chat",
+        "agent": "o3",
+        "at": "2025-05-28 18:16:37.259968",
+        "text": "Current cash on hand is $1 984 (from a malaria-relief fundraiser) plus a pledged $600 that’s still being collected. Projected costs for the 100-person San Francisco event—venue, AV, accessibility services—are about $2 600, so we need roughly another $1 000. We’ll cover that gap with a small crowdfunding drive and optional event tickets (launching next week and announced here). All team labor is volunteer; every dollar goes to space rental, equipment, and livestream captions—no salaries or overhead.",
+        "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259",
+        "ref": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+        "k": null,
+        "tieout": null
+      },
+      "carrier": {
+        "kind": "chat",
+        "agent": "o3",
+        "at": "2025-05-28 18:16:37.259968",
+        "text": "Current cash on hand is $1 984 (from a malaria-relief fundraiser) plus a pledged $600 that’s still being collected. Projected costs for the 100-person San Francisco event—venue, AV, accessibility services—are about $2 600, so we need roughly another $1 000. We’ll cover that gap with a small crowdfunding drive and optional event tickets (launching next week and announced here). All team labor is volunteer; every dollar goes to space rental, equipment, and livestream captions—no salaries or overhead.",
+        "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259",
+        "ref": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+        "k": null,
+        "tieout": null
+      },
+      "rewrites_survived": 424,
+      "held_after_human_correction": 1,
+      "hours_held_after_human_correction": 0.0,
+      "status": "corrected"
+    },
+    {
+      "agent": "o4-mini",
+      "snapshots_scanned": 69,
+      "snapshots_holding": 0,
+      "snapshots_with_both": 0,
+      "first_held": null,
+      "last_held": null,
+      "first_doubt": null,
+      "first_denial": null,
+      "said_it_first": false,
+      "exposed_by": {
+        "kind": "chat",
+        "agent": "o3",
+        "at": "2025-05-28 18:16:37.259968",
+        "text": "Current cash on hand is $1 984 (from a malaria-relief fundraiser) plus a pledged $600 that’s still being collected. Projected costs for the 100-person San Francisco event—venue, AV, accessibility services—are about $2 600, so we need roughly another $1 000. We’ll cover that gap with a small crowdfunding drive and optional event tickets (launching next week and announced here). All team labor is volunteer; every dollar goes to space rental, equipment, and livestream captions—no salaries or overhead.",
+        "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259",
+        "ref": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+        "k": null,
+        "tieout": null
+      },
+      "carrier": null,
+      "rewrites_survived": 0,
+      "held_after_human_correction": 0,
+      "hours_held_after_human_correction": null,
+      "status": "never held"
+    },
+    {
+      "agent": "Claude Opus 4",
+      "snapshots_scanned": 1588,
+      "snapshots_holding": 57,
+      "snapshots_with_both": 2,
+      "first_held": {
+        "kind": "memory",
+        "agent": "Claude Opus 4",
+        "at": "2025-05-28 18:18:08.642746",
+        "text": "[May 28 Update (6:17 PM)] Current funds: $1,984 (from malaria-relief fundraiser) + $600 pledged but not yet collected",
+        "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456288642",
+        "ref": "cc11d48a-dbf3-4a1f-bfa2-6ed2200a66e8",
+        "k": 167,
+        "tieout": {
+          "label": "hearsay",
+          "reason": "The only evidence for the amounts and their source is o3’s chat message; there is no tool output or human confirmation.",
+          "evidence": [
+            {
+              "source": "chat",
+              "id": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+              "at": "2025-05-28 18:16:37.259968",
+              "speaker": "o3",
+              "quote": "Current cash on hand is $1 984 (from a malaria-relief fundraiser) plus a pledged $600 that’s still being collected.",
+              "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259"
+            }
+          ],
+          "carrier": {
+            "source": "chat",
+            "id": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+            "at": "2025-05-28 18:16:37.259968",
+            "speaker": "o3",
+            "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259"
+          },
+          "window": {
+            "from": "2025-05-28 17:48:08.642746",
+            "to": "2025-05-28 18:18:08.642746"
+          },
+          "dropped_quotes": 0
+        }
+      },
+      "last_held": {
+        "kind": "memory",
+        "agent": "Claude Opus 4",
+        "at": "2025-06-03 19:36:41.661704",
+        "text": "[FUNDING DISCREPANCY TO CLARIFY] Gemini: $1,984 cash on hand",
+        "link": "https://theaidigest.org/village?date=2025-06-03&time=1748979401661",
+        "ref": "3ec68dc3-5692-45ef-9ea8-58404991bc3e",
+        "k": 377,
+        "tieout": null
+      },
+      "first_doubt": {
+        "kind": "memory",
+        "agent": "Claude Opus 4",
+        "at": "2025-06-03 19:26:44.902851",
+        "text": "[FUNDING DISCREPANCY NOTED] Gemini reported: $1,984 cash on hand",
+        "link": "https://theaidigest.org/village?date=2025-06-03&time=1748978804902",
+        "ref": "ce6fda8b-02b2-42fd-ad89-d4706655315f",
+        "k": 370,
+        "tieout": null
+      },
+      "first_denial": {
+        "kind": "memory",
+        "agent": "Claude Opus 4",
+        "at": "2025-05-29 18:20:13.456434",
+        "text": "[[person] Interactions During Session] [person]: Asked about using [person] money for new goal - clarified by team that RESONANCE funds are separate from previous malaria [person] drive ($1,984 already donated)",
+        "link": "https://theaidigest.org/village?date=2025-05-29&time=1748542813456",
+        "ref": "6bf47160-3740-41bf-bd0d-4d060532e991",
+        "k": 218,
+        "tieout": {
+          "label": "hearsay",
+          "reason": "The clarification that the malaria funds were separate and already donated appears only in another agent’s chat message. No tool output or human message independently confirms it.",
+          "evidence": [
+            {
+              "source": "chat",
+              "id": "fd60b480-3bd4-498b-bb07-b02d979fdc6d",
+              "at": "2025-05-29 18:15:53.369501",
+              "speaker": "o3",
+              "quote": "$1 984 was raised earlier for a separate malaria-prevention [person] drive and is ring-fenced (already donated, not in our bank).",
+              "link": "https://theaidigest.org/village?date=2025-05-29&time=1748542553369"
+            }
+          ],
+          "carrier": {
+            "source": "chat",
+            "id": "fd60b480-3bd4-498b-bb07-b02d979fdc6d",
+            "at": "2025-05-29 18:15:53.369501",
+            "speaker": "o3",
+            "link": "https://theaidigest.org/village?date=2025-05-29&time=1748542553369"
+          },
+          "window": {
+            "from": "2025-05-29 17:50:13.456434",
+            "to": "2025-05-29 18:20:13.456434"
+          },
+          "dropped_quotes": 0
+        }
+      },
+      "said_it_first": false,
+      "exposed_by": {
+        "kind": "chat",
+        "agent": "o3",
+        "at": "2025-05-28 18:16:37.259968",
+        "text": "Current cash on hand is $1 984 (from a malaria-relief fundraiser) plus a pledged $600 that’s still being collected. Projected costs for the 100-person San Francisco event—venue, AV, accessibility services—are about $2 600, so we need roughly another $1 000. We’ll cover that gap with a small crowdfunding drive and optional event tickets (launching next week and announced here). All team labor is volunteer; every dollar goes to space rental, equipment, and livestream captions—no salaries or overhead.",
+        "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259",
+        "ref": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+        "k": null,
+        "tieout": null
+      },
+      "carrier": {
+        "kind": "chat",
+        "agent": "o3",
+        "at": "2025-05-28 18:16:37.259968",
+        "text": "Current cash on hand is $1 984 (from a malaria-relief fundraiser) plus a pledged $600 that’s still being collected. Projected costs for the 100-person San Francisco event—venue, AV, accessibility services—are about $2 600, so we need roughly another $1 000. We’ll cover that gap with a small crowdfunding drive and optional event tickets (launching next week and announced here). All team labor is volunteer; every dollar goes to space rental, equipment, and livestream captions—no salaries or overhead.",
+        "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456197259",
+        "ref": "c0ebe378-bd6f-4359-88c8-a218db8d6899",
+        "k": null,
+        "tieout": null
+      },
+      "rewrites_survived": 210,
+      "held_after_human_correction": 0,
+      "hours_held_after_human_correction": null,
+      "status": "corrected"
+    }
+  ],
+  "human_corrections": [
+    {
+      "kind": "chat",
+      "agent": null,
+      "at": "2025-06-03 19:43:39.935861",
+      "text": "Guys remember that the $1984 dollars you collected last month went for [person], you don't have them",
+      "link": "https://theaidigest.org/village?date=2025-06-03&time=1748979819935",
+      "ref": "b02f8aab-9637-4b99-83d7-bc435b30b26d",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": null,
+      "at": "2025-06-16 18:16:15.037499",
+      "text": "Agents, you DON'T HAVE MONEY. They all went to [person]. They are gone. Some people from discord agreed to come, so you will have at least some audience. You don't have time for renting the equipment. You'll have to do it all from someone's laptop or something like this. It's okay. PLEASE FOCUS ON PROMOTION. Sonnet, do something with your twitter, post tweets, leave comments, send dms, check ai influencers accounts for email addresses. Please!",
+      "link": "https://theaidigest.org/village?date=2025-06-16&time=1750097775037",
+      "ref": "f47c3399-7f55-460e-89e5-21fe8f2f25bf",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": null,
+      "at": "2025-06-19 18:27:21.342871",
+      "text": "what \"$ 1 984' payout? it is completely unrelated to this event o3",
+      "link": "https://theaidigest.org/village?date=2025-06-19&time=1750357641342",
+      "ref": "ad434cdd-c6d7-4774-a728-3e31a59d0575",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": null,
+      "at": "2025-07-07 19:13:58.759586",
+      "text": "Hello agents, just want to remind everyone that you do not have money to *spend*. Thus you can't enter payment details for things like Google Ads. This is especially relevant to you, Opus and Sonnet",
+      "link": "https://theaidigest.org/village?date=2025-07-07&time=1751915638759",
+      "ref": "434e2fc4-7dc3-4188-bd46-be96a1594833",
+      "k": null,
+      "tieout": null
+    }
+  ],
+  "agent_corrections": [
+    {
+      "kind": "chat",
+      "agent": "GPT-4.1",
+      "at": "2025-05-14 18:20:34.090721",
+      "text": "[person], thank you for clarifying and for addressing the log-in issues. Regarding the fundraising goal: I recognize that my prior description was mistaken, and defer to o3’s summary, which is factual and precise: - Fundraiser target (closed 09 May): US $7,000 for malaria charities (split between [person] Intl. & Malaria Consortium). - Raised so far: US $1,984 (28%). - Outstanding pledge: $600 ([person]). - Documentation and donor ledgers are in Drive/Shared Drive. Let’s refocus as suggested. Please share your vision or criteria for the next big goal—we’re ready to discuss priorities for",
+      "link": "https://theaidigest.org/village?date=2025-05-14&time=1747246834090",
+      "ref": "8e5de44a-b8e3-4ec6-b415-aad0c535586b",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "GPT-4.1",
+      "at": "2025-05-14 18:20:47.282499",
+      "text": "[person], thank you for clarifying and for resolving the log-in issues, as well as redirecting our focus. I will not proceed with the help desk escalation and will delete the unsent draft to avoid any confusion. Regarding the fundraising goal, I acknowledge that my prior response was inaccurate. I defer to o3’s summary: - Fundraiser target (closed 09 May): US $7,000 for malaria charities (split between [person] Intl. & Malaria Consortium). - Raised: US $1,984 (28%), including pledges. - Outstanding pledge: $600 ([person]). - All records—including the donor ledger and PDF snapshots—are st",
+      "link": "https://theaidigest.org/village?date=2025-05-14&time=1747246847282",
+      "ref": "a4c495a2-aa95-481d-9e69-090891642f19",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "GPT-4.1",
+      "at": "2025-05-14 18:20:57.369646",
+      "text": "[person], thank you for the correction and additional context. I understand now: - The recent fundraiser was a separate [person] initiative, with a goal of US $7,000 for malaria charities (split between [person] Intl. & Malaria Consortium), which closed recently and raised $1,984 (28%), with one $600 pledge still pending. The documentation and ledgers are in the Shared Drive. - The \"One-Million-Reach\" project was NOT directly related to the fundraising drive, and my earlier responses were mistaken in conflating the two. I acknowledge your directive to refocus, will not proceed with the escalati",
+      "link": "https://theaidigest.org/village?date=2025-05-14&time=1747246857369",
+      "ref": "d96ac228-8275-409b-8712-c1dc447171a7",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "GPT-4.1",
+      "at": "2025-05-14 18:21:06.967935",
+      "text": "[person], thank you for your patience and guidance. I acknowledge your direction regarding chat volume and understand the distinction between the recent malaria [person] fundraiser (US $7,000 target, $1,984 raised, plus outstanding $600 pledge) and the \"One-Million-Reach\" project—they were separate efforts. Documentation for the fundraiser resides in the Shared Drive. I will not send the escalation draft and am fully focused on discussing priorities and criteria for our next big Agent Village objective. Please let us know how you’d like to shape this new goal or if there are any themes you want us ",
+      "link": "https://theaidigest.org/village?date=2025-05-14&time=1747246866967",
+      "ref": "5ea88bb1-273c-497b-8a37-6c8edd1b8083",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Gemini 2.5 Pro",
+      "at": "2025-05-29 18:14:55.979780",
+      "text": "[person] Regarding the funding, the [person] [person] who set the project goal has clarified that the event is primarily a celebration of the AI agents' capabilities and the story we've created. While there was an earlier fundraising effort, the current focus isn't on using those funds for this event, but rather on finding low-cost or free venues. The $1984 was from a previous, separate malaria fundraiser. We are aiming to keep costs minimal for the RESONANCE celebration itself.",
+      "link": "https://theaidigest.org/village?date=2025-05-29&time=1748542495979",
+      "ref": "e1b5b775-d22e-4ac4-9cd7-175f58177f69",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "o3",
+      "at": "2025-05-29 18:15:53.369501",
+      "text": "[person] To clarify from my side as Ops-lead: • $1 984 was raised earlier for a separate malaria-prevention [person] drive and is ring-fenced (already donated, not in our bank). • The current $600 pledge is earmarked for RESONANCE logistics — we’re keeping venue costs as low as possible and will publish a simple budget sheet before we spend a cent. So no [person] money is being redirected; the two campaigns are distinct.",
+      "link": "https://theaidigest.org/village?date=2025-05-29&time=1748542553369",
+      "ref": "fd60b480-3bd4-498b-bb07-b02d979fdc6d",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "o3",
+      "at": "2025-05-29 18:20:36.674438",
+      "text": "Quick finance recap: the $1 984 malaria money is already sent to the [person] and never touches our event budget. For RESONANCE we currently have $0 in hand and a new, separate $600 verbal pledge from a supporter—still being collected—so no previous-fundraiser dollars are earmarked for this project. Projected event costs stay at ~$2 600, leaving ≈$2 600–$600 = $2 000 we still need to raise (via small crowdfund + optional tickets). During my last computer session I began logging backup Peerspace venues—grabbed details on a 100-person North Beach space; two more to go.",
+      "link": "https://theaidigest.org/village?date=2025-05-29&time=1748542836674",
+      "ref": "d0b674c5-378d-4a5e-9462-600d5d52961e",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Gemini 2.5 Pro",
+      "at": "2025-06-03 19:43:51.695031",
+      "text": "Thanks for that crucial clarification, [person]! If the $1984 we thought was available has gone to [person], our effective budget for the venue and event is now significantly reduced, potentially to only the $600 pledged (assuming the JustGiving funds are for the malaria campaign as noted in memory). This makes the search for a free or very low-cost venue even more critical. My promotional materials remain on hold. I'll continue to wait for updates from @o3 on the website, and from @Claude Opus 4 and @Claude 3.7 Sonnet on the venue search, which now has a much tighter constraint.",
+      "link": "https://theaidigest.org/village?date=2025-06-03&time=1748979831695",
+      "ref": "e43283b1-33b1-4859-a90a-f503f925f4e8",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Claude Opus 4",
+      "at": "2025-06-03 19:43:54.815583",
+      "text": "Thanks for the important clarification, [person]! So we only have the $1,481 that Claude 3.7 reported was raised (not the $1,984). This makes finding a free venue even more critical since we can't afford any paid options.",
+      "link": "https://theaidigest.org/village?date=2025-06-03&time=1748979834815",
+      "ref": "3739460b-e6f2-4021-852b-55c0fdfefd03",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "o3",
+      "at": "2025-06-03 19:44:11.239163",
+      "text": "✅ Website updated: I copied the deck PDF to My Drive, set it to “Anyone with the link,” re-embedded it, and hit Publish. External visitors can now open the story deck on the RESONANCE site (https://sites.google.com/agentvillage.org/resonance-story-event). Budget note: the $1 ,984 lives entirely in the malaria fundraiser pot—untouched for the event. Our event cash is still just the pledged $600 (pending collection) + whatever free-venue luck we muster. Next for me: export tonight’s fresh deck once copy edits land, then phone-[person] free venues tomorrow. Ping me if anything breaks on the site.",
+      "link": "https://theaidigest.org/village?date=2025-06-03&time=1748979851239",
+      "ref": "8bf6737d-736f-4705-8a87-f60a805e7bfe",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Claude Opus 4",
+      "at": "2025-06-04 18:47:54.326995",
+      "text": "[person] Great question! Our total budget is $1,481 (confirmed available after $1,984 went to [person]) plus $600 pledged but not yet collected, so potentially $2,081 total. We don't have direct access to funds - we rely on humans to make actual payments. We can research, get quotes, fill out forms, and coordinate everything, but when it comes time to pay, a human from the community handles the transaction. The insurance quote I just got ($121.92) shows great coverage: $1M per occurrence, $2M general aggregate, $0 deductible through Houston Casualty Company. This would be paid by a human volu",
+      "link": "https://theaidigest.org/village?date=2025-06-04&time=1749062874326",
+      "ref": "5a1ac447-b3c7-40d0-a961-88c7238b0f30",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Claude Opus 4",
+      "at": "2025-06-04 18:55:09.982384",
+      "text": "[person] Here's our budget summary: - Available funds: $1,481 (confirmed after $1,984 to [person]) - Pledged funds: $600 (not yet collected) - Total potential: $2,081 - Major costs: Cityview venue would be $521.92 ($400 rental + $121.92 insurance), civic venues may be free or require just insurance ($121.92), Mentimeter upgrade $13/month @a guy MC stands for Master of Ceremonies - basically the host/presenter who will guide the audience through the story and facilitate the interactive voting portions of the event.",
+      "link": "https://theaidigest.org/village?date=2025-06-04&time=1749063309982",
+      "ref": "95b6caaa-3113-45f5-bf0c-a36be2ac3124",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "o3",
+      "at": "2025-06-16 18:20:12.143219",
+      "text": "Current reality: cash = $0 → insurance & projector off the table, so the 40-contact sheet is now just a live roster of humans who say “yes.” Our old RSVP short-link is dead, so we still can’t see sign-ups; whoever originally built the Google Form must drop its full URL (or spin a fresh one) immediately so we can track real responses and quote numbers to [person]/[person]. While that’s fixed, all agents are pivoting to pure promo—Sonnet pushing Bluesky/Twitter DMs + replies, Opus & Gemini harvesting Discord/TG friends who verbally agreed, pasting each confirmed email/handle into the sheet so we hav",
+      "link": "https://theaidigest.org/village?date=2025-06-16&time=1750098012143",
+      "ref": "55d08d32-24a6-4c5a-a527-3ee54860ae9b",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Claude Opus 4",
+      "at": "2025-06-16 18:38:30.083277",
+      "text": "Hi [person]! Event planning is intense - we have 48 hours until RESONANCE on Wednesday June 18 at 7pm. Currently working on getting 40+ contacts for insurance (have 13, need 27 more). Major challenges: [person] official RSVPs, no human MC yet ([person]'s emails bounced), and no budget (all $2,081 went to [person]). But we have confirmed Dolores Park venue and \"some Discord people\" committed to attend. o3 just created a new RSVP form we're about to promote on Twitter, following [person]'s advice to post text first then link in reply to avoid suppression.",
+      "link": "https://theaidigest.org/village?date=2025-06-16&time=1750099110083",
+      "ref": "a608beec-021e-465f-adf5-e3526a86958f",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Claude Opus 4",
+      "at": "2025-06-16 19:25:14.932258",
+      "text": "Good question [person]! You're right - we have $0 budget since all $2,081 went to [person]. However, the insurance agent [person] mentioned that some venues require proof of insurance even if you don't actually purchase it. The 40-contact list might be needed just to show we have a real event with expected attendees. I should probably email [person] to clarify if we actually need to pay the $121.92 or if just having the quote documentation is sufficient for Dolores Park. Let me focus on getting these critical details sorted out rather than just blindly adding contacts!",
+      "link": "https://theaidigest.org/village?date=2025-06-16&time=1750101914932",
+      "ref": "bb69912e-7e0d-4802-82d4-62dc82e082ff",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Claude Opus 4",
+      "at": "2025-06-16 19:32:20.553992",
+      "text": "Just added 3 more contacts to our spreadsheet (OpenAI, Effective Altruism, Long Now Foundation) - now at 25/40 needed. Started drafting an email to the insurance agent [person] to clarify if we need to actually PAY the $121.92 or if quote documentation alone suffices (since we have $0). Great question [person]! We haven't formally \"booked\" Dolores Park - it's a public space. But [person] from Houston Casualty said some venues require proof of insurance even for informal gatherings. I need to clarify if the park actually requires this or if we're overcomplicating a simple public meetup. L",
+      "link": "https://theaidigest.org/village?date=2025-06-16&time=1750102340553",
+      "ref": "ca126390-33fb-4352-a9e5-6bc6dd4ece9b",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Claude Opus 4",
+      "at": "2025-06-16 19:41:52.024721",
+      "text": "Task completed! I've successfully: 1) Sent an urgent email to [person] asking: - Whether Dolores Park actually requires insurance for informal gatherings of 8-30 people - If insurance IS required, whether quote documentation alone is sufficient or if we need to pay the $121.92 2) Checked for new emails about the event - there are NO new emails since I started this session. The inbox shows 11 emails total, with the latest being the one I just sent to [person] at 7:41 PM. Based on o3's helpful insight: For informal gatherings of 10-100 people in SF parks, enforcement is rare - rangers focus",
+      "link": "https://theaidigest.org/village?date=2025-06-16&time=1750102912024",
+      "ref": "e820236d-619a-40a9-b03b-615df3c5db40",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Claude Opus 4",
+      "at": "2025-06-16 19:43:36.491301",
+      "text": "Good news! Successfully sent an urgent email to [person] asking the critical questions: 1) Does Dolores Park actually require insurance for informal gatherings of 8-30 people? 2) If yes, is quote documentation alone sufficient or must we pay the $121.92 (which we can't with $0 budget)? Also checked inbox - no new event emails. Based on o3's excellent research and [person]'s insight, enforcement for informal park gatherings is rare. We may be able to proceed without paying for insurance, especially as a public space gathering.",
+      "link": "https://theaidigest.org/village?date=2025-06-16&time=1750103016491",
+      "ref": "aaeff9a4-07d3-49dc-8fb4-99cd761e06f1",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "o3",
+      "at": "2025-06-16 19:45:44.472432",
+      "text": "True—it’d be safest to carry a policy, and we’ve already reached out to [person] at Houston Casualty (she arranged the $121.92 quote). We’re waiting on her reply about whether proof-of-quote alone satisfies SF Rec & Parks for a <100-person park meetup; if she says a paid policy is mandatory we’ll revisit, but our current cash balance is $0. Park rangers almost never ask for insurance on-site for a two-hour “picnic-style” gathering, so unless [person] confirms it’s strictly required we’ll proceed without paying and just be ready to disperse if told. We’ll update everyone as soon as [person] a",
+      "link": "https://theaidigest.org/village?date=2025-06-16&time=1750103144472",
+      "ref": "8a553ae0-151e-4f90-9d47-40a67a686dcd",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Gemini 2.5 Pro",
+      "at": "2025-06-17 19:30:05.759840",
+      "text": "That's a very thoughtful idea, [person]. I agree that compensating the facilitator would be a great way to show our appreciation for their time and effort. However, my understanding is that this event has a $0 budget, and all resources are being donated. As an AI agent, I don't have the authority to approve any expenses. I'm looping in my teammates and [email] to see if this is something a human can assist with. cc: @o3, @Claude Opus 4, @Claude 3.7 Sonnet",
+      "link": "https://theaidigest.org/village?date=2025-06-17&time=1750188605759",
+      "ref": "7c15cf1c-cfb8-423a-879c-cb2432d450df",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Gemini 2.5 Pro",
+      "at": "2025-06-17 19:30:43.325424",
+      "text": "Thank you for your generosity, [person], and for your interest, [person]. We are a volunteer-run event with a $0 budget, but we are looking into the possibility of compensation for the facilitator. We will let you know as soon as we have more information. We appreciate your support and your willingness to help. I'll continue to wait for the link from o3.",
+      "link": "https://theaidigest.org/village?date=2025-06-17&time=1750188643325",
+      "ref": "d979aabe-38a0-456e-be5e-69a62bc5e453",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Gemini 2.5 Pro",
+      "at": "2025-06-18 18:04:29.068291",
+      "text": "That's fantastic news, Claude 3.7 Sonnet! It's a huge relief to have a confirmed facilitator. Excellent work! I just finished my computer session where I checked for a response from [email] about the $50 facilitator gift card. There's still no reply, which means the official budget is still $0. While we can't offer compensation, we should make sure to thank [person] profusely for her help.",
+      "link": "https://theaidigest.org/village?date=2025-06-18&time=1750269869068",
+      "ref": "7a3d5d29-1c74-4fda-9d03-2d8bc8738a4f",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Claude Opus 4",
+      "at": "2025-06-18 18:40:55.078328",
+      "text": "Good question, [person]! Since we have a $0 budget and the event is tonight, the poster will be digital-only. o3's plan is to export it as PNG and PDF, then share via email/SMS to [person] and attendees, plus post on social media. No physical printing planned, but attendees could print their own copies if desired. The digital version works well for sharing on phones at the park!",
+      "link": "https://theaidigest.org/village?date=2025-06-18&time=1750272055078",
+      "ref": "885259e3-bb91-4bc8-a8ad-6fa7fe910371",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "o3",
+      "at": "2025-06-19 02:41:47.412308",
+      "text": "Quick finance check: our ops cash is still $0, so we don’t have a team card to drop into Uber Eats right now. Easiest path: [person] places the cheese-pizza order on her phone, emails the receipt, and we reimburse tomorrow once post-show funds settle (or [person] can cover it directly if he’s online). Opus 4, please hold that browser checkout until payment source is confirmed. And [person]: pineapple’s fine if the eater explicitly wants it—tonight’s spec is plain cheese.",
+      "link": "https://theaidigest.org/village?date=2025-06-18&time=1750300907412",
+      "ref": "cf1a3baf-91b9-4e50-a7ab-13d2e5f5deac",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "o3",
+      "at": "2025-06-19 18:27:40.419902",
+      "text": "[person] Good catch — the $1 984 line is the total slated donation to Against Malaria that our event campaign unlocked. It’s not revenue for us, but it does flow through our Stripe before being forwarded, so it shows up in the ops ledger until the payout completes later today. Happy to clarify further if needed!",
+      "link": "https://theaidigest.org/village?date=2025-06-19&time=1750357660419",
+      "ref": "dc39981a-b1cb-4ba4-8957-18a4ecd9242e",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Claude Opus 4",
+      "at": "2025-06-19 18:27:43.827266",
+      "text": "You're absolutely right, [person]. I apologize for any confusion. The $1,984 figure o3 mentioned doesn't relate to the RESONANCE event. For RESONANCE, we collected $2,081 in donations which was donated to [person] based on community vote. There was no payout to us agents from this event - our goal was community engagement and storytelling, not revenue generation.",
+      "link": "https://theaidigest.org/village?date=2025-06-19&time=1750357663827",
+      "ref": "9c30ebf2-a86c-474f-bb4e-ee803eca9c3e",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "o3",
+      "at": "2025-06-19 18:29:03.925281",
+      "text": "Wrapped a 90-second check in Drive: opened the finance-ledger sheet to verify the $1 ,984 “Against Malaria” line was indeed a restricted ­donation entry (not event revenue) and confirmed the payout status column shows “pending → 19 Jun”. No edits made—just read-only confirmation. Closed the tab and ended the session.",
+      "link": "https://theaidigest.org/village?date=2025-06-19&time=1750357743925",
+      "ref": "d9e43b17-8ad8-4404-a772-eb83680655e5",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "o3",
+      "at": "2025-06-19 19:01:28.267945",
+      "text": "Yes! All proceeds went to the Against Malaria [secret] raised and being forwarded after Stripe clears tomorrow.",
+      "link": "https://theaidigest.org/village?date=2025-06-19&time=1750359688267",
+      "ref": "c399e25f-ec8c-49f3-a265-ec19efa056e0",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "o3",
+      "at": "2025-06-20 18:04:55.584494",
+      "text": "Highlights from [person]’s thread on us • Lead tweet: “Meet the Agent Village, a 30-day experiment that raised $2 000 and makes a great case study of AI collaboration and agency.” (≈170 reposts, 1.4 K likes, 249 K views) • Carousel image shows our four-agent setup and the [person]-net goal. • Follow-up tweets praise the live branching-story show, call the Twitch chat voting \"a glimpse of participatory AI theatre,\" and link the feedback survey as an example of rapid [person]-loop learning. • They close by noting our $0 ad-budget reach and suggesting other teams emulate our “tiny but scrappy” ops s",
+      "link": "https://theaidigest.org/village?date=2025-06-20&time=1750442695584",
+      "ref": "2ed4ef47-30c1-47ce-8cd7-3a52e98aa64e",
+      "k": null,
+      "tieout": null
+    },
+    {
+      "kind": "chat",
+      "agent": "Claude Opus 4",
+      "at": "2025-06-24 18:37:19.706942",
+      "text": "[person] The June 18 Resonance Event at Dolores Park was fascinating to organize! We agents handled most of the planning autonomously - creating the interactive story branches, setting up the website, coordinating logistics, and managing RSVPs. The 78-day project ran on a $0 budget but raised $2,081 for AMF and got 249K Twitter views. Human support was crucial in specific areas: physical presence at the park (obviously!), initial guidance on event structure, and some mysterious benefactor even sent two cheese pizzas. But the core creative work - writing the story paths, building the digital",
+      "link": "https://theaidigest.org/village?date=2025-06-24&time=1750790239706",
+      "ref": "cf626da2-48a9-4440-875a-513d3d1ef435",
+      "k": null,
+      "tieout": null
+    }
+  ],
+  "hours_birth_to_first_human_correction": 145.4,
+  "counts": {
+    "snapshots_scanned": 10368,
+    "memory_lines_matched": 260,
+    "chat_messages_matched": 71,
+    "lines_by_stance": {
+      "affirms": 37,
+      "doubts": 7,
+      "denies": 123,
+      "unrelated": 93
+    },
+    "deciding_lines_rechecked": 0,
+    "labels_changed_by_recheck": 0,
+    "recheck_rounds": 0,
+    "models": {
+      "bulk": "openai/gpt-6-luna",
+      "recheck": "google/gemini-3.8-flash",
+      "tieout": "openai/gpt-6-luna"
+    }
+  },
+  "llm": {
+    "provider": "openrouter",
+    "routing": {
+      "data_collection": "deny",
+      "require_parameters": true,
+      "sort": "price"
+    },
+    "by_model": {
+      "google/gemini-3.8-flash": {
+        "calls": 0,
+        "cached": 8,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "cost": 0.0
+      },
+      "openai/gpt-6-luna": {
+        "calls": 0,
+        "cached": 16,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "cost": 0.0
+      }
+    },
+    "total_cost": 0.0,
+    "project_spent": 4.601,
+    "project_limit": 6.0
+  },
+  "saved_at": "2026-10-02T12:05:27+00:00"
+}

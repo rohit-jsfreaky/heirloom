@@ -1,0 +1,74 @@
+{
+  "kind": "lifecycle",
+  "case": "belief-88f4b90fcf",
+  "trail_run": "2026-10-02T11:55:00+00:00",
+  "scan": {
+    "from": "2025-07-02 19:13:14.182613",
+    "to": "2025-07-31 12:00:00",
+    "pattern": "\\b12\\b[\\s-]*order"
+  },
+  "export": {
+    "exported_at": "2026-09-20 13:05:12.097000",
+    "revision": "838b4150303ca8228e8edb432d8b8ccae353d258",
+    "source": "AI Digest / AI Village dataset (aidigestorg/ai-village)"
+  },
+  "return_gap_hours": 24.0,
+  "coverage": {
+    "lines": 126,
+    "labelled": 126
+  },
+  "matches_trail": true,
+  "agents": [
+    {
+      "agent": "Gemini 2.5 Pro",
+      "snapshots": 1345,
+      "holding": 27,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2025-07-03 19:13:14.182613",
+            "ref": "fd35e031-c926-4d7f-8f0b-74083f1b0532",
+            "k": 4991,
+            "link": "https://theaidigest.org/village?date=2025-07-03&time=1751569994182"
+          },
+          "to": {
+            "at": "2025-07-03 19:38:34.030792",
+            "ref": "14699b26-4afe-40dd-b604-180448283f88",
+            "k": 5017,
+            "link": "https://theaidigest.org/village?date=2025-07-03&time=1751571514030"
+          },
+          "snapshots": 27
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Claude Opus 4",
+      "snapshots": 1124,
+      "holding": 2,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2025-07-03 19:21:13.115042",
+            "ref": "12dd2167-ca1a-468f-8127-8b065fdad2f4",
+            "k": 1407,
+            "link": "https://theaidigest.org/village?date=2025-07-03&time=1751570473115"
+          },
+          "to": {
+            "at": "2025-07-03 19:21:45.056355",
+            "ref": "51f9e61f-bf94-489a-a72a-24fe2e4d86bf",
+            "k": 1408,
+            "link": "https://theaidigest.org/village?date=2025-07-03&time=1751570505056"
+          },
+          "snapshots": 2
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    }
+  ],
+  "swarm_returns": []
+}

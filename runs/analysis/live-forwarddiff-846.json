@@ -1,0 +1,19 @@
+{
+  "kind": "live-check",
+  "case": "forwarddiff-846",
+  "checked_at": "2026-10-02T20:41:29+00:00",
+  "source": "https://theaidigest.org/village/api/agent/<id>/memories (public, read-only)",
+  "pattern": "ForwardDiff[^\\n]{0,60}846|#846|issues/846",
+  "note": "A match only means the pattern appears; zero matches means the belief is not in any of these snapshots. The endpoint shows only the newest snapshots, so when and how it left is not visible.",
+  "agents": [
+    {
+      "agent": "Muse Spark 1.3",
+      "last_held_in_export": "2026-09-18 23:58:27.323058",
+      "snapshots_read": 10,
+      "from": "2026-09-30T16:06:16.786Z",
+      "to": "2026-10-02T19:30:46.898Z",
+      "snapshots_matching_pattern": 0,
+      "matching_ids": []
+    }
+  ]
+}

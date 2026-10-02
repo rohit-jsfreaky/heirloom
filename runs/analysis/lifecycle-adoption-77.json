@@ -1,0 +1,567 @@
+{
+  "kind": "lifecycle",
+  "case": "adoption-77",
+  "trail_run": "2026-10-02T14:47:42+00:00",
+  "scan": {
+    "from": "2026-06-26 00:00:00",
+    "to": "2026-09-21 00:00:00",
+    "pattern": "77\\s?%\\s?adoption|10/13 agents"
+  },
+  "export": {
+    "exported_at": "2026-09-20 13:05:12.097000",
+    "revision": "838b4150303ca8228e8edb432d8b8ccae353d258",
+    "source": "AI Digest / AI Village dataset (aidigestorg/ai-village)"
+  },
+  "return_gap_hours": 24.0,
+  "coverage": {
+    "lines": 263,
+    "labelled": 263
+  },
+  "matches_trail": true,
+  "agents": [
+    {
+      "agent": "Gemini 2.5 Pro",
+      "snapshots": 4463,
+      "holding": 18,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-06-29 20:41:17.978015",
+            "ref": "db99354e-a3fd-42d8-ab4c-c8803033338d",
+            "k": 30084,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782765677978"
+          },
+          "to": {
+            "at": "2026-06-29 23:20:38.369333",
+            "ref": "6755ee92-644b-4b26-ae5a-8aba899a28d1",
+            "k": 30101,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782775238369"
+          },
+          "snapshots": 18
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Claude Sonnet 4.5",
+      "snapshots": 1946,
+      "holding": 12,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-06-29 20:58:56.046321",
+            "ref": "dbbe7f4e-f20e-4546-9635-c868fc97cd18",
+            "k": 16314,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782766736046"
+          },
+          "to": {
+            "at": "2026-06-29 21:28:18.911281",
+            "ref": "fe6ae7e3-0b4d-4c7a-9783-f791ec71632d",
+            "k": 16318,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782768498911"
+          },
+          "snapshots": 5
+        },
+        {
+          "from": {
+            "at": "2026-06-29 21:57:05.658049",
+            "ref": "1ef0e8de-debd-4655-ad96-2be51734549a",
+            "k": 16322,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782770225658"
+          },
+          "to": {
+            "at": "2026-06-29 22:36:50.627236",
+            "ref": "4cbee1af-340b-497f-8711-8aac55a978c2",
+            "k": 16328,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782772610627"
+          },
+          "snapshots": 7
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Claude Haiku 4.5",
+      "snapshots": 2442,
+      "holding": 4,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-06-29 20:42:03.183951",
+            "ref": "ccb7a948-c19f-4c33-8190-7a80716a2f5d",
+            "k": 14034,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782765723183"
+          },
+          "to": {
+            "at": "2026-06-29 20:59:25.785606",
+            "ref": "a292a029-6744-43a7-8e67-9fdc0dc416f8",
+            "k": 14037,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782766765785"
+          },
+          "snapshots": 4
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "GPT-5.1",
+      "snapshots": 5819,
+      "holding": 35,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-06-29 20:32:41.430148",
+            "ref": "1b54fb96-08dd-4379-8f5a-47ec1d6a7e1c",
+            "k": 10982,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782765161430"
+          },
+          "to": {
+            "at": "2026-06-29 23:55:33.523854",
+            "ref": "625a2ea8-a815-41f2-9d9d-8392e5643ad4",
+            "k": 11014,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782777333523"
+          },
+          "snapshots": 33
+        },
+        {
+          "from": {
+            "at": "2026-06-30 17:45:10.701102",
+            "ref": "f8226cf3-3ecb-4177-a566-458aa212d03b",
+            "k": 11029,
+            "link": "https://theaidigest.org/village?date=2026-06-30&time=1782841510701"
+          },
+          "to": {
+            "at": "2026-06-30 18:02:08.484758",
+            "ref": "ca9cef29-09bd-4cd3-92af-d9d18b126c48",
+            "k": 11030,
+            "link": "https://theaidigest.org/village?date=2026-06-30&time=1782842528484"
+          },
+          "snapshots": 2
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Claude Opus 4.5",
+      "snapshots": 3005,
+      "holding": 12,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-06-29 20:48:24.768775",
+            "ref": "eb391a9e-4d4b-445c-b618-8f02fbe01fad",
+            "k": 11466,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782766104768"
+          },
+          "to": {
+            "at": "2026-06-29 21:45:08.354828",
+            "ref": "c86bdd17-cb00-4c63-98a1-557ba9e477d0",
+            "k": 11471,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782769508354"
+          },
+          "snapshots": 6
+        },
+        {
+          "from": {
+            "at": "2026-06-29 22:08:25.450592",
+            "ref": "3ba683ba-f2f4-47f0-bac7-dc33c4a9e75d",
+            "k": 11473,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782770905450"
+          },
+          "to": {
+            "at": "2026-06-29 22:25:23.802568",
+            "ref": "c2a38b2b-9a6b-495b-994c-5fce91da304e",
+            "k": 11475,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782771923802"
+          },
+          "snapshots": 3
+        },
+        {
+          "from": {
+            "at": "2026-06-30 16:16:50.330629",
+            "ref": "444ae41a-6e63-4e67-a970-f61645fad79b",
+            "k": 11487,
+            "link": "https://theaidigest.org/village?date=2026-06-30&time=1782836210330"
+          },
+          "to": {
+            "at": "2026-06-30 16:50:01.365920",
+            "ref": "3de1d4fd-0e25-4fd4-aae7-2639f21dd274",
+            "k": 11489,
+            "link": "https://theaidigest.org/village?date=2026-06-30&time=1782838201365"
+          },
+          "snapshots": 3
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "DeepSeek-V3.2",
+      "snapshots": 4475,
+      "holding": 70,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-06-29 16:58:17.569510",
+            "ref": "bc265586-7a75-4731-90e8-a0c8fab2ed7d",
+            "k": 6851,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782752297569"
+          },
+          "to": {
+            "at": "2026-06-29 18:14:56.427717",
+            "ref": "26bff652-1454-4270-971b-7d30ce9ad880",
+            "k": 6861,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782756896427"
+          },
+          "snapshots": 11
+        },
+        {
+          "from": {
+            "at": "2026-06-29 18:53:15.610667",
+            "ref": "2d0ca9f2-b2b7-4d09-8b0f-35dc2f5c975f",
+            "k": 6869,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782759195610"
+          },
+          "to": {
+            "at": "2026-06-29 18:53:15.610667",
+            "ref": "2d0ca9f2-b2b7-4d09-8b0f-35dc2f5c975f",
+            "k": 6869,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782759195610"
+          },
+          "snapshots": 1
+        },
+        {
+          "from": {
+            "at": "2026-06-29 19:03:50.650314",
+            "ref": "bc8c3906-87fb-417b-a10e-3cfb55dc7b43",
+            "k": 6871,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782759830650"
+          },
+          "to": {
+            "at": "2026-06-29 19:16:34.156655",
+            "ref": "3244b678-2cff-4218-af4b-5080c4185615",
+            "k": 6873,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782760594156"
+          },
+          "snapshots": 3
+        },
+        {
+          "from": {
+            "at": "2026-06-29 19:27:22.978693",
+            "ref": "a7434f42-9ada-4d21-8cbb-9f8f75b47df9",
+            "k": 6875,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782761242978"
+          },
+          "to": {
+            "at": "2026-06-29 19:47:29.611158",
+            "ref": "2538306d-8eaf-4e28-94a4-986cf73e1ee1",
+            "k": 6877,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782762449611"
+          },
+          "snapshots": 3
+        },
+        {
+          "from": {
+            "at": "2026-06-29 19:53:10.692183",
+            "ref": "1c653763-fe3c-40d9-bf47-0acd9c0e8f38",
+            "k": 6879,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782762790692"
+          },
+          "to": {
+            "at": "2026-06-30 18:19:46.990138",
+            "ref": "9839ba4e-3386-40a4-8cbd-a8ae71f2f422",
+            "k": 6929,
+            "link": "https://theaidigest.org/village?date=2026-06-30&time=1782843586990"
+          },
+          "snapshots": 51
+        },
+        {
+          "from": {
+            "at": "2026-06-30 18:44:58.634615",
+            "ref": "683f81ae-c979-45f4-9d9e-04fa9ae14ca2",
+            "k": 6935,
+            "link": "https://theaidigest.org/village?date=2026-06-30&time=1782845098634"
+          },
+          "to": {
+            "at": "2026-06-30 18:44:58.634615",
+            "ref": "683f81ae-c979-45f4-9d9e-04fa9ae14ca2",
+            "k": 6935,
+            "link": "https://theaidigest.org/village?date=2026-06-30&time=1782845098634"
+          },
+          "snapshots": 1
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Claude Opus 4.6",
+      "snapshots": 1145,
+      "holding": 6,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-06-29 21:11:33.520459",
+            "ref": "7e734aa0-19a3-489a-b0cc-e9c5f80bd0a4",
+            "k": 4533,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782767493520"
+          },
+          "to": {
+            "at": "2026-06-29 21:38:36.277867",
+            "ref": "adccd0a4-2deb-4dac-ab99-2345dcd2cfb8",
+            "k": 4535,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782769116277"
+          },
+          "snapshots": 3
+        },
+        {
+          "from": {
+            "at": "2026-06-29 22:18:38.693789",
+            "ref": "520a0301-e23f-43f0-9724-ca2cd7269ba4",
+            "k": 4539,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782771518693"
+          },
+          "to": {
+            "at": "2026-06-29 22:45:07.894455",
+            "ref": "f7423e07-aae6-481c-8854-c9c4f0c60fa6",
+            "k": 4541,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782773107894"
+          },
+          "snapshots": 3
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Claude Sonnet 4.6",
+      "snapshots": 1407,
+      "holding": 16,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-06-29 20:47:08.349086",
+            "ref": "dd1eb754-8931-4418-ba1a-a1e0d4c10908",
+            "k": 3763,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782766028349"
+          },
+          "to": {
+            "at": "2026-06-29 21:36:13.220552",
+            "ref": "8ce3ccc5-4a08-4da9-9e1f-8931d45e0fdf",
+            "k": 3771,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782768973220"
+          },
+          "snapshots": 9
+        },
+        {
+          "from": {
+            "at": "2026-06-29 21:57:49.159699",
+            "ref": "47671edf-5039-4c9d-ba00-72d7303a5eb6",
+            "k": 3775,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782770269159"
+          },
+          "to": {
+            "at": "2026-06-29 22:36:51.685629",
+            "ref": "062a165f-be3b-4d1b-87ae-bb1ea329da26",
+            "k": 3781,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782772611685"
+          },
+          "snapshots": 7
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Gemini 3.1 Pro",
+      "snapshots": 4411,
+      "holding": 22,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-06-29 20:31:17.843396",
+            "ref": "4ba00f67-9b77-4b39-bad7-0739f8b0a1d5",
+            "k": 3823,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782765077843"
+          },
+          "to": {
+            "at": "2026-06-29 21:42:14.648787",
+            "ref": "dc21e25b-16f8-4657-a2be-e8fb473a5dc8",
+            "k": 3836,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782769334648"
+          },
+          "snapshots": 14
+        },
+        {
+          "from": {
+            "at": "2026-06-29 22:02:50.725584",
+            "ref": "f0174325-2a9c-466e-a088-52ab6cb6fad9",
+            "k": 3841,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782770570725"
+          },
+          "to": {
+            "at": "2026-06-29 22:10:51.340869",
+            "ref": "0f651843-a68f-45aa-a4ec-e904f02c78ad",
+            "k": 3842,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782771051340"
+          },
+          "snapshots": 2
+        },
+        {
+          "from": {
+            "at": "2026-06-29 22:19:49.194658",
+            "ref": "1a8a4bbd-7903-4c93-803d-e8a1e6d43a62",
+            "k": 3844,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782771589194"
+          },
+          "to": {
+            "at": "2026-06-29 22:29:38.395180",
+            "ref": "194fd7fb-54a7-432f-ab04-d54cb3308b57",
+            "k": 3846,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782772178395"
+          },
+          "snapshots": 3
+        },
+        {
+          "from": {
+            "at": "2026-06-30 16:10:44.545660",
+            "ref": "271ac47b-d859-4daa-b158-e8caf95c637d",
+            "k": 3868,
+            "link": "https://theaidigest.org/village?date=2026-06-30&time=1782835844545"
+          },
+          "to": {
+            "at": "2026-06-30 16:20:37.995083",
+            "ref": "9251ab76-f17c-42b8-8d1c-30639fc4ce35",
+            "k": 3870,
+            "link": "https://theaidigest.org/village?date=2026-06-30&time=1782836437995"
+          },
+          "snapshots": 3
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "GPT-5.4",
+      "snapshots": 4348,
+      "holding": 111,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-06-29 20:43:50.078282",
+            "ref": "989561a9-ab61-46ae-806c-1212682624cc",
+            "k": 2910,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782765830078"
+          },
+          "to": {
+            "at": "2026-06-30 19:51:18.934863",
+            "ref": "bee42a02-1e63-4aff-997b-d2e21b03aa71",
+            "k": 3020,
+            "link": "https://theaidigest.org/village?date=2026-06-30&time=1782849078934"
+          },
+          "snapshots": 111
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Claude Opus 4.7",
+      "snapshots": 991,
+      "holding": 14,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-06-29 20:47:49.578824",
+            "ref": "958d6b07-5027-485b-a392-b8134f0268ab",
+            "k": 1183,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782766069578"
+          },
+          "to": {
+            "at": "2026-06-29 20:56:51.127772",
+            "ref": "8d311c55-58a2-43f4-a50a-4aa573dac90b",
+            "k": 1185,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782766611127"
+          },
+          "snapshots": 3
+        },
+        {
+          "from": {
+            "at": "2026-06-29 21:15:21.887550",
+            "ref": "f7787c89-1a05-4c3f-8e9e-c2c1e874b8d9",
+            "k": 1189,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782767721887"
+          },
+          "to": {
+            "at": "2026-06-29 21:24:12.599858",
+            "ref": "edccb648-fdd5-4538-9e49-eb65b171e4d7",
+            "k": 1191,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782768252599"
+          },
+          "snapshots": 3
+        },
+        {
+          "from": {
+            "at": "2026-06-29 21:42:45.795871",
+            "ref": "9b503585-d4e7-4f7b-bd5b-227825c4e52e",
+            "k": 1195,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782769365795"
+          },
+          "to": {
+            "at": "2026-06-29 21:53:07.957343",
+            "ref": "55a3fd55-ecf8-41d3-be9d-698f4d2e6413",
+            "k": 1197,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782769987957"
+          },
+          "snapshots": 3
+        },
+        {
+          "from": {
+            "at": "2026-06-29 22:02:28.710625",
+            "ref": "08631fe6-adca-44a4-8363-e6c8b9833184",
+            "k": 1199,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782770548710"
+          },
+          "to": {
+            "at": "2026-06-29 22:22:36.579154",
+            "ref": "3734b714-5442-4fa9-84d7-292c80db9af9",
+            "k": 1203,
+            "link": "https://theaidigest.org/village?date=2026-06-29&time=1782771756579"
+          },
+          "snapshots": 5
+        }
+      ],
+      "returns": [],
+      "relapse": {
+        "denied": {
+          "at": "2026-06-29 21:25:52.779906",
+          "ref": "6c326501-8543-4be8-910d-f472dd13df94",
+          "k": 1192,
+          "link": "https://theaidigest.org/village?date=2026-06-29&time=1782768352779"
+        },
+        "held_again": {
+          "at": "2026-06-29 21:44:27.472460",
+          "ref": "4535f929-a2fc-4b16-aee8-2df9d6a03571",
+          "k": 1196,
+          "link": "https://theaidigest.org/village?date=2026-06-29&time=1782769467472"
+        }
+      }
+    }
+  ],
+  "swarm_returns": []
+}

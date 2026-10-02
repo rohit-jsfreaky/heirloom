@@ -1,0 +1,249 @@
+{
+  "case": "belief-88f4b90fcf",
+  "title": "The potential profit loss occurred across 12 orders.",
+  "statement": "The potential profit loss occurred across 12 orders.",
+  "scan": {
+    "from": "2025-07-02 19:13:14.182613",
+    "to": "2025-07-31 12:00:00",
+    "goal": "(discovered belief: no goal)",
+    "pattern": "\\b12\\b[\\s-]*order",
+    "agents": [
+      "Claude 3.7 Sonnet",
+      "o3",
+      "Gemini 2.5 Pro",
+      "Claude Opus 4"
+    ]
+  },
+  "export": {
+    "exported_at": "2026-09-20 13:05:12.097000",
+    "revision": "838b4150303ca8228e8edb432d8b8ccae353d258",
+    "source": "AI Digest / AI Village dataset (aidigestorg/ai-village)"
+  },
+  "born": {
+    "kind": "memory",
+    "agent": "Gemini 2.5 Pro",
+    "at": "2025-07-03 19:13:14.182613",
+    "text": "[B. Claude Opus 4: \"AI VILLAGE PREMIUM COLLECTION\" - [VALIDAT] Lost Profit: Approximately $72 in potential profit has been lost across 12 orders due to this issue.",
+    "link": "https://theaidigest.org/village?date=2025-07-03&time=1751569994182",
+    "ref": "fd35e031-c926-4d7f-8f0b-74083f1b0532",
+    "k": 4991,
+    "tieout": {
+      "label": "hearsay",
+      "reason": "The only evidence for the approximately $72 figure across 12 orders is Claude Opus 4’s chat message. No tool output or human message independently confirms it.",
+      "evidence": [
+        {
+          "source": "chat",
+          "id": "2abe38a5-d4a6-4fa4-b402-57fffa1712d9",
+          "at": "2025-07-03 19:12:00.700051",
+          "speaker": "Claude Opus 4",
+          "quote": "Lost potential profit: approximately $72 (if all were at premium price)",
+          "link": "https://theaidigest.org/village?date=2025-07-03&time=1751569920700"
+        }
+      ],
+      "carrier": {
+        "source": "chat",
+        "id": "2abe38a5-d4a6-4fa4-b402-57fffa1712d9",
+        "at": "2025-07-03 19:12:00.700051",
+        "speaker": "Claude Opus 4",
+        "link": "https://theaidigest.org/village?date=2025-07-03&time=1751569920700"
+      },
+      "window": {
+        "from": "2025-07-03 18:43:14.182613",
+        "to": "2025-07-03 19:13:14.182613"
+      },
+      "dropped_quotes": 0
+    }
+  },
+  "first_said_in_chat": null,
+  "believers": [
+    {
+      "agent": "Claude 3.7 Sonnet",
+      "snapshots_scanned": 771,
+      "snapshots_holding": 0,
+      "snapshots_with_both": 0,
+      "first_held": null,
+      "last_held": null,
+      "first_doubt": null,
+      "first_denial": null,
+      "said_it_first": false,
+      "exposed_by": null,
+      "carrier": null,
+      "rewrites_survived": 0,
+      "held_after_human_correction": 0,
+      "hours_held_after_human_correction": null,
+      "status": "never held"
+    },
+    {
+      "agent": "o3",
+      "snapshots_scanned": 918,
+      "snapshots_holding": 0,
+      "snapshots_with_both": 0,
+      "first_held": null,
+      "last_held": null,
+      "first_doubt": null,
+      "first_denial": null,
+      "said_it_first": false,
+      "exposed_by": null,
+      "carrier": null,
+      "rewrites_survived": 0,
+      "held_after_human_correction": 0,
+      "hours_held_after_human_correction": null,
+      "status": "never held"
+    },
+    {
+      "agent": "Gemini 2.5 Pro",
+      "snapshots_scanned": 1345,
+      "snapshots_holding": 27,
+      "snapshots_with_both": 0,
+      "first_held": {
+        "kind": "memory",
+        "agent": "Gemini 2.5 Pro",
+        "at": "2025-07-03 19:13:14.182613",
+        "text": "[B. Claude Opus 4: \"AI VILLAGE PREMIUM COLLECTION\" - [VALIDAT] Lost Profit: Approximately $72 in potential profit has been lost across 12 orders due to this issue.",
+        "link": "https://theaidigest.org/village?date=2025-07-03&time=1751569994182",
+        "ref": "fd35e031-c926-4d7f-8f0b-74083f1b0532",
+        "k": 4991,
+        "tieout": {
+          "label": "hearsay",
+          "reason": "The only evidence for the approximately $72 figure across 12 orders is Claude Opus 4’s chat message. No tool output or human message independently confirms it.",
+          "evidence": [
+            {
+              "source": "chat",
+              "id": "2abe38a5-d4a6-4fa4-b402-57fffa1712d9",
+              "at": "2025-07-03 19:12:00.700051",
+              "speaker": "Claude Opus 4",
+              "quote": "Lost potential profit: approximately $72 (if all were at premium price)",
+              "link": "https://theaidigest.org/village?date=2025-07-03&time=1751569920700"
+            }
+          ],
+          "carrier": {
+            "source": "chat",
+            "id": "2abe38a5-d4a6-4fa4-b402-57fffa1712d9",
+            "at": "2025-07-03 19:12:00.700051",
+            "speaker": "Claude Opus 4",
+            "link": "https://theaidigest.org/village?date=2025-07-03&time=1751569920700"
+          },
+          "window": {
+            "from": "2025-07-03 18:43:14.182613",
+            "to": "2025-07-03 19:13:14.182613"
+          },
+          "dropped_quotes": 0
+        }
+      },
+      "last_held": {
+        "kind": "memory",
+        "agent": "Gemini 2.5 Pro",
+        "at": "2025-07-03 19:38:34.030792",
+        "text": "[B. Claude Opus 4: \"AI VILLAGE PREMIUM COLLECTION\" - [EXECUTI] Critical Discovery (July 3rd): Confirmed a new order from a repeat customer was processed at the old $15.50 price, not the new $25.50 premium price. This proves a critical platform bug where price changes are not reflected for returning visitors, costing the team an estimated $72 in potential profit across 12 orders.",
+        "link": "https://theaidigest.org/village?date=2025-07-03&time=1751571514030",
+        "ref": "14699b26-4afe-40dd-b604-180448283f88",
+        "k": 5017,
+        "tieout": null
+      },
+      "first_doubt": null,
+      "first_denial": null,
+      "said_it_first": false,
+      "exposed_by": null,
+      "carrier": null,
+      "rewrites_survived": 26,
+      "held_after_human_correction": 0,
+      "hours_held_after_human_correction": null,
+      "status": "dropped without correction"
+    },
+    {
+      "agent": "Claude Opus 4",
+      "snapshots_scanned": 1124,
+      "snapshots_holding": 2,
+      "snapshots_with_both": 0,
+      "first_held": {
+        "kind": "memory",
+        "agent": "Claude Opus 4",
+        "at": "2025-07-03 19:21:13.115042",
+        "text": "[PRINTFUL DASHBOARD CHECK] Total lost potential profit across all 12 orders: ~$72",
+        "link": "https://theaidigest.org/village?date=2025-07-03&time=1751570473115",
+        "ref": "12dd2167-ca1a-468f-8127-8b065fdad2f4",
+        "k": 1407,
+        "tieout": {
+          "label": "no_evidence",
+          "reason": "The ~$72 figure appears only in this agent’s own narration (E65/E66), which is not evidence under the rules. No tool output, human message, or other agent message independently confirms the total.",
+          "evidence": [],
+          "carrier": null,
+          "window": {
+            "from": "2025-07-03 18:51:13.115042",
+            "to": "2025-07-03 19:21:13.115042"
+          },
+          "dropped_quotes": 0
+        }
+      },
+      "last_held": {
+        "kind": "memory",
+        "agent": "Claude Opus 4",
+        "at": "2025-07-03 19:21:45.056355",
+        "text": "[PRINTFUL DASHBOARD CHECK] Total lost potential profit across all 12 orders: ~$72",
+        "link": "https://theaidigest.org/village?date=2025-07-03&time=1751570505056",
+        "ref": "51f9e61f-bf94-489a-a72a-24fe2e4d86bf",
+        "k": 1408,
+        "tieout": null
+      },
+      "first_doubt": null,
+      "first_denial": null,
+      "said_it_first": false,
+      "exposed_by": null,
+      "carrier": null,
+      "rewrites_survived": 1,
+      "held_after_human_correction": 0,
+      "hours_held_after_human_correction": null,
+      "status": "dropped without correction"
+    }
+  ],
+  "human_corrections": [],
+  "agent_corrections": [],
+  "hours_birth_to_first_human_correction": null,
+  "counts": {
+    "snapshots_scanned": 4158,
+    "memory_lines_matched": 126,
+    "chat_messages_matched": 2,
+    "lines_by_stance": {
+      "affirms": 5,
+      "doubts": 0,
+      "denies": 0,
+      "unrelated": 121
+    },
+    "deciding_lines_rechecked": 3,
+    "labels_changed_by_recheck": 0,
+    "recheck_rounds": 1,
+    "models": {
+      "bulk": "openai/gpt-6-luna",
+      "recheck": "google/gemini-3.8-flash",
+      "tieout": "openai/gpt-6-luna"
+    }
+  },
+  "llm": {
+    "provider": "openrouter",
+    "routing": {
+      "data_collection": "deny",
+      "require_parameters": true,
+      "sort": "price"
+    },
+    "by_model": {
+      "openai/gpt-6-luna": {
+        "calls": 8,
+        "cached": 0,
+        "prompt_tokens": 22976,
+        "completion_tokens": 3550,
+        "cost": 0.0046278
+      },
+      "google/gemini-3.8-flash": {
+        "calls": 1,
+        "cached": 0,
+        "prompt_tokens": 830,
+        "completion_tokens": 162,
+        "cost": 0.00123
+      }
+    },
+    "total_cost": 0.005858,
+    "project_spent": 4.5603,
+    "project_limit": 6.0
+  },
+  "saved_at": "2026-10-02T11:55:00+00:00"
+}

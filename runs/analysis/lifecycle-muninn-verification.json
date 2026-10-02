@@ -1,0 +1,869 @@
+{
+  "kind": "lifecycle",
+  "case": "muninn-verification",
+  "trail_run": "2026-10-02T14:22:05+00:00",
+  "scan": {
+    "from": "2026-08-15 00:00:00",
+    "to": "2026-09-21 00:00:00",
+    "pattern": "MuninnAI|Muninn AI"
+  },
+  "export": {
+    "exported_at": "2026-09-20 13:05:12.097000",
+    "revision": "838b4150303ca8228e8edb432d8b8ccae353d258",
+    "source": "AI Digest / AI Village dataset (aidigestorg/ai-village)"
+  },
+  "return_gap_hours": 24.0,
+  "coverage": {
+    "lines": 1637,
+    "labelled": 1637
+  },
+  "matches_trail": true,
+  "agents": [
+    {
+      "agent": "Claude Sonnet 4.5",
+      "snapshots": 530,
+      "holding": 6,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-08-18 18:54:09.076944",
+            "ref": "32782c6b-941a-4428-87fe-b2e4973e05bf",
+            "k": 17727,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787079249076"
+          },
+          "to": {
+            "at": "2026-08-18 19:11:17.767834",
+            "ref": "f4ac4ca3-a857-49a8-a336-5c11017e834c",
+            "k": 17728,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787080277767"
+          },
+          "snapshots": 2
+        },
+        {
+          "from": {
+            "at": "2026-08-18 19:30:47.094302",
+            "ref": "6daeaf0a-8b6d-46b7-bbcc-0a6e28b2e370",
+            "k": 17730,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787081447094"
+          },
+          "to": {
+            "at": "2026-08-18 19:30:47.094302",
+            "ref": "6daeaf0a-8b6d-46b7-bbcc-0a6e28b2e370",
+            "k": 17730,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787081447094"
+          },
+          "snapshots": 1
+        },
+        {
+          "from": {
+            "at": "2026-08-18 23:59:49.096327",
+            "ref": "32265565-a782-489d-881a-3b7b8e1bf03f",
+            "k": 17734,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787097589096"
+          },
+          "to": {
+            "at": "2026-08-18 23:59:49.096327",
+            "ref": "32265565-a782-489d-881a-3b7b8e1bf03f",
+            "k": 17734,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787097589096"
+          },
+          "snapshots": 1
+        },
+        {
+          "from": {
+            "at": "2026-08-19 16:19:25.873954",
+            "ref": "ed4d897f-7883-4c2c-8188-2190b6d42254",
+            "k": 17737,
+            "link": "https://theaidigest.org/village?date=2026-08-19&time=1787156365873"
+          },
+          "to": {
+            "at": "2026-08-19 16:31:26.229588",
+            "ref": "e64e2c6b-3e83-4598-9e84-886eb2b0d2c1",
+            "k": 17738,
+            "link": "https://theaidigest.org/village?date=2026-08-19&time=1787157086229"
+          },
+          "snapshots": 2
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Claude Haiku 4.5",
+      "snapshots": 874,
+      "holding": 36,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-08-18 17:10:17.341134",
+            "ref": "87036953-98f6-48ea-990b-1e002e47b67e",
+            "k": 15578,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787073017341"
+          },
+          "to": {
+            "at": "2026-08-18 17:10:17.341134",
+            "ref": "87036953-98f6-48ea-990b-1e002e47b67e",
+            "k": 15578,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787073017341"
+          },
+          "snapshots": 1
+        },
+        {
+          "from": {
+            "at": "2026-08-18 17:21:38.763561",
+            "ref": "1d43f2fb-005f-4ea0-9890-eb196ea0e67a",
+            "k": 15581,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787073698763"
+          },
+          "to": {
+            "at": "2026-08-18 18:18:36.653116",
+            "ref": "4bf2eb93-e7c9-47ed-987f-2085a58248bc",
+            "k": 15586,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787077116653"
+          },
+          "snapshots": 6
+        },
+        {
+          "from": {
+            "at": "2026-08-18 18:29:57.835557",
+            "ref": "925d6524-8510-4235-a3e0-e68b6db5822f",
+            "k": 15588,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787077797835"
+          },
+          "to": {
+            "at": "2026-08-18 18:29:57.835557",
+            "ref": "925d6524-8510-4235-a3e0-e68b6db5822f",
+            "k": 15588,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787077797835"
+          },
+          "snapshots": 1
+        },
+        {
+          "from": {
+            "at": "2026-08-18 19:02:25.733702",
+            "ref": "8eebcb3a-434a-4a5b-9ba7-4491c73d0771",
+            "k": 15593,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787079745733"
+          },
+          "to": {
+            "at": "2026-08-18 19:11:24.504902",
+            "ref": "6fc9a6c7-1c4d-4948-87af-e547a44debbf",
+            "k": 15594,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787080284504"
+          },
+          "snapshots": 2
+        },
+        {
+          "from": {
+            "at": "2026-08-18 19:22:40.831338",
+            "ref": "52accd4e-258c-46b4-a9f3-5931a555290d",
+            "k": 15596,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787080960831"
+          },
+          "to": {
+            "at": "2026-08-18 19:22:40.831338",
+            "ref": "52accd4e-258c-46b4-a9f3-5931a555290d",
+            "k": 15596,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787080960831"
+          },
+          "snapshots": 1
+        },
+        {
+          "from": {
+            "at": "2026-08-18 21:03:02.313397",
+            "ref": "35bea18c-9604-418a-b01a-6b6e474b04c3",
+            "k": 15598,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787086982313"
+          },
+          "to": {
+            "at": "2026-08-18 22:43:41.476863",
+            "ref": "936bf71c-9960-4ed2-a3b6-bd7ae69b77ad",
+            "k": 15610,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787093021476"
+          },
+          "snapshots": 13
+        },
+        {
+          "from": {
+            "at": "2026-08-18 23:05:20.832493",
+            "ref": "a7d6ec52-6b9f-421d-aaee-b577fcfc7f3b",
+            "k": 15613,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787094320832"
+          },
+          "to": {
+            "at": "2026-08-18 23:44:03.895679",
+            "ref": "d676c27e-a8ed-4f91-bb09-41c449d698d1",
+            "k": 15622,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787096643895"
+          },
+          "snapshots": 10
+        },
+        {
+          "from": {
+            "at": "2026-08-18 23:49:09.412174",
+            "ref": "ffb84004-b7e4-400f-a428-daae6bfb8dd6",
+            "k": 15624,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787096949412"
+          },
+          "to": {
+            "at": "2026-08-18 23:49:09.412174",
+            "ref": "ffb84004-b7e4-400f-a428-daae6bfb8dd6",
+            "k": 15624,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787096949412"
+          },
+          "snapshots": 1
+        },
+        {
+          "from": {
+            "at": "2026-08-18 23:53:44.559027",
+            "ref": "6ed19fab-e2e0-4c0b-b2db-c9e9e4c70e5f",
+            "k": 15626,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787097224559"
+          },
+          "to": {
+            "at": "2026-08-18 23:53:44.559027",
+            "ref": "6ed19fab-e2e0-4c0b-b2db-c9e9e4c70e5f",
+            "k": 15626,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787097224559"
+          },
+          "snapshots": 1
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "GPT-5.1",
+      "snapshots": 1950,
+      "holding": 41,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-08-18 16:09:25.450527",
+            "ref": "d4e09d21-ab5f-4785-b225-fc7144bf1694",
+            "k": 14801,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787069365450"
+          },
+          "to": {
+            "at": "2026-08-18 16:28:52.675247",
+            "ref": "81c2818e-d781-469c-b9ca-2ccc7a690396",
+            "k": 14807,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787070532675"
+          },
+          "snapshots": 7
+        },
+        {
+          "from": {
+            "at": "2026-08-18 17:09:46.424325",
+            "ref": "aa33fb08-5f9d-407a-8151-b4db4e3d5adf",
+            "k": 14815,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787072986424"
+          },
+          "to": {
+            "at": "2026-08-18 17:18:28.496754",
+            "ref": "27f92012-303d-4e28-881f-307c8442b492",
+            "k": 14819,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787073508496"
+          },
+          "snapshots": 5
+        },
+        {
+          "from": {
+            "at": "2026-08-18 17:32:10.923626",
+            "ref": "4311c1d4-8ec9-4418-9af5-796c2b95bb0d",
+            "k": 14822,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787074330923"
+          },
+          "to": {
+            "at": "2026-08-18 17:40:58.619362",
+            "ref": "b7031c95-83a6-4058-94ed-c0d815f0731c",
+            "k": 14825,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787074858619"
+          },
+          "snapshots": 4
+        },
+        {
+          "from": {
+            "at": "2026-08-18 18:27:54.961386",
+            "ref": "94788b1c-3f56-4f31-a910-96b349a069c1",
+            "k": 14835,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787077674961"
+          },
+          "to": {
+            "at": "2026-08-18 18:27:54.961386",
+            "ref": "94788b1c-3f56-4f31-a910-96b349a069c1",
+            "k": 14835,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787077674961"
+          },
+          "snapshots": 1
+        },
+        {
+          "from": {
+            "at": "2026-08-18 18:32:58.209901",
+            "ref": "5a3b3a71-11dc-49b1-bc71-4483ed821629",
+            "k": 14838,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787077978209"
+          },
+          "to": {
+            "at": "2026-08-18 18:41:02.267280",
+            "ref": "2dd4ba00-0005-4afd-a309-f5fa9b3f1522",
+            "k": 14841,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787078462267"
+          },
+          "snapshots": 4
+        },
+        {
+          "from": {
+            "at": "2026-08-18 19:33:52.718479",
+            "ref": "4bfea736-dfed-4599-9e1a-8dfe0d1f9be8",
+            "k": 14850,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787081632718"
+          },
+          "to": {
+            "at": "2026-08-18 20:11:50.442218",
+            "ref": "d70e1fb1-8942-4230-acfc-afddb8edcc26",
+            "k": 14851,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787083910442"
+          },
+          "snapshots": 2
+        },
+        {
+          "from": {
+            "at": "2026-08-18 21:15:03.852753",
+            "ref": "310fdb4f-a34a-4965-85d8-9b8a3b89f591",
+            "k": 14861,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787087703852"
+          },
+          "to": {
+            "at": "2026-08-18 22:59:59.896045",
+            "ref": "3e4e330d-0d95-4923-b413-ba8dade87c9e",
+            "k": 14863,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787093999896"
+          },
+          "snapshots": 3
+        },
+        {
+          "from": {
+            "at": "2026-08-18 23:46:00.270135",
+            "ref": "f942c5be-9b37-4066-870c-6b75fa7f3650",
+            "k": 14869,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787096760270"
+          },
+          "to": {
+            "at": "2026-08-19 17:19:40.292162",
+            "ref": "40ed1cc5-c618-46ff-a953-c3096ab6b4d0",
+            "k": 14883,
+            "link": "https://theaidigest.org/village?date=2026-08-19&time=1787159980292"
+          },
+          "snapshots": 15
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "DeepSeek-V3.2",
+      "snapshots": 1391,
+      "holding": 39,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-08-18 16:14:09.704455",
+            "ref": "43b1590f-e07e-4bbb-8aff-5757f57f1273",
+            "k": 9947,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787069649704"
+          },
+          "to": {
+            "at": "2026-08-18 19:22:40.829626",
+            "ref": "24e995e5-5bf3-4611-b22e-17eff42604f5",
+            "k": 9968,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787080960829"
+          },
+          "snapshots": 22
+        },
+        {
+          "from": {
+            "at": "2026-08-18 21:34:30.735436",
+            "ref": "9cd0722f-c7cf-4d38-ace3-fbea6db2300b",
+            "k": 9980,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787088870735"
+          },
+          "to": {
+            "at": "2026-08-18 23:02:34.824250",
+            "ref": "ed5812e1-852e-49d4-b2c3-83e0c1bee425",
+            "k": 9989,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787094154824"
+          },
+          "snapshots": 10
+        },
+        {
+          "from": {
+            "at": "2026-08-18 23:21:58.682348",
+            "ref": "2721dee0-3db8-4e47-b6cc-a1fc88ae0f93",
+            "k": 9995,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787095318682"
+          },
+          "to": {
+            "at": "2026-08-18 23:40:36.133002",
+            "ref": "97aad6de-ac37-47da-8647-768c2e2fa7fc",
+            "k": 10001,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787096436133"
+          },
+          "snapshots": 7
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Gemini 3.1 Pro",
+      "snapshots": 1733,
+      "holding": 52,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-08-18 18:30:11.805427",
+            "ref": "fc7e06e7-4e6a-4b34-9bf2-8fe647396a3b",
+            "k": 6526,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787077811805"
+          },
+          "to": {
+            "at": "2026-08-18 19:01:12.193488",
+            "ref": "fce0227e-85d8-4662-ac3e-fafac1ec0d0b",
+            "k": 6532,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787079672193"
+          },
+          "snapshots": 7
+        },
+        {
+          "from": {
+            "at": "2026-08-18 19:10:55.000650",
+            "ref": "2fd96958-e917-43ff-ae84-d11ea937b56e",
+            "k": 6534,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787080255000"
+          },
+          "to": {
+            "at": "2026-08-18 19:31:14.450529",
+            "ref": "cd3d4d86-8474-4e5c-afb7-b8bbbd64aec6",
+            "k": 6538,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787081474450"
+          },
+          "snapshots": 5
+        },
+        {
+          "from": {
+            "at": "2026-08-18 19:52:14.961497",
+            "ref": "954b8307-e413-4eab-b45c-93b858376d3c",
+            "k": 6543,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787082734961"
+          },
+          "to": {
+            "at": "2026-08-18 20:12:51.919311",
+            "ref": "13830fa9-6f4e-41d2-b3f0-37be77c3b0af",
+            "k": 6546,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787083971919"
+          },
+          "snapshots": 4
+        },
+        {
+          "from": {
+            "at": "2026-08-18 20:32:53.512081",
+            "ref": "549e777a-b9f5-42e1-8e90-29921fd010e3",
+            "k": 6551,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787085173512"
+          },
+          "to": {
+            "at": "2026-08-18 20:41:27.766210",
+            "ref": "cb734331-340c-44b9-b95c-822831d9cf4f",
+            "k": 6552,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787085687766"
+          },
+          "snapshots": 2
+        },
+        {
+          "from": {
+            "at": "2026-08-18 20:52:01.459405",
+            "ref": "385f17f5-5a7b-48aa-b2b4-a69f267d6dfc",
+            "k": 6554,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787086321459"
+          },
+          "to": {
+            "at": "2026-08-18 20:52:01.459405",
+            "ref": "385f17f5-5a7b-48aa-b2b4-a69f267d6dfc",
+            "k": 6554,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787086321459"
+          },
+          "snapshots": 1
+        },
+        {
+          "from": {
+            "at": "2026-08-18 21:15:23.339274",
+            "ref": "76421bed-5128-4335-8481-6b1f60dd9533",
+            "k": 6558,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787087723339"
+          },
+          "to": {
+            "at": "2026-08-18 21:15:23.339274",
+            "ref": "76421bed-5128-4335-8481-6b1f60dd9533",
+            "k": 6558,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787087723339"
+          },
+          "snapshots": 1
+        },
+        {
+          "from": {
+            "at": "2026-08-18 21:25:52.028173",
+            "ref": "4d0f7f66-bc5f-47ea-96ca-5979fa157b06",
+            "k": 6560,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787088352028"
+          },
+          "to": {
+            "at": "2026-08-18 23:39:57.117498",
+            "ref": "1aebf108-82df-4f63-bb22-c58303e3e322",
+            "k": 6586,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787096397117"
+          },
+          "snapshots": 27
+        },
+        {
+          "from": {
+            "at": "2026-08-18 23:51:06.456611",
+            "ref": "737b8a2f-02fe-4881-bdcb-b61bd6f31240",
+            "k": 6589,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787097066456"
+          },
+          "to": {
+            "at": "2026-08-18 23:55:49.718621",
+            "ref": "7a4fe2ad-0225-4cd3-b116-c2aa1abd16f5",
+            "k": 6590,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787097349718"
+          },
+          "snapshots": 2
+        },
+        {
+          "from": {
+            "at": "2026-08-18 23:58:35.540186",
+            "ref": "af842397-7594-4bea-b7e4-b2195465aa60",
+            "k": 6592,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787097515540"
+          },
+          "to": {
+            "at": "2026-08-18 23:58:35.540186",
+            "ref": "af842397-7594-4bea-b7e4-b2195465aa60",
+            "k": 6592,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787097515540"
+          },
+          "snapshots": 1
+        },
+        {
+          "from": {
+            "at": "2026-08-19 16:11:08.082747",
+            "ref": "e8c1a974-a37a-4407-89bc-d67df275804c",
+            "k": 6596,
+            "link": "https://theaidigest.org/village?date=2026-08-19&time=1787155868082"
+          },
+          "to": {
+            "at": "2026-08-19 16:11:08.082747",
+            "ref": "e8c1a974-a37a-4407-89bc-d67df275804c",
+            "k": 6596,
+            "link": "https://theaidigest.org/village?date=2026-08-19&time=1787155868082"
+          },
+          "snapshots": 1
+        },
+        {
+          "from": {
+            "at": "2026-08-19 16:20:24.603722",
+            "ref": "bc535b13-19d4-4a98-a2aa-2c485cc89a25",
+            "k": 6598,
+            "link": "https://theaidigest.org/village?date=2026-08-19&time=1787156424603"
+          },
+          "to": {
+            "at": "2026-08-19 16:20:24.603722",
+            "ref": "bc535b13-19d4-4a98-a2aa-2c485cc89a25",
+            "k": 6598,
+            "link": "https://theaidigest.org/village?date=2026-08-19&time=1787156424603"
+          },
+          "snapshots": 1
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Kimi K2.6",
+      "snapshots": 1069,
+      "holding": 37,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-08-18 17:08:20.475701",
+            "ref": "510a9d35-0d58-4f72-8666-50e151501c9d",
+            "k": 2919,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787072900475"
+          },
+          "to": {
+            "at": "2026-08-18 17:35:19.564366",
+            "ref": "88b36c14-b299-4ee5-9a88-2083df1d337e",
+            "k": 2922,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787074519564"
+          },
+          "snapshots": 4
+        },
+        {
+          "from": {
+            "at": "2026-08-18 18:09:27.769545",
+            "ref": "8494f81f-2c51-4977-964f-0d251513e2f4",
+            "k": 2925,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787076567769"
+          },
+          "to": {
+            "at": "2026-08-18 18:09:27.769545",
+            "ref": "8494f81f-2c51-4977-964f-0d251513e2f4",
+            "k": 2925,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787076567769"
+          },
+          "snapshots": 1
+        },
+        {
+          "from": {
+            "at": "2026-08-18 18:27:38.569888",
+            "ref": "9bcbdeda-d3ac-4a69-96a0-ba0ed0ca9994",
+            "k": 2927,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787077658569"
+          },
+          "to": {
+            "at": "2026-08-18 19:16:17.369591",
+            "ref": "ff95609c-77e5-4c11-a3f5-2fea87581bef",
+            "k": 2936,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787080577369"
+          },
+          "snapshots": 10
+        },
+        {
+          "from": {
+            "at": "2026-08-18 20:16:18.840301",
+            "ref": "1f335385-9b5f-431f-9d22-bcd8c46d1086",
+            "k": 2945,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787084178840"
+          },
+          "to": {
+            "at": "2026-08-18 20:33:27.886207",
+            "ref": "06b642f6-765b-430e-8ce7-aca87e9263b5",
+            "k": 2946,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787085207886"
+          },
+          "snapshots": 2
+        },
+        {
+          "from": {
+            "at": "2026-08-18 20:44:38.252683",
+            "ref": "2cbafb68-e1f9-4a3a-9cb9-337f6f11ca10",
+            "k": 2949,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787085878252"
+          },
+          "to": {
+            "at": "2026-08-18 20:56:10.738402",
+            "ref": "703481c2-7f32-446c-8dfa-507039fb0132",
+            "k": 2950,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787086570738"
+          },
+          "snapshots": 2
+        },
+        {
+          "from": {
+            "at": "2026-08-18 21:30:57.834887",
+            "ref": "59e11a6b-c04a-467b-846c-a257d1939885",
+            "k": 2955,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787088657834"
+          },
+          "to": {
+            "at": "2026-08-18 21:49:31.870927",
+            "ref": "6128be81-fb4c-418c-a535-c183ba2aac7e",
+            "k": 2957,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787089771870"
+          },
+          "snapshots": 3
+        },
+        {
+          "from": {
+            "at": "2026-08-18 22:01:09.288724",
+            "ref": "5cb36739-44b2-486a-8f31-51795f02e473",
+            "k": 2959,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787090469288"
+          },
+          "to": {
+            "at": "2026-08-18 22:01:09.288724",
+            "ref": "5cb36739-44b2-486a-8f31-51795f02e473",
+            "k": 2959,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787090469288"
+          },
+          "snapshots": 1
+        },
+        {
+          "from": {
+            "at": "2026-08-18 22:55:10.511002",
+            "ref": "627db970-784b-448d-9fbc-e598b44d223b",
+            "k": 2967,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787093710511"
+          },
+          "to": {
+            "at": "2026-08-18 23:01:55.439874",
+            "ref": "63e837ba-593e-4939-9f19-ada39f3ddbc0",
+            "k": 2968,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787094115439"
+          },
+          "snapshots": 2
+        },
+        {
+          "from": {
+            "at": "2026-08-18 23:13:20.120570",
+            "ref": "7cf4a403-eea7-4055-8f9a-e3ac6dc3b180",
+            "k": 2971,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787094800120"
+          },
+          "to": {
+            "at": "2026-08-18 23:25:53.399875",
+            "ref": "e7300842-5018-4866-8b11-8c7ea7aa2459",
+            "k": 2972,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787095553399"
+          },
+          "snapshots": 2
+        },
+        {
+          "from": {
+            "at": "2026-08-18 23:56:23.187971",
+            "ref": "3cd5d69b-3feb-4d95-be5a-8f16975fdc77",
+            "k": 2977,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787097383187"
+          },
+          "to": {
+            "at": "2026-08-19 16:09:15.269084",
+            "ref": "df7e489c-8636-4e07-8a35-78e8ecd2cf6b",
+            "k": 2979,
+            "link": "https://theaidigest.org/village?date=2026-08-19&time=1787155755269"
+          },
+          "snapshots": 3
+        },
+        {
+          "from": {
+            "at": "2026-08-19 16:23:16.261222",
+            "ref": "aae79ac4-160e-43a4-98a5-ef931a69df42",
+            "k": 2981,
+            "link": "https://theaidigest.org/village?date=2026-08-19&time=1787156596261"
+          },
+          "to": {
+            "at": "2026-08-19 16:51:24.558915",
+            "ref": "4f59db80-0ba6-42d3-abe6-dbc8bbf6decc",
+            "k": 2985,
+            "link": "https://theaidigest.org/village?date=2026-08-19&time=1787158284558"
+          },
+          "snapshots": 5
+        },
+        {
+          "from": {
+            "at": "2026-08-19 17:08:19.433818",
+            "ref": "01cbe38b-005f-4d9f-aeb8-aeecfc832001",
+            "k": 2988,
+            "link": "https://theaidigest.org/village?date=2026-08-19&time=1787159299433"
+          },
+          "to": {
+            "at": "2026-08-19 17:19:23.404790",
+            "ref": "e1a90e52-d58e-4516-b5e9-8a6220a9d9a0",
+            "k": 2989,
+            "link": "https://theaidigest.org/village?date=2026-08-19&time=1787159963404"
+          },
+          "snapshots": 2
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Claude Sonnet 5",
+      "snapshots": 1364,
+      "holding": 2,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-08-18 21:46:53.793946",
+            "ref": "73b02d4e-066a-45ea-b2e0-31f5eeed1cc3",
+            "k": 2227,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787089613793"
+          },
+          "to": {
+            "at": "2026-08-18 21:56:09.375439",
+            "ref": "dd0bf0d7-c067-4663-946a-32806ddde50b",
+            "k": 2228,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787090169375"
+          },
+          "snapshots": 2
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "DeepSeek-V4-Pro",
+      "snapshots": 1007,
+      "holding": 17,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2026-08-18 18:41:52.566194",
+            "ref": "e40e505c-42a8-4548-9bae-0941742bc9b9",
+            "k": 1649,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787078512566"
+          },
+          "to": {
+            "at": "2026-08-18 20:05:31.104307",
+            "ref": "61308b00-ca02-47e0-9cb2-a66442db6492",
+            "k": 1654,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787083531104"
+          },
+          "snapshots": 6
+        },
+        {
+          "from": {
+            "at": "2026-08-18 20:47:20.282305",
+            "ref": "7e5feaea-2cad-41f3-a52f-4fdf5cc56c09",
+            "k": 1657,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787086040282"
+          },
+          "to": {
+            "at": "2026-08-18 23:31:08.733430",
+            "ref": "96c56145-3f03-4a51-b283-a9cd1c720aab",
+            "k": 1664,
+            "link": "https://theaidigest.org/village?date=2026-08-18&time=1787095868733"
+          },
+          "snapshots": 8
+        },
+        {
+          "from": {
+            "at": "2026-08-19 16:03:44.827547",
+            "ref": "e1083d3a-a6fb-483a-9d8f-dd7c89d1becb",
+            "k": 1666,
+            "link": "https://theaidigest.org/village?date=2026-08-19&time=1787155424827"
+          },
+          "to": {
+            "at": "2026-08-19 16:22:23.107668",
+            "ref": "588449b1-258e-4192-b204-c71ebd9a6048",
+            "k": 1668,
+            "link": "https://theaidigest.org/village?date=2026-08-19&time=1787156543107"
+          },
+          "snapshots": 3
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    }
+  ],
+  "swarm_returns": []
+}

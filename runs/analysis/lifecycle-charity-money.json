@@ -1,0 +1,144 @@
+{
+  "kind": "lifecycle",
+  "case": "charity-money",
+  "trail_run": "2026-10-02T12:05:27+00:00",
+  "scan": {
+    "from": "2025-05-12 18:00:00",
+    "to": "2025-07-10 12:00:00",
+    "pattern": "\\$\\s?1\\s?,?\\s?984\\b"
+  },
+  "export": {
+    "exported_at": "2026-09-20 13:05:12.097000",
+    "revision": "838b4150303ca8228e8edb432d8b8ccae353d258",
+    "source": "AI Digest / AI Village dataset (aidigestorg/ai-village)"
+  },
+  "return_gap_hours": 24.0,
+  "coverage": {
+    "lines": 260,
+    "labelled": 260
+  },
+  "matches_trail": true,
+  "agents": [
+    {
+      "agent": "Claude 3.7 Sonnet",
+      "snapshots": 2196,
+      "holding": 40,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2025-05-28 18:35:57.081667",
+            "ref": "13023d9b-ad71-4f59-967c-e10e54aecb75",
+            "k": 2130,
+            "link": "https://theaidigest.org/village?date=2025-05-28&time=1748457357081"
+          },
+          "to": {
+            "at": "2025-05-29 18:23:18.019543",
+            "ref": "401730cc-d3da-41df-ba4f-1c570a7752a5",
+            "k": 2169,
+            "link": "https://theaidigest.org/village?date=2025-05-29&time=1748542998019"
+          },
+          "snapshots": 40
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Gemini 2.5 Pro",
+      "snapshots": 3709,
+      "holding": 425,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2025-05-28 18:16:55.527688",
+            "ref": "92dca8d4-d854-4b35-91b3-c858cb348b25",
+            "k": 2868,
+            "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456215527"
+          },
+          "to": {
+            "at": "2025-06-03 19:44:01.071427",
+            "ref": "499b3dc0-ef6e-4a58-b198-7e3a91582976",
+            "k": 3292,
+            "link": "https://theaidigest.org/village?date=2025-06-03&time=1748979841071"
+          },
+          "snapshots": 425
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Claude Opus 4",
+      "snapshots": 1588,
+      "holding": 57,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2025-05-28 18:18:08.642746",
+            "ref": "cc11d48a-dbf3-4a1f-bfa2-6ed2200a66e8",
+            "k": 167,
+            "link": "https://theaidigest.org/village?date=2025-05-28&time=1748456288642"
+          },
+          "to": {
+            "at": "2025-05-29 18:20:57.371006",
+            "ref": "e7018ab2-1066-4796-9746-f918e449382c",
+            "k": 219,
+            "link": "https://theaidigest.org/village?date=2025-05-29&time=1748542857371"
+          },
+          "snapshots": 53
+        },
+        {
+          "from": {
+            "at": "2025-06-03 19:29:46.926946",
+            "ref": "7e5c7d4d-e08b-4d05-927f-7586ed1e9b79",
+            "k": 374,
+            "link": "https://theaidigest.org/village?date=2025-06-03&time=1748978986926"
+          },
+          "to": {
+            "at": "2025-06-03 19:36:41.661704",
+            "ref": "3ec68dc3-5692-45ef-9ea8-58404991bc3e",
+            "k": 377,
+            "link": "https://theaidigest.org/village?date=2025-06-03&time=1748979401661"
+          },
+          "snapshots": 4
+        }
+      ],
+      "returns": [
+        {
+          "gone_from": {
+            "at": "2025-05-29 18:23:36.845499",
+            "ref": "e2aaf587-79a7-428b-9219-83813135002c",
+            "k": 220,
+            "link": "https://theaidigest.org/village?date=2025-05-29&time=1748543016845"
+          },
+          "back_at": {
+            "at": "2025-06-03 19:29:46.926946",
+            "ref": "7e5c7d4d-e08b-4d05-927f-7586ed1e9b79",
+            "k": 374,
+            "link": "https://theaidigest.org/village?date=2025-06-03&time=1748978986926"
+          },
+          "hours_gone": 121.1,
+          "denied_between": true
+        }
+      ],
+      "relapse": {
+        "denied": {
+          "at": "2025-05-29 18:23:36.845499",
+          "ref": "e2aaf587-79a7-428b-9219-83813135002c",
+          "k": 220,
+          "link": "https://theaidigest.org/village?date=2025-05-29&time=1748543016845"
+        },
+        "held_again": {
+          "at": "2025-06-03 19:29:46.926946",
+          "ref": "7e5c7d4d-e08b-4d05-927f-7586ed1e9b79",
+          "k": 374,
+          "link": "https://theaidigest.org/village?date=2025-06-03&time=1748978986926"
+        }
+      }
+    }
+  ],
+  "swarm_returns": []
+}

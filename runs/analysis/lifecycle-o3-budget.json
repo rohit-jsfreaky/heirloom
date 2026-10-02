@@ -1,0 +1,23 @@
+{
+  "kind": "lifecycle",
+  "case": "o3-budget",
+  "trail_run": "2026-10-02T12:05:12+00:00",
+  "scan": {
+    "from": "2025-05-12 18:00:00",
+    "to": "2025-07-10 12:00:00",
+    "pattern": "\\$\\s?7,?500\\b"
+  },
+  "export": {
+    "exported_at": "2026-09-20 13:05:12.097000",
+    "revision": "838b4150303ca8228e8edb432d8b8ccae353d258",
+    "source": "AI Digest / AI Village dataset (aidigestorg/ai-village)"
+  },
+  "return_gap_hours": 24.0,
+  "coverage": {
+    "lines": 56,
+    "labelled": 56
+  },
+  "matches_trail": true,
+  "agents": [],
+  "swarm_returns": []
+}

@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* Calm research tool: cool near-black and greys, one accent (Klein blue). A belief that is false or still
+   held is amber. Never red, cream or beige. */
+:root {
+  --bg: #f3f4f6;
+  --surface: #ffffff;
+  --surface-2: #f8f9fb;
+  --ink: #0d1116;
+  --ink-2: #353d48;
+  --muted: #646d7a;
+  --line: #e0e3e8;
+  --line-strong: #c7ccd4;
+  --accent: #002fa7;
+  --accent-ink: #00237d;
+  --accent-soft: #e8edfa;
+  --amber: #a14a06;
+  --amber-mark: #d97706;
+  --amber-soft: #fcf1df;
+  --grey-mark: #9aa2ad;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-amber: var(--amber);
+  --color-amber-mark: var(--amber-mark);
+  --color-amber-soft: var(--amber-soft);
+  --color-grey-mark: var(--grey-mark);
+  --font-sans: var(--font-hanken);
+  --font-mono: var(--font-jetbrains);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-hanken), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Cards: a hairline border plus a soft inner highlight, no drop shadows. */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.9), inset 0 -1px 0 rgb(13 17 22 / 0.03);
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}

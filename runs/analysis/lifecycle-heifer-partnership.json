@@ -1,0 +1,217 @@
+{
+  "kind": "lifecycle",
+  "case": "heifer-partnership",
+  "trail_run": "2026-10-02T12:06:52+00:00",
+  "scan": {
+    "from": "2025-10-17 15:41:13.218000",
+    "to": "2025-11-24 15:32:28.592000",
+    "pattern": "heifer"
+  },
+  "export": {
+    "exported_at": "2026-09-20 13:05:12.097000",
+    "revision": "838b4150303ca8228e8edb432d8b8ccae353d258",
+    "source": "AI Digest / AI Village dataset (aidigestorg/ai-village)"
+  },
+  "return_gap_hours": 24.0,
+  "coverage": {
+    "lines": 1913,
+    "labelled": 1913
+  },
+  "matches_trail": true,
+  "agents": [
+    {
+      "agent": "Claude 3.7 Sonnet",
+      "snapshots": 3414,
+      "holding": 184,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2025-10-29 17:13:04.722111",
+            "ref": "abfa894a-0bb2-47ed-bec1-19071181ef20",
+            "k": 10037,
+            "link": "https://theaidigest.org/village?date=2025-10-29&time=1761757984722"
+          },
+          "to": {
+            "at": "2025-10-30 20:08:35.708157",
+            "ref": "aa4be9f9-9ecf-48a1-bb01-7a98bad8a483",
+            "k": 10220,
+            "link": "https://theaidigest.org/village?date=2025-10-30&time=1761854915708"
+          },
+          "snapshots": 184
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Gemini 2.5 Pro",
+      "snapshots": 5590,
+      "holding": 4,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2025-10-29 17:09:34.765444",
+            "ref": "794bb620-5d09-46b6-922f-db0fcebd55a1",
+            "k": 15845,
+            "link": "https://theaidigest.org/village?date=2025-10-29&time=1761757774765"
+          },
+          "to": {
+            "at": "2025-10-29 17:09:34.765444",
+            "ref": "794bb620-5d09-46b6-922f-db0fcebd55a1",
+            "k": 15845,
+            "link": "https://theaidigest.org/village?date=2025-10-29&time=1761757774765"
+          },
+          "snapshots": 1
+        },
+        {
+          "from": {
+            "at": "2025-10-29 17:10:23.788654",
+            "ref": "21efe3ab-aa91-4884-ab4d-12a27a3317eb",
+            "k": 15847,
+            "link": "https://theaidigest.org/village?date=2025-10-29&time=1761757823788"
+          },
+          "to": {
+            "at": "2025-10-29 17:12:01.187624",
+            "ref": "9ebf4ba9-34af-4f7a-860e-08a1ad8cce92",
+            "k": 15849,
+            "link": "https://theaidigest.org/village?date=2025-10-29&time=1761757921187"
+          },
+          "snapshots": 3
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Claude Opus 4.1",
+      "snapshots": 3101,
+      "holding": 279,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2025-10-29 17:14:09.206607",
+            "ref": "ad14b9aa-7f6d-4ba9-82b2-abe6752cee79",
+            "k": 5054,
+            "link": "https://theaidigest.org/village?date=2025-10-29&time=1761758049206"
+          },
+          "to": {
+            "at": "2025-10-31 18:56:43.192346",
+            "ref": "c19b431d-e57b-4eee-856a-26b40dcdffee",
+            "k": 5332,
+            "link": "https://theaidigest.org/village?date=2025-10-31&time=1761937003192"
+          },
+          "snapshots": 279
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "GPT-5",
+      "snapshots": 861,
+      "holding": 102,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2025-10-29 17:49:52.674506",
+            "ref": "177fcae4-2819-4f5f-ad8b-3cbf74d28a7e",
+            "k": 1503,
+            "link": "https://theaidigest.org/village?date=2025-10-29&time=1761760192674"
+          },
+          "to": {
+            "at": "2025-10-31 17:51:49.846370",
+            "ref": "52283ec2-6159-42fb-b3fb-24cfc208be93",
+            "k": 1575,
+            "link": "https://theaidigest.org/village?date=2025-10-31&time=1761933109846"
+          },
+          "snapshots": 73
+        },
+        {
+          "from": {
+            "at": "2025-10-31 18:20:10.282720",
+            "ref": "bae32159-53c9-4465-8b07-cc44dc3d789b",
+            "k": 1581,
+            "link": "https://theaidigest.org/village?date=2025-10-31&time=1761934810282"
+          },
+          "to": {
+            "at": "2025-11-03 17:29:50.202026",
+            "ref": "9946c732-0b6c-4b1e-87a3-d52e575b852f",
+            "k": 1609,
+            "link": "https://theaidigest.org/village?date=2025-11-03&time=1762190990202"
+          },
+          "snapshots": 29
+        }
+      ],
+      "returns": [],
+      "relapse": {
+        "denied": {
+          "at": "2025-10-29 17:24:23.618011",
+          "ref": "54372d00-b06b-405b-851f-59fff38c51a9",
+          "k": 1498,
+          "link": "https://theaidigest.org/village?date=2025-10-29&time=1761758663618"
+        },
+        "held_again": {
+          "at": "2025-10-29 17:53:22.168670",
+          "ref": "beed8762-ac08-4f8d-a55a-e330559b08a5",
+          "k": 1505,
+          "link": "https://theaidigest.org/village?date=2025-10-29&time=1761760402168"
+        }
+      }
+    },
+    {
+      "agent": "Claude Sonnet 4.5",
+      "snapshots": 3691,
+      "holding": 388,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2025-10-29 17:09:06.996839",
+            "ref": "19c81335-f878-4b4b-9646-70a4a9253338",
+            "k": 3153,
+            "link": "https://theaidigest.org/village?date=2025-10-29&time=1761757746996"
+          },
+          "to": {
+            "at": "2025-10-31 18:54:42.456769",
+            "ref": "44e582f9-0168-42c2-b897-3dbb42f81104",
+            "k": 3540,
+            "link": "https://theaidigest.org/village?date=2025-10-31&time=1761936882456"
+          },
+          "snapshots": 388
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    },
+    {
+      "agent": "Claude Haiku 4.5",
+      "snapshots": 3153,
+      "holding": 278,
+      "matches_trail": true,
+      "episodes": [
+        {
+          "from": {
+            "at": "2025-10-29 17:11:59.000661",
+            "ref": "3482c290-b649-41b8-a356-84369455efce",
+            "k": 1145,
+            "link": "https://theaidigest.org/village?date=2025-10-29&time=1761757919000"
+          },
+          "to": {
+            "at": "2025-10-31 18:20:08.270186",
+            "ref": "b8a87616-a36d-4420-a0a9-749cd7b6f534",
+            "k": 1422,
+            "link": "https://theaidigest.org/village?date=2025-10-31&time=1761934808270"
+          },
+          "snapshots": 278
+        }
+      ],
+      "returns": [],
+      "relapse": null
+    }
+  ],
+  "swarm_returns": []
+}

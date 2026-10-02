@@ -1,0 +1,42 @@
+# secrets — never committed
+.env
+.env.*
+!.env.example
+
+# AI Village dataset + anything built from it (dataset terms: no redistribution of the raw data)
+data/
+*.duckdb
+*.duckdb.wal
+*.jsonl
+*.jsonl.gz
+*.tar
+*.parquet
+
+# LLM call cache (holds raw dataset text)
+cache/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Playwright MCP page dumps (hold raw village text)
+.playwright-mcp/
+
+# internal notes (competitor ranking + plan) — never in the public repo
+docs/internal/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

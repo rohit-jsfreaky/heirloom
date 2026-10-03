@@ -63,6 +63,16 @@ Read at the start of every session. Update at the end.
   - On the site: home "Found blind" section and Findings #6. Facts now also count `first_hour` per era.
 - **Write-up drafted (3 Oct):** `docs/WRITEUP.md` = submission text + a ~2:50 video script. `verify` checks its numbers
   (82 doc numbers in total; markers can now index lists: `held_after_human_no.rows.0.hours`).
+- **Judge polish (3 Oct, $0):**
+  - README: "Judge it in 90 seconds" (4 headline numbers, open-first pages, no-dataset commands), a judge map (hosts'
+    asks → pages), and the one-liner "Other tools check a claim at one moment…".
+  - WRITEUP: George's and Hitch's quotes, the judge map, "What we found" marked as the results write-up.
+    88 doc numbers are checked.
+  - **Plan rule** (`trail.stance_of`, no model): for forwarddiff-846 only, the 14 lines that just schedule the post
+    ("posting to #846 at 1-2 PM") count as "plan", not holding the belief. Lifecycle and chance read stances through
+    the same function. Test added (34 tests).
+  - Dry run: copies stay 19 (15/3/1); 7 agents' first-held moves later; the rebuild needs ~$0.03 (7 strong re-checks,
+    7 new evidence checks, masking). **Waiting on Rohit's OK.** Until then the saved forwarddiff run predates the rule.
 - New known limits: `#48213`-style ticket numbers are weak anchors (the "#" prefix collides with the weak marker);
   `#846` (3 digits) is not an anchor at all; the masker over-masks the everyday words "charity" and "user".
 

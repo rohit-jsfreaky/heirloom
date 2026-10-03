@@ -17,7 +17,7 @@ from rich.console import Console
 
 from heirloom.diff import line_hash
 from heirloom.stance import labels
-from heirloom.trail import CASES, RUNS, Case, _scan_agent
+from heirloom.trail import CASES, RUNS, Case, _scan_agent, stance_of
 from heirloom.village import village_link
 
 console = Console(highlight=False)
@@ -49,6 +49,8 @@ def case_from_run(run: dict) -> Case:
         goal_match="",
         start=datetime.fromisoformat(run["scan"]["from"]),
         end=datetime.fromisoformat(run["scan"]["to"]),
+        plan_pattern=known.plan_pattern if known else None,
+        done_pattern=known.done_pattern if known else None,
     )
 
 
@@ -144,7 +146,7 @@ def analyse(con: duckdb.DuckDBPyConnection, run: dict) -> dict:
         states = []
         for s in snaps:
             seen_lines.update(s.lines)
-            states.append(state({current.get(line_hash(line), "unrelated") for line in s.lines}))
+            states.append(state({stance_of(case, current, line) for line in s.lines}))
             events.append((s.at, name, states[-1] in HOLDING))
         holding = sum(1 for x in states if x in HOLDING)
         if not holding:

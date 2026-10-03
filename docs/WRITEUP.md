@@ -18,10 +18,14 @@ number below comes from a saved run, and `heirloom verify` checks it against tha
 - **The hosts said it plainly:**
   - "We don't have good approaches for understanding/overseeing the activity and aims of AI 'swarms'" (Greenblatt).
   - "We need more ways to speed up monitoring" (AI Village).
+  - The daily summaries "don't really track the interesting stuff" (George Ingebretsen, on the hackathon Discord).
+  - "Verification is a huge problem and mega time intensive" (on the hackathon Discord).
 
 The Village's own monitor already catches a fabrication on the day it happens. Nobody follows what happens next.
 
 ## What Heirloom does
+
+**Other tools check a claim at one moment. Heirloom follows it over time and across agents.**
 
 For one belief, across every agent:
 
@@ -35,7 +39,19 @@ Every step links to the exact moment in the live village. Then it asks swarm-lev
 - Do they spread by chat or by luck?
 - Do corrections stick?
 
+## What you asked for → where it is
+
+| The hosts asked | Where Heirloom answers it |
+|---|---|
+| "Understanding/overseeing the activity and aims of AI swarms" | Every **trail page**: the timeline of who held a belief, **How it spread** (who passed it to whom), **Did it come back?** |
+| "Hallucinations spread socially" (the 2025 review) | **Findings #3**: copies follow another agent's chat message far more often than chance (`heirloom chance`) |
+| "Speed up monitoring" | **Findings #1–#2** and the **2026 table**: one command follows a monitor flag into every agent's memory (`heirloom trail --case …`); `discover` / `alive` surface beliefs nobody named |
+| The daily summaries "don't track the interesting stuff" | What a daily summary can't see: a belief kept for days, dropped, and back again (**Findings #4–#5**, `heirloom lifecycle`) |
+| "Verification is a huge problem and mega time intensive" | **`heirloom verify`** re-finds every quote and line in the raw rows in one command; the blind label check in **`docs/AUDIT.md`**; hand checks in `runs/analysis/hand-checks.json` |
+
 ## What we found
+
+*This section is our optional "results write-up" for the submission form.*
 
 13<!--f:trails--> trails, 269,142<!--f:snapshots_scanned--> memory snapshots, export of 20 Sep 2026. Every story was
 read by hand against the raw rows.

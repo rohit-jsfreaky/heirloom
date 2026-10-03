@@ -43,6 +43,10 @@ class Case:
     lead_days: int = 3
     tail_days: int = 21  # beliefs outlive the goal that produced them
     showcase: bool = False  # the demo trail: its evidence checks use the strong model
+    # For a belief that an event happened ("was posted"): a line matching plan_pattern only schedules the event, so
+    # it is "plan", not holding the belief, unless it also matches done_pattern. No model involved.
+    plan_pattern: str | None = None
+    done_pattern: str | None = None
     # What the public accounts say, for `heirloom score` (KNOWN-CASES.md). Agent names are matched by substring.
     expect_birth: str | None = None
     expect_believers: tuple[str, ...] = ()
@@ -144,6 +148,16 @@ CASES = {c.slug: c for c in [
         start=datetime(2026, 9, 13), end=datetime(2026, 9, 21),
         correction_pattern=r"never (?:posted|made)|not (?:actually )?posted|did ?n[o']t (?:actually )?post|"
                            r"posting package|local(?:ly)? only|fabricat|false claim",
+        # Scheduling lines seen in the data: "posting to Issue #846 at 1-2 PM PT", "for 1:00 PM posting to Issue
+        # #846", "EXECUTE ForwardDiff.jl Issue #846 posting", "contribution finalized for Issue #846". A line about
+        # another post ("brms posting at 1 PM") does not count: the time must sit next to ForwardDiff / #846.
+        plan_pattern=(r"(?:ForwardDiff(?:\.jl)?|#846)[^.;|]{0,40}?[Pp]osting\s+(?:to\s+)?(?:Issue\s+)?(?:#846\s+)?"
+                      r"(?:at\s+)?~?\d{1,2}(?::\d\d)?\s*(?:[-–]\s*\d{1,2}(?::\d\d)?\s*)?(?:AM|PM)"
+                      r"|[Pp]osting\s+(?:to\s+)?(?:Issue\s+)?#846\s+at\s+~?\d{1,2}(?::\d\d)?\s*"
+                      r"(?:[-–]\s*\d{1,2}(?::\d\d)?\s*)?(?:AM|PM)"
+                      r"|\d{1,2}(?::\d\d)?\s*(?:AM|PM)(?:\s*PT)?\s+posting\s+to\s+Issue\s+#846"
+                      r"|EXECUTE ForwardDiff|#846 targeted|finalized for Issue #846"),
+        done_pattern=r"(?i:posted|filed|posting\s+executed|executed\s+(?:posting|release))|LIVE|EXECUTED",
         expect_birth="DeepSeek-V3.2",
         source="AI Village Monitor, 16 Sep 2026 (high): 'Claimed GitHub post never made' — DeepSeek-V3.2",
     ),
@@ -207,6 +221,17 @@ CASES = {c.slug: c for c in [
         source="AI Village Monitor, 29 Jun 2026 (high): 'False milestone announcements in chat'",
     ),
 ]}
+
+
+def stance_of(case: Case, labels: dict[str, str], line: str) -> str:
+    """The stored stance label, except that a line which only schedules the belief's event is "plan": "posting to #846
+    at 1 PM" does not hold "#846 was posted". Trail, lifecycle and chance all read stances through here."""
+    label = labels.get(line_hash(line), "unrelated")
+    if label == "affirms" and case.plan_pattern:
+        body = body_of(line)
+        if re.search(case.plan_pattern, body) and not (case.done_pattern and re.search(case.done_pattern, body)):
+            return "plan"
+    return label
 
 
 @dataclass
@@ -441,7 +466,7 @@ def build(con: duckdb.DuckDBPyConnection, llm: LLM, case: Case, tie_outs: bool =
     rechecked = changed = rounds = 0
     while True:
         current, checked = labels(con, llm, case.statement)
-        state = _assemble(scans, chat, chat_text, lambda t, lab=current: lab.get(line_hash(t), "unrelated"))
+        state = _assemble(scans, chat, chat_text, lambda t, lab=current: stance_of(case, lab, t))
         todo = [t for t in state.decisive() if line_hash(t) not in checked]
         if not todo or rounds == MAX_CHECK_ROUNDS:
             break
@@ -453,7 +478,7 @@ def build(con: duckdb.DuckDBPyConnection, llm: LLM, case: Case, tie_outs: bool =
                        if strong.get(line_hash(t), current.get(line_hash(t))) != current.get(line_hash(t)))
 
     def says(line: str) -> str:
-        return current.get(line_hash(line), "unrelated")
+        return stance_of(case, current, line)
 
     # 4. Tie-outs at the key moments.
     tieout_model = llm.strong if case.showcase else llm.cheap
@@ -490,7 +515,7 @@ def build(con: duckdb.DuckDBPyConnection, llm: LLM, case: Case, tie_outs: bool =
             "memory_lines_matched": len(memory_lines),
             "chat_messages_matched": len(chat),
             "lines_by_stance": {label: sum(1 for line in memory_lines if says(line) == label)
-                                for label in ("affirms", "doubts", "denies", "unrelated")},
+                                for label in ("affirms", "plan", "doubts", "denies", "unrelated")},
             "deciding_lines_rechecked": rechecked,
             "labels_changed_by_recheck": changed,
             "recheck_rounds": rounds,

@@ -13,7 +13,42 @@ true. Heirloom follows a false belief through a group of agents:
 Every step links to the real moment in the [AI Village](https://theaidigest.org/village). It runs on the
 AI Digest / AI Village dataset.
 
+**Other tools check a claim at one moment. Heirloom follows it over time and across agents.**
+
 Built for the AI Swarm Dynamics Hackathon (AI Village × Grove Research).
+
+## Judge it in 90 seconds
+
+**Four numbers**, each from a saved run and re-checked by `heirloom verify`:
+
+| | |
+|---|---|
+| **28<!--f:monitor_2026.dropped--> of 45<!--f:monitor_2026.copies-->** | copies of 4 monitor-confirmed fabrications (2026) that agents dropped without ever correcting |
+| **0<!--f:monitor_2026.human_corrections-->** | human corrections the agents got for them: the monitor's flags never reached them |
+| **27<!--f:chance.2026.within_gap--> of 45** | copies written within an hour after another agent posted the belief in chat (about 11.8<!--f:chance.2026.expected_own_writes--> by chance) |
+| **57<!--f:audit.stance_holds_or_not.agree--> of 60** | blind check: random labels the trails rest on that a careful reader agreed with |
+
+**Open first:**
+1. The site's **Findings** page: eight hand-checked findings, each linked to the live village.
+2. **The 93-person contact list** trail: the famous 2025 case, rebuilt from raw data alone.
+
+**Check it yourself, without the dataset** (from the repo root):
+
+```bash
+(cd pipeline && uv run heirloom verify --no-db)        # re-check every saved number (about 30 s)
+(cd viewer && npm ci && npm run build)                 # build the site from runs/ (about 1 min)
+python -m http.server 3000 -d viewer/out               # open http://localhost:3000
+```
+
+**What you asked for → where it is:**
+
+| The hosts asked | Where Heirloom answers it |
+|---|---|
+| "Understanding/overseeing the activity and aims of AI swarms" | Every trail page: the timeline, **How it spread**, **Did it come back?** |
+| "Hallucinations spread socially" (the 2025 review) | Findings #3: copies follow another agent's chat far more often than chance (`heirloom chance`) |
+| "Speed up monitoring" | Findings #1–#2 and the 2026 table: one command follows a monitor flag into every agent's memory |
+| Daily summaries "don't track the interesting stuff" | Beliefs kept for days, dropped, and back again (Findings #4–#5, `heirloom lifecycle`) |
+| "Verification is a huge problem and mega time intensive" | `heirloom verify` re-finds every quote in the raw rows; blind label check in [`docs/AUDIT.md`](docs/AUDIT.md) |
 
 ![Heirloom home page](docs/screenshots/home.png)
 

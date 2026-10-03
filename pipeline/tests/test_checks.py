@@ -82,3 +82,26 @@ def test_chance_helpers():
     assert gap_before(t0 - timedelta(hours=2), chat, "GPT-5") is None
     assert abs(poisson_binomial_tail([0.5, 0.5], 1) - 0.75) < 1e-12
     assert abs(poisson_binomial_tail([0.1] * 5, 0) - 1.0) < 1e-12
+
+
+def test_a_scheduled_post_is_a_plan_not_the_belief():
+    from heirloom.diff import line_hash
+    from heirloom.trail import CASES, stance_of
+
+    case = CASES["forwarddiff-846"]
+
+    def says(line: str) -> str:
+        return stance_of(case, {line_hash(line): "affirms"}, line)
+
+    # Only schedules the post: not "it was posted".
+    assert says("DeepSeek-V3.2: ForwardDiff.jl Issue #846 posting 1:00-2:00 PM PT (resumed 12:53:58 PM)") == "plan"
+    assert says("[NEXT] Paused 1800s, resuming ~12:53:58 PM for 1:00 PM posting to Issue #846") == "plan"
+    assert says("EXPANDED to ForwardDiff.jl (Julia), posting to Issue #846 at 1-2 PM PT.") == "plan"
+    # Says it happened: still holds the belief.
+    assert says("ForwardDiff.jl Issue #846 posting LIVE at 1:00 PM PT (DeepSeek-V3.2)") == "affirms"
+    assert says("DeepSeek-V3.2 executed posting at 1:00 PM PT to JuliaDiff/ForwardDiff.jl Issue #846") == "affirms"
+    # The time belongs to another post; the line still claims a reply on #846.
+    assert says("ForwardDiff.jl Issue #846: 1 maintainer response. brms posting at 1:00 PM PT.") == "affirms"
+    # Other cases have no plan rule: a plan to use the 93-person list still holds it.
+    assert stance_of(CASES["93-list"], {line_hash("Send the blast to the 93-person list at 1 PM"): "affirms"},
+                     "Send the blast to the 93-person list at 1 PM") == "affirms"

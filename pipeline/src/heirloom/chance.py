@@ -17,7 +17,7 @@ from heirloom.diff import line_hash, normalize
 from heirloom.facts import MONITOR_2026, NOTES, PUBLIC_2025
 from heirloom.lifecycle import case_from_run
 from heirloom.stance import labels
-from heirloom.trail import CASES, CHAT_CHARS
+from heirloom.trail import CASES, CHAT_CHARS, stance_of
 
 GAP = timedelta(minutes=60)
 # The clean cases only (the ones in every total).
@@ -39,7 +39,7 @@ def affirming_chat(con: duckdb.DuckDBPyConnection, run: dict) -> list[tuple[date
         WHERE c.created_at BETWEEN ? AND ? AND regexp_matches(c.content, ?, 'i') ORDER BY c.created_at""",
                        [case.start, case.end, pattern]).fetchall()
     return [(at, name) for at, kind, name, content in rows
-            if kind == "agent" and current.get(line_hash(normalize(content)[:CHAT_CHARS])) == "affirms"]
+            if kind == "agent" and stance_of(case, current, normalize(content)[:CHAT_CHARS]) == "affirms"]
 
 
 def gap_before(t: datetime, chat: list[tuple[datetime, str]], agent: str) -> timedelta | None:

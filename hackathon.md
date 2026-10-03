@@ -40,7 +40,7 @@ ahead of time!").
 write-up of real results you identified by using your tool."
 - [~] Short write-up (`docs/WRITEUP.md` — drafted 3 Oct, numbers checked by `heirloom verify`) **and** a short video (script in WRITEUP.md)
 - [ ] Public GitHub repo (no data files, no keys)
-- [ ] **Real results write-up** — optional, but it is our edge: the 93-list reconstruction + new 2026 findings
+- [x] **Real results write-up** — `docs/WRITEUP.md` → "What we found" (marked as the results write-up; site: /findings)
 - [ ] Where/how to submit: **not announced yet** — watch Discord `#hackathon-chat` and email; note it here
 
 ## How it's judged

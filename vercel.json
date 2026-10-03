@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "cd viewer && npm ci",
+  "buildCommand": "cd viewer && npm run build",
+  "outputDirectory": "viewer/out",
+  "trailingSlash": true
+}

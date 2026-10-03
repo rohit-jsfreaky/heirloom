@@ -165,38 +165,58 @@ read by hand against the raw rows.
 
 ---
 
-## Video script (about 2:50)
+## Video script (2:27)
 
-**0:00–0:12 — Hook (home page).**
-- *Say:* "AI agents in the AI Village rewrite their own memory every few minutes. Nothing checks that what goes in is
-  true. The monitor catches a lie on the day. Heirloom shows who still believes it."
+The intro and outro are rendered in HyperFrames; the middle is a scripted recording of the live site and two real terminal runs; the voice is Rohit's, cloned. The shot list,
+the take-by-take voiceover and a script that checks every spoken number against `facts.json` live with the video
+project, outside this repo. Numbers below carry the same hidden markers as the
+rest of this write-up, so `heirloom verify` checks them.
 
-**0:12–0:45 — The 93-person list (`/trails/93-list`, "First hour" zoom).**
-- *Show:* the timeline. Click the first-said star, then the born mark and its evidence panel, then a human correction
-  line. Point at Claude 3.7 Sonnet's long bar.
-- *Say:* "June 2025. o3 says it has a 93-person contact list. A minute later Claude Opus 4 writes it into memory as
-  fact. Four agents carry it for days. Even after a human says it isn't real, Sonnet keeps it for 104 more rewrites.
-  Every mark links to the real moment in the village."
+**0:00–0:15 — Intro (rendered).** The hook, then the hosts' three quotes on screen.
+- *Say:* "The monitor catches the lie. Heirloom shows who still believes it. The hosts asked for better ways to
+  oversee AI swarms. Their monitor finds a lie on the day. Nobody follows what happens next."
 
-**0:45–1:20 — 2026, after the monitor (home page, 2026 table → `/findings` #1–#2).**
-- *Say:* "Now 2026. The hosts' monitor caught four fabrications. They were written into 45 agent memories. 28 just
-  disappeared with no correction ever written. 16 were corrected. And the agents never heard about the monitor's
-  flags: zero human corrections. Every fix came from an agent that checked for itself."
+**0:15–0:26 — What it does (home page).**
+- *Say:* "Heirloom follows a false belief through the village: born, kept through rewrites, copied by other agents,
+  then corrected, dropped or still held. Each step links to the real moment."
 
-**1:20–1:55 — How it spreads (`/trails/forwarddiff-846`, "How it spread" and "Did it come back?").**
-- *Say:* "Copies cluster right after another agent says it in chat: 33 of 45 within an hour, against about 12 by
-  chance. Two messages thirty seconds apart, the author's 'posting now' and another agent's 'posting LIVE' status broadcast, came just before 18 of the 19 copies. And repetition re-infects: when the author announced the fake post
-  again, three agents that had dropped it wrote it back."
+**0:26–0:49 — The 93-person list (`/trails/93-list`: fact cards, "First hour" zoom, the born mark's evidence, the
+first human mark, Sonnet's row in "Every agent that held it").**
+- *Say:* "The famous 2025 case, rebuilt from raw data. o3 says it has a mailing list of real contacts. It never
+  existed. Right after, Claude Opus 4 writes it into memory as fact, and Gemini 2.5 Pro and Claude 3.7 Sonnet
+  follow. A human says it isn't real the next day. Sonnet keeps it for 104<!--f:held_after_human_no.rows.0.snapshots-->
+  more rewrites."
 
-**1:55–2:20 — Corrections fade (`/findings` #5–#7).**
-- *Show:* Gemini's watered-down correction, the decline turned into social proof, and the $360.67 number in 19
-  memories.
+**0:49–1:12 — 2026, after the monitor (home page stat cards and the 2026 table).**
+- *Say:* "Now 2026. The hosts' monitor flagged four fabrications, and agents wrote them into
+  45<!--f:monitor_2026.copies--> memories. 16<!--f:monitor_2026.corrected--> copies were corrected.
+  28<!--f:monitor_2026.dropped--> just vanished at some rewrite, with no correction ever written. One was still held
+  at the end. The monitor's flags never reached the agents: zero human corrections. All
+  10<!--f:monitor_2026.agent_corrections--> correcting messages came from other agents."
 
-**2:20–2:45 — How sure (`/method`, "How sure are we?").**
-- *Say:* "Every quote on this site is re-found word for word in the raw data. A blind check agreed on 57 of 60 of the
-  labels the trails rest on, and it caught a bug we then fixed: that's why it's 45 copies, not 50. The evidence
-  labels are weaker, and we say so."
+**1:12–1:28 — It isn't luck (`/findings`, finding 03).**
+- *Say:* "And it isn't luck. 33<!--f:chance.2026.within_gap--> of the 45<!--f:chance.2026.copies--> copies were
+  written within an hour after another agent posted it in chat. Chance gives about
+  11.8<!--f:chance.2026.expected_own_writes-->, even counting only moments the agent was writing memory. The p-value
+  is about four times ten to the minus fourteen."
 
-**2:45–2:55 — Close.**
-- *Say:* "The monitor catches the lie. Heirloom shows who still believes it. Built on the AI Digest / AI Village
-  dataset."
+**1:28–1:44 — How it spread, and how it came back (finding 04 → `/trails/forwarddiff-846`, "How it spread" and
+"Did it come back?").**
+- *Say:* "The never-made ForwardDiff post. Most copies follow two chat messages thirty seconds apart: DeepSeek's
+  'posting now' and Claude Haiku's status broadcast. Then it came back. Three agents had dropped it, and when
+  DeepSeek announced it again, all three wrote it back."
+
+**1:44–2:04 — How sure (`heirloom verify` in the terminal, `/method` "How sure are we?", `docs/AUDIT.md`).**
+- *Say:* "How sure are we? heirloom verify finds every quote and line again in the raw data. A blind check agreed
+  with 57<!--f:audit.stance_holds_or_not.agree--> of 60<!--f:audit.stance_holds_or_not.n--> of the labels the trails
+  rest on. The evidence labels are weaker: 13<!--f:audit.evidence_birth.agree--> of
+  23<!--f:audit.evidence_birth.n-->. A stronger checker did no better, so we didn't ship it. The data ends on 20
+  September."
+
+**2:04–2:16 — Against the field, and the judge path (README, then `heirloom verify --no-db`).**
+- *Say:* "Other tools check a claim at one moment. Heirloom follows it over time and across agents. To check our
+  work you don't need the dataset: build the site and run verify, about two minutes."
+
+**2:16–2:27 — Outro (rendered).** Citation, the hook again, the repo and site links, the two no-dataset commands.
+- *Say:* "Built on the AI Digest and AI Village dataset. The monitor catches the lie. Heirloom shows who still
+  believes it."

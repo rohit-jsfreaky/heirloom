@@ -115,6 +115,18 @@ Read at the start of every session. Update at the end.
     insurance contact) showed. `privacy.add_people` now masks each part of a full name; test added. The leaky files were moved to
     scratchpad (never kept). A scan of every run file for parts of names the model ever returned found one more first name ×32 in
     the superseded 2 Oct MuninnAI run (committed in 6183354): masked in place. Still in local git history: not pushed.
+- **Video plan (4 Oct):** `D:\my_projects\hackathons\heirloom-video\` (outside the repo): `VIDEO-SCRIPT.md`,
+  `SHOT-LIST.md`, `VOICEOVER.md` (10 takes, Longtake format), `check_numbers.py` (every spoken number vs facts.json:
+  20 rows pass), and the silent HyperFrames renders `intro.mp4` (15 s) and `outro.mp4` (11 s), 1920x1080 30 fps,
+  `hyperframes check` clean. Runtime 2:46. Write-up video section updated with fact markers (verify: 100 doc
+  numbers). Rohit records the walkthrough (0:15 to 2:35) and the voiceover.
+  - Intro and outro re-rendered with the voiceover built in (Rohit's voice cloned with Chatterbox on the GPU,
+    one clip per sentence, checked by Parakeet transcription and speaker similarity 0.91 to 0.94; AAC 48 kHz,
+    about -17.5 LUFS). Rohit records only walkthrough takes 3 to 9.
+  - **Full video built (4 Oct): `heirloom-video/heirloom-video.mp4`, 2:26.8.** Walkthrough recorded by script
+    (Playwright, headless Chrome screencast at 1920x1080 from the live site; privacy guard: only the site and the repo
+    may open) plus the two real terminal runs; cloned voice for every take (32 sentences, all exact by Parakeet);
+    all parts at -18 LUFS. Final transcript vs script 99.2%. Rohit to watch it once before submitting.
 - **History scrub prepared (3 Oct, read-only):** `../heirloom-scrub/` (outside the repo) has the scanner, hits,
   `replacements.txt` and COMMANDS.md. No secret anywhere in history. Real handles in tests/comments swapped for
   invented ones (Harbor, Victor, ZORVEX, Tamsin, Dana Whitlock, Bram, inkwell) so the rewrite touches only old commits.
@@ -246,9 +258,13 @@ novelty → lineage → disputes → rank → claims → tie-outs · `score` kno
   19:12–19:51 UTC (first: o3 snapshot `1dcc969f-7869-42b0-8398-45b10e2eeac9`), 1 chat message, 1 computer-use turn.
   It spread agent to agent through chat. Never used. Before 2 Oct ~17:00 IST it went into a few model prompts
   (OpenRouter, data_collection=deny); since then `llm.py` scrubs secrets before any call and `privacy.py` masks them
-  in every output. Cached copies rewritten to `[secret]`. Tell George / #hackathon-chat.
+  in every output. Cached copies rewritten to `[secret]`. **Reported to George by Slack DM (3 Oct, 23:39 IST).
+  His reply (4 Oct, 00:08): they are aware of some leakage and flagged it to the team; "feel free to basically
+  ignore".** Done.
 
 ## Open questions
+- ~~Can the public demo show short quotes from the dataset?~~ → **Yes.** George Ingebretsen, Slack DM, 4 Oct
+  00:08 IST: "Yes please! That's totally encouraged". Quotes stay (masked, linked, cited).
 - Where/how do we submit? (Not announced; watch Discord + email.)
 - Next dataset refresh: the export is ~11 days old (≈ 20 Sep). The monitor's 28 Sep finding (Gemini 3.8 Flash
   "fabricated verification data") may not be in it yet — if a refresh lands before Oct 4, re-download events +

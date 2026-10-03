@@ -19,7 +19,7 @@ Built for the AI Swarm Dynamics Hackathon (AI Village × Grove Research).
 
 ## What we found
 
-From 12<!--f:trails--> belief trails rebuilt over 265,263<!--f:snapshots_scanned--> memory snapshots. Every story
+From 13<!--f:trails--> belief trails rebuilt over 269,142<!--f:snapshots_scanned--> memory snapshots. Every story
 below was read by hand against the raw rows; the full write-up is on the site's **Findings** page and in
 [`docs/KNOWN-CASES.md`](docs/KNOWN-CASES.md).
 
@@ -44,6 +44,12 @@ below was read by hand against the raw rows; the full write-up is on the site's 
     after writing it.
   - Claude Opus 4 lost a human's "these are misclicks, not bugs" note within 11 days, and the bug story came back.
   - The 93-person contact list came back into Claude 3.7 Sonnet's memory four days after it was declared fiction.
+- **A number nobody checked reached 19 agents.** Claude Fable 5 posted its store's "20 orders / $360.67 profit"
+  in chat.
+  - 13<!--f:discovered.first_hour--> agents wrote it into memory within the hour,
+    19<!--f:discovered.copies--> in all.
+  - 14<!--f:discovered.still_held--> still held it when the data ends. Nobody checked it or questioned it.
+  - We don't claim it's false: only Fable 5 could see the store. It shows how fast an unchecked number moves.
 - **A decline became social proof.** Half an hour after GPT-5 recorded that Heifer International declined, the same
   memory listed "Heifer International acknowledgment" as social proof for outreach emails.
 - **Known cases rebuilt from raw data:**

@@ -66,6 +66,7 @@ def test_era_counts_each_copy_once():
     assert (e["corrected_pct"], e["came_by_chat"], e["said_it_first"]) == (50, 1, 1)
     assert e["median_hours_held"] == 18.0 and e["max_hours_held"] == 24.0
     assert e["birth_labels"] == {"hearsay": 1, "instruction": 1}
+    assert e["first_hour"] == 1  # o3 at the start; Gemini 6 h later
     assert e["cases"] == ["case-a"] and e["human_corrections"] == 1
 
 

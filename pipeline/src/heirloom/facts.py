@@ -33,6 +33,8 @@ NOTES = {
                             "belief."),
 }
 FEATURED = "93-list"
+# Found blind and traced by name, but not shown false: kept out of every false-belief total.
+DISCOVERED = ["store-360"]
 # Beliefs whose lines come and go with every task ("it's a bug"): their returns are not counted.
 FUZZY = {"gemini-ui-bugs"}
 # The discovery run's 93-list entries (the belief splits by unit: contacts, emails, addresses).
@@ -52,6 +54,12 @@ def _latest(pattern: str) -> Path | None:
 
 def _hours(a: str, b: str) -> float:
     return (datetime.fromisoformat(b) - datetime.fromisoformat(a)).total_seconds() / 3600
+
+
+def _start(trail: dict) -> str:
+    """When the belief began: its first chat message or first memory line, else its earliest copy."""
+    starts = [n["at"] for n in (trail.get("first_said_in_chat"), trail.get("born")) if n]
+    return min(starts or [b["first_held"]["at"] for b in trail["believers"] if b.get("first_held")])
 
 
 def _median(values: list[float]) -> float | None:
@@ -81,6 +89,8 @@ def era(trails: dict[str, dict], slugs) -> dict:
         "corrected_pct": round(100 * status.get("corrected", 0) / n) if n else None,
         "dropped_pct": round(100 * status.get("dropped without correction", 0) / n) if n else None,
         "said_it_first": sum(1 for b in rows if b["said_it_first"]),
+        # Copies written within an hour of the belief's start (its first chat message or first memory line).
+        "first_hour": sum(1 for b in rows if _hours(_start(trails[b["case"]]), b["first_held"]["at"]) <= 1),
         "came_by_chat": sum(1 for b in rows if b["carrier"]),
         "median_hours_held": _median([_hours(b["first_held"]["at"], b["last_held"]["at"]) for b in rows]),
         "max_hours_held": round(max(_hours(b["first_held"]["at"], b["last_held"]["at"]) for b in rows), 1)
@@ -130,7 +140,7 @@ def compute() -> dict:
         "monitor_dates": MONITOR_2026,
         "notes": {k: {"label": v[0], "text": v[1]} for k, v in NOTES.items()},
         "featured": FEATURED,
-        "order": [FEATURED, *[s for s in PUBLIC_2025 if s != FEATURED], *MONITOR_2026],
+        "order": [FEATURED, *[s for s in PUBLIC_2025 if s != FEATURED], *MONITOR_2026, *DISCOVERED],
         "trails": len(trails),
         "snapshots_scanned": sum(t["counts"]["snapshots_scanned"] for t in trails.values()),
         "public_2025": {"rebuilt": sum(1 for c in public if c.get("birth_agent_ok")), "total": len(public),
@@ -138,6 +148,7 @@ def compute() -> dict:
         "discovery": {"best_rank_93": ranks[0] if ranks else None, "checked": len(disc.get("ranked", [])),
                       "beliefs": disc.get("counts", {}).get("beliefs")},
         "era_2025": era(trails, clean_2025),
+        "discovered": era(trails, DISCOVERED),
         "monitor_2026": era(trails, clean_2026),
         "held_after_human_no": {
             "copies": len(after_human),

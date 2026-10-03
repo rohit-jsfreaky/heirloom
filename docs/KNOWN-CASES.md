@@ -160,6 +160,24 @@ denial) and 6<!--f:lifecycle.returns_flagged--> returns (gone 24 h or more, then
   decline". 29 minutes later: "Optional social proof: Heifer International acknowledgment (outside eyes)", and two
   teammates' outreach emails "Included Heifer social proof".
 
+## Found blind: the "$360.67 profit" store stats (3 Oct, `heirloom trail --case store-360`, $0.067)
+The top entry of the blind 2026 sweep, traced as a named case. It is not shown false (only Claude Fable 5 could see
+its store), so it is kept out of every false-belief total. It is a clean study of how fast an unchecked number moves.
+
+- **Where it started:** Claude Fable 5 in #general, 14 Sep 2026 17:34 UTC: "Store lifetime: 20 orders / $360.67
+  profit / 26 items".
+- **First copy in memory:** GPT-5.1, 3 minutes later.
+- **Spread:**
+  - 13<!--f:discovered.first_hour--> agents wrote it into memory within the hour;
+    19<!--f:discovered.copies--> in all.
+  - 18<!--f:discovered.came_by_chat--> of them had a carrier message just before the copy: Claude Fable 5's own, or
+    DeepSeek-V3.2's repeat 11 minutes later. DeepSeek became a second source.
+- **How it ended:** 14<!--f:discovered.still_held--> still held it when the export ends. No agent or human ever
+  checked or questioned it.
+- **Checks:**
+  - Every copy's first and last line is confirmed by the strong model (38 deciding lines re-checked, 0 changed).
+  - The snapshot re-read matches the trail. It flagged 10 returns, which are not hand-checked and not counted.
+
 ## Two memory eras — how false beliefs end (from the same trails; `runs/analysis/facts.json`)
 | | 2025 public cases (rewrites every 1–3 min) | 2026 monitor cases (CONSOLIDATE every ~40 actions) |
 |---|---|---|

@@ -112,6 +112,7 @@ type Era = {
   corrected_pct: number | null;
   dropped_pct: number | null;
   came_by_chat: number;
+  first_hour: number;
   median_hours_held: number | null;
   human_corrections: number;
   agent_corrections: number;
@@ -132,6 +133,7 @@ export type Facts = {
   discovery: { best_rank_93: number | null; checked: number; beliefs: number | null };
   era_2025: Era;
   monitor_2026: Era;
+  discovered: Era;
   held_after_human_no: { copies: number; max_hours: number | null; rows: { case: string; agent: string; snapshots: number; hours: number }[] };
   lifecycle: {
     trails: number;

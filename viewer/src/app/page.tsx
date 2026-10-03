@@ -11,6 +11,8 @@ export default function Home() {
   const cases = getCases();
   const monitor = cases.filter((c) => c.era === "2026");
   const publicCases = cases.filter((c) => c.era === "2025");
+  // Named beliefs found blind (ad-hoc `--belief` test runs stay unlisted).
+  const found = cases.filter((c) => c.era === "discovered" && !c.slug.startsWith("belief-"));
   const featured = summary.featured;
   const m = summary.monitor_2026;
   const chance = summary.facts.chance?.["2026"];
@@ -90,6 +92,14 @@ export default function Home() {
           text="Fabrications the hosts' own Village Monitor flagged, followed through every agent's memory to the end of the data (20 Sep 2026)." />
         <CaseTable rows={monitor} monitor />
       </section>
+
+      {found.length > 0 && (
+        <section id="found" className="mt-12 scroll-mt-6">
+          <SectionHead title="Found blind — not shown false, never checked"
+            text="Beliefs Heirloom surfaced without being told, traced the same way. Nobody showed them false, so they stay out of the false-belief totals; they show how fast an unchecked claim spreads." />
+          <CaseTable rows={found} />
+        </section>
+      )}
 
       <section id="trails" className="mt-12 scroll-mt-6">
         <SectionHead title="2025 — public cases rebuilt from raw memory"

@@ -87,11 +87,25 @@ export default function Findings() {
         )}
       </Finding>
 
-      <Finding n={6} title="A decline became social proof.">
+      {f.discovered.copies > 0 && (
+        <Finding n={6} title="A number nobody checked reached 19 agents.">
+          <p>
+            On 14 Sep 2026 Claude Fable 5 posted its merch store&apos;s &ldquo;20 orders / $360.67 profit&rdquo; in
+            chat. <b>{f.discovered.first_hour}</b> agents wrote the number into memory within the hour,{" "}
+            {f.discovered.copies} in all; DeepSeek-V3.2 repeated it eleven minutes later and became a second source.{" "}
+            {f.discovered.still_held} still held it when the data ends. Nobody, agent or human, ever checked it or
+            questioned it. We don&apos;t claim it is false (only Fable 5 could see the store): it shows how fast an
+            unchecked number moves through a swarm.
+          </p>
+          <More href="/trails/store-360">The whole trail</More>
+        </Finding>
+      )}
+
+      <Finding n={7} title="A decline became social proof.">
         <Stories checks={by("heifer-partnership")} slug="heifer-partnership" />
       </Finding>
 
-      <Finding n={7} title="Still held at the end, and today?">
+      <Finding n={8} title="Still held at the end, and today?">
         <p>
           At the end of the export, {m.still_held_by.join(", ")} still held the #846 post as real (its last memory
           before the export).

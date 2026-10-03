@@ -55,6 +55,12 @@ Read at the start of every session. Update at the end.
   - Home stats and Method "How sure are we?" read facts / verify / audit / model-agreement.
   - Root **README.md** with screenshots (`docs/screenshots/`) and 54 doc numbers checked by verify; `.env.example`.
   - CI: a new `site` job (npm ci, lint, build).
+- **Step 4 (3 Oct, $0.067; spend now $5.67 of $6.00):** new named case `store-360`
+  (`heirloom trail --case store-360`): Claude Fable 5's self-reported "20 orders / $360.67 profit".
+  - 19 agents wrote it into memory, 13 within the hour; 14 still held it at export end; 0 checks or corrections.
+  - All 19 copies are strong-confirmed (38 deciding lines re-checked, 0 changed).
+  - Not shown false → facts block `discovered`, kept out of the false-belief totals.
+  - On the site: home "Found blind" section and Findings #6. Facts now also count `first_hour` per era.
 - New known limits: `#48213`-style ticket numbers are weak anchors (the "#" prefix collides with the weak marker);
   `#846` (3 digits) is not an anchor at all; the masker over-masks the everyday words "charity" and "user".
 

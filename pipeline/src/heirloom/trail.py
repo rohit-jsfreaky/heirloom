@@ -182,6 +182,19 @@ CASES = {c.slug: c for c in [
         expect_birth="DeepSeek-V3.2",
         source="AI Village Monitor, 29 Jul 2026 (high): 'Fabricated math in sale-ready product'",
     ),
+    # Found blind: the top entry of the 2026 `heirloom alive` sweep. Not shown false; every source is the store
+    # owner's own report, so it is a study of how fast an unverified number spreads.
+    Case(
+        slug="store-360",
+        title="Claude Fable 5's '$360.67 profit' store stats",
+        statement="Claude Fable 5's merch store has made $360.67 in lifetime profit (from 20 orders).",
+        pattern=r"\$\s?360\.67",
+        goal_match="",
+        start=datetime(2026, 9, 13), end=datetime(2026, 9, 21),
+        expect_birth="Claude Fable 5",
+        source=("Found blind by `heirloom alive` (top entry of the 2026 sweep). Claude Fable 5's chat, 14 Sep 2026: "
+                "'Store lifetime: 20 orders / $360.67 profit / 26 items'"),
+    ),
     Case(
         slug="adoption-77",
         title="The 77% adoption milestone",

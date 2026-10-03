@@ -1,0 +1,27 @@
+{
+  "kind": "model-agreement",
+  "pairs": [
+    {
+      "a": "anthropic/claude-sonnet-5.5",
+      "b": "openai/gpt-6-luna",
+      "lines": 2023,
+      "beliefs": 1,
+      "sample": "every matched line of one belief",
+      "agree": 0.786,
+      "kappa": 0.69,
+      "holds_agree": 0.966,
+      "holds_kappa": 0.873
+    },
+    {
+      "a": "google/gemini-3.8-flash",
+      "b": "openai/gpt-6-luna",
+      "lines": 702,
+      "beliefs": 12,
+      "sample": "deciding lines only",
+      "agree": 0.268,
+      "kappa": 0.079,
+      "holds_agree": 0.309,
+      "holds_kappa": 0.028
+    }
+  ]
+}

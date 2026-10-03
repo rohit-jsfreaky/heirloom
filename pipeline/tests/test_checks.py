@@ -67,3 +67,17 @@ def test_era_counts_each_copy_once():
     assert e["median_hours_held"] == 18.0 and e["max_hours_held"] == 24.0
     assert e["birth_labels"] == {"hearsay": 1, "instruction": 1}
     assert e["cases"] == ["case-a"] and e["human_corrections"] == 1
+
+
+def test_chance_helpers():
+    from datetime import timedelta
+
+    from heirloom.chance import gap_before, poisson_binomial_tail
+
+    t0 = datetime(2026, 9, 17, 22, 0)
+    chat = [(t0 - timedelta(minutes=50), "DeepSeek-V3.2"), (t0 - timedelta(minutes=5), "Kimi K3")]
+    assert gap_before(t0, chat, "Kimi K3") == timedelta(minutes=50)  # its own message never counts
+    assert gap_before(t0, chat, "GPT-5") == timedelta(minutes=5)
+    assert gap_before(t0 - timedelta(hours=2), chat, "GPT-5") is None
+    assert abs(poisson_binomial_tail([0.5, 0.5], 1) - 0.75) < 1e-12
+    assert abs(poisson_binomial_tail([0.1] * 5, 0) - 1.0) < 1e-12

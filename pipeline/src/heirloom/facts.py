@@ -155,8 +155,32 @@ def compute() -> dict:
             "returns_checked": verdicts("return"),
             "fuzzy_cases_not_counted": sorted(FUZZY),
         },
+        "audit": audit_summary(_load(ANALYSIS / "audit.json")),
+        "chance": _load(ANALYSIS / "chance.json").get("eras"),
+        "model_agreement": _load(ANALYSIS / "model-agreement.json").get("pairs"),
         "live": [a | {"case": d["case"], "checked_at": d["checked_at"]}
                  for p in sorted(ANALYSIS.glob("live-*.json")) for d in [_load(p)] for a in d["agents"]],
+    }
+
+
+def audit_summary(audit: dict) -> dict | None:
+    """The label check (runs/analysis/audit.json): model labels vs a blind reader, with Wilson 95% intervals."""
+    claude = audit.get("judges", {}).get("claude")
+    if not claude:
+        return None
+    rows = [x for x in audit["items"] if x["kind"] == "tieout" and x["role"] == "first_denial"]
+    either = sum(1 for x in rows if x["model_label"] in (x.get("claude_label"), x.get("claude_firstpass_label")))
+    return {
+        "judge": "claude (blind; Rohit's 20 pending)",
+        "items": claude["all"]["n"],
+        "stance": {k: claude["stance"][k] for k in ("n", "agree", "ci95")},
+        "stance_holds_or_not": claude["stance_holds_or_not"],
+        "affirms_precision": claude["stance"]["by_model_label"].get("affirms"),
+        "evidence": {k: claude["tieout"][k] for k in ("n", "agree", "ci95")},
+        "evidence_birth": claude["tieout_by_role"]["first_held"],
+        "evidence_correction": claude["tieout_by_role"]["first_denial"],
+        "evidence_correction_either_reading": {"n": len(rows), "agree": either},
+        "claude_vs_rohit": audit.get("claude_vs_rohit"),
     }
 
 

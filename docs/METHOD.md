@@ -152,7 +152,12 @@ Ranking for the "still alive" list: alive × rewrites survived × number of beli
   snapshots from the village's public API (`/village/api/agent/<id>/memories`, newest 10) and looks for the pattern.
 - Hand checks: `runs/analysis/hand-checks.json` — every flagged relapse and return outside the fuzzy case, read
   against raw rows, with a verdict (real / not / unclear) and the reason.
-- Tests: `pipeline/tests` (32, no data needed), `api/tests` (6); CI in `.github/workflows/tests.yml` runs both plus
+- `heirloom audit sample|show|sheet|score|models` (`audit.py`): a fixed random sample (seed 20261003) of 60 stance
+  and 40 evidence labels, judged blind; Wilson intervals; model-vs-model kappa. Results and caveats: `docs/AUDIT.md`.
+- `heirloom chance` (`chance.py`, no model): do copies follow another agent's affirming chat message within 60
+  minutes more often than chance? Two nulls: a random moment of the belief's active period, and (stricter) the
+  agent's own memory-write times in that period; exact Poisson-binomial tail.
+- Tests: `pipeline/tests` (33, no data needed), `api/tests` (6); CI in `.github/workflows/tests.yml` runs both plus
   `heirloom verify --no-db`.
 
 ## 9. Privacy

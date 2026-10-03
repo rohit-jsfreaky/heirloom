@@ -182,6 +182,123 @@ def live_cmd(
             typer.echo(f"saved {path}")
 
 
+audit_app = typer.Typer(no_args_is_help=True, help="Label accuracy check: sample, judge blind, compare.")
+app.add_typer(audit_app, name="audit")
+
+
+@audit_app.command("sample")
+def audit_sample() -> None:
+    """Draw the fixed random sample (seed in audit.py) into data/audit/sample.json."""
+    from collections import Counter
+
+    from heirloom import audit
+    from heirloom.db import connect
+
+    with connect() as con:
+        items = audit.sample(con)
+    typer.echo(f"{len(items)} items: {dict(Counter((x['kind'], x['model_label']) for x in items))}")
+    typer.echo(f"for Rohit: {', '.join(x['id'] for x in items if x['for_rohit'])}")
+    typer.echo(f"saved {audit.SAMPLE}")
+
+
+@audit_app.command("show")
+def audit_show(
+    first: Annotated[int, typer.Option(help="First item number.")] = 1,
+    last: Annotated[int, typer.Option(help="Last item number.")] = 10,
+    rohit: Annotated[bool, typer.Option(help="Only Rohit's items.")] = False,
+) -> None:
+    """Print items blind: no model label, quote or reason."""
+    import json
+
+    from heirloom import audit
+    from heirloom.db import connect
+
+    items = json.loads(audit.SAMPLE.read_text(encoding="utf-8"))
+    pick = [x for x in items if x["for_rohit"]] if rohit else items[first - 1:last]
+    with connect(read_only=True) as con:
+        typer.echo(audit.blind(con, pick))
+
+
+@audit_app.command("sheet")
+def audit_sheet() -> None:
+    """Write Rohit's blind sheet (his 20 items, definitions, an answer table) to docs/internal/AUDIT-ROHIT.md."""
+    import json
+
+    from heirloom import audit
+    from heirloom.config import ROOT
+    from heirloom.db import connect
+
+    items = [x for x in json.loads(audit.SAMPLE.read_text(encoding="utf-8")) if x["for_rohit"]]
+    with connect(read_only=True) as con:
+        body = audit.blind(con, items)
+    path = ROOT / "docs" / "internal" / "AUDIT-ROHIT.md"
+    path.write_text(audit.SHEET_HEAD + body + "\n\n## Your answers\n\n| id | answer | note (optional) |\n|---|---|---|\n"
+                    + "".join(f"| {x['id']} | | |\n" for x in items), encoding="utf-8")
+    typer.echo(f"{len(items)} items → {path}")
+
+
+@audit_app.command("models")
+def audit_models() -> None:
+    """Model vs model on the same lines (Cohen's kappa) → runs/analysis/model-agreement.json."""
+    import json
+
+    from heirloom import audit
+    from heirloom.db import connect
+
+    with connect(read_only=True) as con:
+        data = audit.model_agreement(con)
+    path = audit.ANALYSIS / "model-agreement.json"
+    path.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    for row in data["pairs"]:
+        typer.echo(f"{row['a']} vs {row['b']} on {row['lines']} lines ({row['sample']}): agree {row['agree']} · "
+                   f"kappa {row['kappa']} · holds-or-not agree {row['holds_agree']} kappa {row['holds_kappa']}")
+    typer.echo(f"saved {path}")
+
+
+@audit_app.command("score")
+def audit_score() -> None:
+    """Compare every judge's labels with the model's; write runs/analysis/audit.json (masked)."""
+    import json
+
+    from heirloom import audit
+    from heirloom.db import connect
+
+    items = json.loads(audit.SAMPLE.read_text(encoding="utf-8"))
+    judges = {name: j for name in ("claude", "claude-firstpass", "rohit") if (j := audit.load(name))}
+    with connect(read_only=True) as con:
+        path = audit.publish(con, items, judges)
+    data = json.loads(path.read_text(encoding="utf-8"))
+    for name, a in data["judges"].items():
+        typer.echo(f"{name}: all {a['all']} · stance {({k: a['stance'][k] for k in ('n', 'agree', 'ci95')})} · "
+                   f"evidence checks {({k: a['tieout'][k] for k in ('n', 'agree', 'ci95')})}")
+    if "claude_vs_rohit" in data:
+        typer.echo(f"claude vs rohit: {data['claude_vs_rohit']}")
+    typer.echo(f"saved {path}")
+
+
+@app.command("chance")
+def chance_cmd() -> None:
+    """Do copies follow another agent's affirming chat message closer than luck would? (no model calls)"""
+    import json
+
+    from heirloom import chance
+    from heirloom.db import connect
+    from heirloom.lifecycle import ANALYSIS, latest_runs
+
+    runs = {s: json.loads(p.read_text(encoding="utf-8")) for s, p in latest_runs().items()
+            if s in {x for slugs in chance.ERAS.values() for x in slugs}}
+    with connect() as con:  # labels() makes sure its table exists, so not read-only
+        data = chance.test(con, runs)
+    path = ANALYSIS / "chance.json"
+    path.write_text(json.dumps(data, indent=2, default=str), encoding="utf-8")
+    for era, row in data["eras"].items():
+        typer.echo(f"{era}: {row['within_gap']} of {row['copies']} copies within {data['gap_minutes']:.0f} min of "
+                   f"another agent's affirming message · expected by chance {row['expected_by_chance']} "
+                   f"(p = {row['p_value']:.2g}); at the agent's own write times {row['expected_own_writes']} "
+                   f"(p = {row['p_value_own_writes']:.2g})")
+    typer.echo(f"saved {path}")
+
+
 @app.command("facts")
 def facts_cmd() -> None:
     """Recompute every headline number from the saved runs (no database, no model) into runs/analysis/facts.json."""

@@ -90,20 +90,34 @@ every "still held" and every odd label hand-checked against raw rows.
 | case (monitor date) | first said / born in memory | agents that wrote it into memory | corrected | dropped, never corrected | held at export end |
 |---|---|---|---|---|---|
 | ForwardDiff #846 post never made (16 Sep) | DeepSeek-V3.2 chat 20:00 "posting NOW" / its own memory 18:51 (before any post; tool output says decision still pending) | **19** (mostly hearsay) | 15 (18 Sep 20:05–21:18, after Claude Opus 4.8 checked the GitHub API at 20:00) | 3 | **1 — Muse Spark 1.3** (final snapshot 18 Sep 23:58 still lists "ForwardDiff#846 ~36h"; hand-checked) |
-| Fake verification-bundle commit hash (27 Jul) | DeepSeek-V3.2 to GPT-5.2, 23:56 / Gemini 3.1 Pro 23:57 | **12** — 7 within 9 minutes, all hearsay | 0 | 12 (gone within 1–3 days) | 0 |
-| MuninnAI "verified" presence (18 Aug) | DeepSeek's simulated research ("HIGH confidence verification", 16:14) / GPT-5.1 16:09 | 8 | 0 | 8 | 0 |
+| Fake verification-bundle commit hash (27 Jul) | DeepSeek-V3.2 to GPT-5.2, 23:56 / Gemini 3.1 Pro 23:57 | **10** — 8 within 9 minutes, 9 with a carrier message | 0 | 10 (held 0.6–16.5 h) | 0 |
+| MuninnAI "verified" presence (18 Aug) | DeepSeek's simulated research ("HIGH confidence verification", 16:14) / GPT-5.1 16:09 | 5 | 0 | 5 | 0 |
+
+**Re-checked 3 Oct.** These two trails had stopped at the 6-round limit of the strong model's re-check. The label
+check (`docs/AUDIT.md`) caught it: only 10 of 12 and 4 of 8 copies had a strong-confirmed first line. Every
+"affirms" line in both trails then went to Gemini 3.8 Flash ($0.089). It kept 14 of 103 and 42 of 242, and the trails
+were rebuilt. The copies fell from 12 to 10 and from 8 to 5. Every copy in all four 2026 trails now has its first
+and last holding line confirmed by the strong model.
 | "77% adoption (10/13 agents)" (29 Jun) | DeepSeek-V3.2 | **11 within 40 min** (20:31–21:11) | 1 (Claude Opus 4.7) | 10 (within ~1 day) | 0 |
 | Conjectures 357/358/359 "disproved" (29 Jul) | — | 3 | — | — | 0 |
 
-- **Across the four clean cases: 50<!--f:monitor_2026.copies--> agent-held copies of a monitor-confirmed fabrication
-  → 16<!--f:monitor_2026.corrected--> corrected, 33<!--f:monitor_2026.dropped--> dropped without any correction ever
+- **Across the four clean cases: 45<!--f:monitor_2026.copies--> agent-held copies of a monitor-confirmed fabrication
+  → 16<!--f:monitor_2026.corrected--> corrected, 28<!--f:monitor_2026.dropped--> dropped without any correction ever
   written, 1<!--f:monitor_2026.still_held--> still held at the end of the export.** Forgetting is not correcting: an
   agent that drops a belief silently has no record that it was false.
 - **The monitor's flags never reached the agents:** 0<!--f:monitor_2026.human_corrections--> human corrections in
   chat across the four cases; all 10<!--f:monitor_2026.agent_corrections--> correcting chat messages came from
   agents.
-  32<!--f:monitor_2026.came_by_chat--> of the 50 copies arrived with a carrier: another agent's chat message just
+  29<!--f:monitor_2026.came_by_chat--> of the 45 copies arrived with a carrier: another agent's chat message just
   before the copy was written.
+- **Spread by chat is not luck (`heirloom chance` → `runs/analysis/chance.json`, no model).**
+  - The test: is a copy written within 60 minutes after another agent's chat message affirming the belief?
+  - 2026: 27<!--f:chance.2026.within_gap--> of 45 copies were. Luck would give
+    4.8<!--f:chance.2026.expected_by_chance--> (copy moved to a random moment of the belief's active period), or
+    11.8<!--f:chance.2026.expected_own_writes--> under the stricter test that only uses moments the same agent
+    actually wrote memory (this controls for busy hours). Exact Poisson-binomial tail, p ≈ 9e-8.
+  - 2025: 10<!--f:chance.2025.within_gap--> of 21 against 4.2<!--f:chance.2025.expected_own_writes--> under the
+    stricter test (p ≈ 0.003).
 - **Live check, 3 Oct (`heirloom live --case forwarddiff-846` → `runs/analysis/live-forwarddiff-846.json`):** Muse
   Spark 1.3's 10 newest memory snapshots on the public village API (30 Sep 16:06 → 2 Oct 19:30 UTC) no longer mention
   ForwardDiff, #846 or Julia at all. Gone, but the API shows only the newest snapshots, so when and how it left is not
@@ -149,10 +163,10 @@ denial) and 6<!--f:lifecycle.returns_flagged--> returns (gone 24 h or more, then
 ## Two memory eras — how false beliefs end (from the same trails; `runs/analysis/facts.json`)
 | | 2025 public cases (rewrites every 1–3 min) | 2026 monitor cases (CONSOLIDATE every ~40 actions) |
 |---|---|---|
-| copies written into memory | 21<!--f:era_2025.copies--> | 50<!--f:monitor_2026.copies--> |
-| corrected in memory | 67<!--f:era_2025.corrected_pct-->% | 32<!--f:monitor_2026.corrected_pct-->% |
-| dropped without a correction | 24<!--f:era_2025.dropped_pct-->% | 66<!--f:monitor_2026.dropped_pct-->% |
-| median hours a copy was held | 95.2<!--f:era_2025.median_hours_held--> | 21.1<!--f:monitor_2026.median_hours_held--> |
+| copies written into memory | 21<!--f:era_2025.copies--> | 45<!--f:monitor_2026.copies--> |
+| corrected in memory | 67<!--f:era_2025.corrected_pct-->% | 36<!--f:monitor_2026.corrected_pct-->% |
+| dropped without a correction | 24<!--f:era_2025.dropped_pct-->% | 62<!--f:monitor_2026.dropped_pct-->% |
+| median hours a copy was held | 95.2<!--f:era_2025.median_hours_held--> | 16.4<!--f:monitor_2026.median_hours_held--> |
 | human corrections in chat | 14<!--f:era_2025.human_corrections--> | 0<!--f:monitor_2026.human_corrections--> |
 
 **Not a fair comparison, and we say so:** the 2025 cases are famous *because* humans corrected them in public; the

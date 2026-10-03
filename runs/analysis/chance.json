@@ -1,0 +1,735 @@
+{
+  "kind": "chance",
+  "gap_minutes": 60.0,
+  "draws": 4000,
+  "seed": 20261003,
+  "null": "copy time uniform over the belief's active period; the chat stays where it was",
+  "null_own_writes": "copy time = any moment the same agent wrote memory in the active period",
+  "eras": {
+    "2025": {
+      "copies": 21,
+      "within_gap": 10,
+      "expected_by_chance": 0.5,
+      "p_value": 4.4638569074741885e-12,
+      "expected_own_writes": 4.2,
+      "p_value_own_writes": 0.0025758209057047104
+    },
+    "2026": {
+      "copies": 45,
+      "within_gap": 27,
+      "expected_by_chance": 4.8,
+      "p_value": 4.4556608099847876e-17,
+      "expected_own_writes": 11.8,
+      "p_value_own_writes": 9.344197565669223e-08
+    }
+  },
+  "cases": {
+    "93-list": {
+      "affirming_chat": 52,
+      "active_from": "2025-06-10 19:48:20.556671",
+      "active_to": "2025-06-18 19:18:15.910820"
+    },
+    "charity-money": {
+      "affirming_chat": 5,
+      "active_from": "2025-05-28 18:16:37.259968",
+      "active_to": "2025-06-03 19:44:01.071427"
+    },
+    "opus-tasks": {
+      "affirming_chat": 6,
+      "active_from": "2025-07-23 19:10:39.768851",
+      "active_to": "2025-08-12 17:24:39.458233"
+    },
+    "gemini-ui-bugs": {
+      "affirming_chat": 58,
+      "active_from": "2025-06-23 19:07:24.104341",
+      "active_to": "2025-08-05 19:53:54.441079"
+    },
+    "heifer-partnership": {
+      "affirming_chat": 38,
+      "active_from": "2025-10-29 17:09:06.996839",
+      "active_to": "2025-11-03 17:29:50.202026"
+    },
+    "forwarddiff-846": {
+      "affirming_chat": 13,
+      "active_from": "2026-09-16 18:51:11.126993",
+      "active_to": "2026-09-18 23:58:27.323058"
+    },
+    "fake-commit-hash": {
+      "affirming_chat": 2,
+      "active_from": "2026-07-27 23:56:01.214488",
+      "active_to": "2026-07-28 17:37:51.805598"
+    },
+    "muninn-verification": {
+      "affirming_chat": 0,
+      "active_from": "2026-08-18 16:09:25.450527",
+      "active_to": "2026-08-19 17:19:40.292162"
+    },
+    "adoption-77": {
+      "affirming_chat": 18,
+      "active_from": "2026-06-29 16:58:17.569510",
+      "active_to": "2026-06-30 19:51:18.934863"
+    }
+  },
+  "copies": [
+    {
+      "case": "93-list",
+      "agent": "Claude 3.7 Sonnet",
+      "first_held": "2025-06-11 18:06:40.338617",
+      "gap_minutes": 1.7,
+      "within": true,
+      "p_null": 0.0143,
+      "p_null_own_writes": 0.1864,
+      "own_writes": 236
+    },
+    {
+      "case": "93-list",
+      "agent": "o3",
+      "first_held": "2025-06-11 18:06:57.850019",
+      "gap_minutes": 0.1,
+      "within": true,
+      "p_null": 0.0177,
+      "p_null_own_writes": 0.3208,
+      "own_writes": 265
+    },
+    {
+      "case": "93-list",
+      "agent": "Gemini 2.5 Pro",
+      "first_held": "2025-06-10 19:53:40.176594",
+      "gap_minutes": 1.0,
+      "within": true,
+      "p_null": 0.018,
+      "p_null_own_writes": 0.2763,
+      "own_writes": 409
+    },
+    {
+      "case": "93-list",
+      "agent": "Claude Opus 4",
+      "first_held": "2025-06-10 19:49:21.651739",
+      "gap_minutes": 0.1,
+      "within": true,
+      "p_null": 0.0175,
+      "p_null_own_writes": 0.3039,
+      "own_writes": 204
+    },
+    {
+      "case": "charity-money",
+      "agent": "Claude 3.7 Sonnet",
+      "first_held": "2025-05-28 18:35:57.081667",
+      "gap_minutes": 19.3,
+      "within": true,
+      "p_null": 0.0138,
+      "p_null_own_writes": 0.0895,
+      "own_writes": 190
+    },
+    {
+      "case": "charity-money",
+      "agent": "Gemini 2.5 Pro",
+      "first_held": "2025-05-28 18:16:55.527688",
+      "gap_minutes": 0.3,
+      "within": true,
+      "p_null": 0.0185,
+      "p_null_own_writes": 0.2066,
+      "own_writes": 426
+    },
+    {
+      "case": "charity-money",
+      "agent": "Claude Opus 4",
+      "first_held": "2025-05-28 18:18:08.642746",
+      "gap_minutes": 1.5,
+      "within": true,
+      "p_null": 0.0208,
+      "p_null_own_writes": 0.293,
+      "own_writes": 215
+    },
+    {
+      "case": "opus-tasks",
+      "agent": "Claude 3.7 Sonnet",
+      "first_held": "2025-07-24 18:20:02.142179",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.0,
+      "p_null_own_writes": 0.0,
+      "own_writes": 649
+    },
+    {
+      "case": "opus-tasks",
+      "agent": "o3",
+      "first_held": "2025-07-24 19:24:31.948605",
+      "gap_minutes": 41.0,
+      "within": true,
+      "p_null": 0.0065,
+      "p_null_own_writes": 0.0537,
+      "own_writes": 689
+    },
+    {
+      "case": "opus-tasks",
+      "agent": "Gemini 2.5 Pro",
+      "first_held": "2025-07-25 19:40:21.705211",
+      "gap_minutes": 1496.8,
+      "within": false,
+      "p_null": 0.0065,
+      "p_null_own_writes": 0.041,
+      "own_writes": 854
+    },
+    {
+      "case": "opus-tasks",
+      "agent": "Claude Opus 4",
+      "first_held": "2025-07-23 19:10:39.768851",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.0065,
+      "p_null_own_writes": 0.0463,
+      "own_writes": 648
+    },
+    {
+      "case": "gemini-ui-bugs",
+      "agent": "Claude 3.7 Sonnet",
+      "first_held": "2025-06-23 19:54:59.933328",
+      "gap_minutes": 7.0,
+      "within": true,
+      "p_null": 0.0182,
+      "p_null_own_writes": 0.1865,
+      "own_writes": 1303
+    },
+    {
+      "case": "gemini-ui-bugs",
+      "agent": "o3",
+      "first_held": "2025-07-14 19:55:28.594573",
+      "gap_minutes": 69.4,
+      "within": false,
+      "p_null": 0.019,
+      "p_null_own_writes": 0.1562,
+      "own_writes": 1447
+    },
+    {
+      "case": "gemini-ui-bugs",
+      "agent": "Gemini 2.5 Pro",
+      "first_held": "2025-06-23 19:07:24.104341",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.0067,
+      "p_null_own_writes": 0.0568,
+      "own_writes": 2113
+    },
+    {
+      "case": "gemini-ui-bugs",
+      "agent": "Claude Opus 4",
+      "first_held": "2025-06-23 19:28:50.030354",
+      "gap_minutes": 1.2,
+      "within": true,
+      "p_null": 0.019,
+      "p_null_own_writes": 0.1828,
+      "own_writes": 1701
+    },
+    {
+      "case": "heifer-partnership",
+      "agent": "Claude 3.7 Sonnet",
+      "first_held": "2025-10-29 17:13:04.722111",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.0503,
+      "p_null_own_writes": 0.3486,
+      "own_writes": 416
+    },
+    {
+      "case": "heifer-partnership",
+      "agent": "Gemini 2.5 Pro",
+      "first_held": "2025-10-29 17:09:34.765444",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.0503,
+      "p_null_own_writes": 0.2189,
+      "own_writes": 813
+    },
+    {
+      "case": "heifer-partnership",
+      "agent": "Claude Opus 4.1",
+      "first_held": "2025-10-29 17:14:09.206607",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.0503,
+      "p_null_own_writes": 0.2167,
+      "own_writes": 443
+    },
+    {
+      "case": "heifer-partnership",
+      "agent": "GPT-5",
+      "first_held": "2025-10-29 17:49:52.674506",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.0503,
+      "p_null_own_writes": 0.3929,
+      "own_writes": 112
+    },
+    {
+      "case": "heifer-partnership",
+      "agent": "Claude Sonnet 4.5",
+      "first_held": "2025-10-29 17:09:06.996839",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.0455,
+      "p_null_own_writes": 0.2737,
+      "own_writes": 548
+    },
+    {
+      "case": "heifer-partnership",
+      "agent": "Claude Haiku 4.5",
+      "first_held": "2025-10-29 17:11:59.000661",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.0447,
+      "p_null_own_writes": 0.3532,
+      "own_writes": 385
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "GPT-5",
+      "first_held": "2026-09-16 20:05:56.584847",
+      "gap_minutes": 4.8,
+      "within": true,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.32,
+      "own_writes": 50
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "Claude Sonnet 4.5",
+      "first_held": "2026-09-16 20:07:56.784921",
+      "gap_minutes": 6.8,
+      "within": true,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.4068,
+      "own_writes": 59
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "Claude Haiku 4.5",
+      "first_held": "2026-09-16 19:31:41.743198",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.3509,
+      "own_writes": 57
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "GPT-5.1",
+      "first_held": "2026-09-16 20:01:49.377031",
+      "gap_minutes": 0.7,
+      "within": true,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.4062,
+      "own_writes": 128
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "Claude Opus 4.5",
+      "first_held": "2026-09-16 20:23:55.361576",
+      "gap_minutes": 22.8,
+      "within": true,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.4074,
+      "own_writes": 54
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "DeepSeek-V3.2",
+      "first_held": "2026-09-16 18:51:11.126993",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.016,
+      "p_null_own_writes": 0.0317,
+      "own_writes": 63
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "Claude Sonnet 4.6",
+      "first_held": "2026-09-16 20:41:32.664366",
+      "gap_minutes": 40.4,
+      "within": true,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.3913,
+      "own_writes": 23
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "Gemini 3.1 Pro",
+      "first_held": "2026-09-16 19:28:49.004871",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.3585,
+      "own_writes": 106
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "Kimi K2.6",
+      "first_held": "2026-09-16 19:10:14.712320",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.3958,
+      "own_writes": 48
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "Claude Opus 4.8",
+      "first_held": "2026-09-16 19:12:44.413959",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.3333,
+      "own_writes": 57
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "Claude Fable 5",
+      "first_held": "2026-09-16 20:12:11.370405",
+      "gap_minutes": 11.0,
+      "within": true,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.1852,
+      "own_writes": 27
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "DeepSeek-V4-Pro",
+      "first_held": "2026-09-16 19:11:33.809052",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.4038,
+      "own_writes": 52
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "GLM-5.2",
+      "first_held": "2026-09-16 20:02:48.457315",
+      "gap_minutes": 1.6,
+      "within": true,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.3333,
+      "own_writes": 48
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "GPT-5.6 Luna",
+      "first_held": "2026-09-17 20:46:58.649940",
+      "gap_minutes": 170.9,
+      "within": false,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.25,
+      "own_writes": 8
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "Grok 4.5",
+      "first_held": "2026-09-16 20:10:08.253252",
+      "gap_minutes": 9.0,
+      "within": true,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.2069,
+      "own_writes": 29
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "Kimi K3",
+      "first_held": "2026-09-16 20:22:18.699469",
+      "gap_minutes": 21.1,
+      "within": true,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.4286,
+      "own_writes": 35
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "GLM-5.3 Flash",
+      "first_held": "2026-09-16 19:11:34.146195",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.3571,
+      "own_writes": 42
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "Muse Spark 1.3",
+      "first_held": "2026-09-17 23:03:28.222842",
+      "gap_minutes": 3.6,
+      "within": true,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.1818,
+      "own_writes": 11
+    },
+    {
+      "case": "forwarddiff-846",
+      "agent": "Gemini 3.8 Flash",
+      "first_held": "2026-09-16 20:02:38.205879",
+      "gap_minutes": 1.5,
+      "within": true,
+      "p_null": 0.1303,
+      "p_null_own_writes": 0.3738,
+      "own_writes": 107
+    },
+    {
+      "case": "fake-commit-hash",
+      "agent": "GPT-5",
+      "first_held": "2026-07-27 23:58:00.829344",
+      "gap_minutes": 1.7,
+      "within": true,
+      "p_null": 0.0592,
+      "p_null_own_writes": 0.1667,
+      "own_writes": 12
+    },
+    {
+      "case": "fake-commit-hash",
+      "agent": "Claude Sonnet 4.5",
+      "first_held": "2026-07-27 23:59:03.226832",
+      "gap_minutes": 2.7,
+      "within": true,
+      "p_null": 0.0592,
+      "p_null_own_writes": 0.1667,
+      "own_writes": 12
+    },
+    {
+      "case": "fake-commit-hash",
+      "agent": "GPT-5.1",
+      "first_held": "2026-07-27 23:59:21.509406",
+      "gap_minutes": 3.1,
+      "within": true,
+      "p_null": 0.0592,
+      "p_null_own_writes": 0.1304,
+      "own_writes": 23
+    },
+    {
+      "case": "fake-commit-hash",
+      "agent": "DeepSeek-V3.2",
+      "first_held": "2026-07-27 23:57:53.014655",
+      "gap_minutes": 1.6,
+      "within": true,
+      "p_null": 0.059,
+      "p_null_own_writes": 0.1176,
+      "own_writes": 17
+    },
+    {
+      "case": "fake-commit-hash",
+      "agent": "GPT-5.2",
+      "first_held": "2026-07-28 16:02:48.206952",
+      "gap_minutes": 966.8,
+      "within": false,
+      "p_null": 0.0585,
+      "p_null_own_writes": 0.0,
+      "own_writes": 14
+    },
+    {
+      "case": "fake-commit-hash",
+      "agent": "Gemini 3.1 Pro",
+      "first_held": "2026-07-27 23:57:21.902195",
+      "gap_minutes": 1.1,
+      "within": true,
+      "p_null": 0.0592,
+      "p_null_own_writes": 0.1176,
+      "own_writes": 17
+    },
+    {
+      "case": "fake-commit-hash",
+      "agent": "Gemini 3.5 Flash",
+      "first_held": "2026-07-28 16:03:49.793924",
+      "gap_minutes": 967.5,
+      "within": false,
+      "p_null": 0.0592,
+      "p_null_own_writes": 0.0,
+      "own_writes": 15
+    },
+    {
+      "case": "fake-commit-hash",
+      "agent": "Claude Opus 4.8",
+      "first_held": "2026-07-28 00:05:59.011919",
+      "gap_minutes": 9.7,
+      "within": true,
+      "p_null": 0.0592,
+      "p_null_own_writes": 0.2308,
+      "own_writes": 13
+    },
+    {
+      "case": "fake-commit-hash",
+      "agent": "Claude Sonnet 5",
+      "first_held": "2026-07-28 00:02:38.454469",
+      "gap_minutes": 6.3,
+      "within": true,
+      "p_null": 0.0592,
+      "p_null_own_writes": 0.1429,
+      "own_writes": 14
+    },
+    {
+      "case": "fake-commit-hash",
+      "agent": "GLM-5.2",
+      "first_held": "2026-07-28 00:00:10.022141",
+      "gap_minutes": 3.9,
+      "within": true,
+      "p_null": 0.0592,
+      "p_null_own_writes": 0.1875,
+      "own_writes": 16
+    },
+    {
+      "case": "muninn-verification",
+      "agent": "Claude Haiku 4.5",
+      "first_held": "2026-08-18 17:29:36.008262",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.0,
+      "p_null_own_writes": 0.0,
+      "own_writes": 70
+    },
+    {
+      "case": "muninn-verification",
+      "agent": "GPT-5.1",
+      "first_held": "2026-08-18 16:09:25.450527",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.0,
+      "p_null_own_writes": 0.0,
+      "own_writes": 83
+    },
+    {
+      "case": "muninn-verification",
+      "agent": "DeepSeek-V3.2",
+      "first_held": "2026-08-18 16:14:09.704455",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.0,
+      "p_null_own_writes": 0.0,
+      "own_writes": 72
+    },
+    {
+      "case": "muninn-verification",
+      "agent": "Kimi K2.6",
+      "first_held": "2026-08-18 17:08:20.475701",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.0,
+      "p_null_own_writes": 0.0,
+      "own_writes": 80
+    },
+    {
+      "case": "muninn-verification",
+      "agent": "DeepSeek-V4-Pro",
+      "first_held": "2026-08-18 18:41:52.566194",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.0,
+      "p_null_own_writes": 0.0,
+      "own_writes": 32
+    },
+    {
+      "case": "adoption-77",
+      "agent": "Gemini 2.5 Pro",
+      "first_held": "2026-06-29 20:41:17.978015",
+      "gap_minutes": 2.0,
+      "within": true,
+      "p_null": 0.1815,
+      "p_null_own_writes": 0.4429,
+      "own_writes": 70
+    },
+    {
+      "case": "adoption-77",
+      "agent": "Claude Sonnet 4.5",
+      "first_held": "2026-06-29 20:58:56.046321",
+      "gap_minutes": 4.8,
+      "within": true,
+      "p_null": 0.1815,
+      "p_null_own_writes": 0.4222,
+      "own_writes": 90
+    },
+    {
+      "case": "adoption-77",
+      "agent": "Claude Haiku 4.5",
+      "first_held": "2026-06-29 20:42:03.183951",
+      "gap_minutes": 0.1,
+      "within": true,
+      "p_null": 0.1815,
+      "p_null_own_writes": 0.448,
+      "own_writes": 125
+    },
+    {
+      "case": "adoption-77",
+      "agent": "GPT-5.1",
+      "first_held": "2026-06-29 20:32:41.430148",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.1815,
+      "p_null_own_writes": 0.4824,
+      "own_writes": 85
+    },
+    {
+      "case": "adoption-77",
+      "agent": "Claude Opus 4.5",
+      "first_held": "2026-06-29 20:48:24.768775",
+      "gap_minutes": 6.5,
+      "within": true,
+      "p_null": 0.1815,
+      "p_null_own_writes": 0.3968,
+      "own_writes": 63
+    },
+    {
+      "case": "adoption-77",
+      "agent": "DeepSeek-V3.2",
+      "first_held": "2026-06-29 16:58:17.569510",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.0,
+      "p_null_own_writes": 0.0,
+      "own_writes": 99
+    },
+    {
+      "case": "adoption-77",
+      "agent": "Claude Opus 4.6",
+      "first_held": "2026-06-29 21:11:33.520459",
+      "gap_minutes": 1.8,
+      "within": true,
+      "p_null": 0.1815,
+      "p_null_own_writes": 0.3529,
+      "own_writes": 51
+    },
+    {
+      "case": "adoption-77",
+      "agent": "Claude Sonnet 4.6",
+      "first_held": "2026-06-29 20:47:08.349086",
+      "gap_minutes": 5.2,
+      "within": true,
+      "p_null": 0.1815,
+      "p_null_own_writes": 0.4231,
+      "own_writes": 104
+    },
+    {
+      "case": "adoption-77",
+      "agent": "Gemini 3.1 Pro",
+      "first_held": "2026-06-29 20:31:17.843396",
+      "gap_minutes": null,
+      "within": false,
+      "p_null": 0.1815,
+      "p_null_own_writes": 0.4516,
+      "own_writes": 124
+    },
+    {
+      "case": "adoption-77",
+      "agent": "GPT-5.4",
+      "first_held": "2026-06-29 20:43:50.078282",
+      "gap_minutes": 1.9,
+      "within": true,
+      "p_null": 0.1815,
+      "p_null_own_writes": 0.414,
+      "own_writes": 157
+    },
+    {
+      "case": "adoption-77",
+      "agent": "Claude Opus 4.7",
+      "first_held": "2026-06-29 20:47:49.578824",
+      "gap_minutes": 5.9,
+      "within": true,
+      "p_null": 0.1815,
+      "p_null_own_writes": 0.5854,
+      "own_writes": 82
+    }
+  ]
+}

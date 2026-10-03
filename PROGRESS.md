@@ -24,6 +24,27 @@ Read at the start of every session. Update at the end.
     title and statement; the two saved runs were restored.
   - `scrub_secrets` no longer re-matches "[secret]".
   - A punctuation-only quote no longer counts as verified (`tieout.quote_ok`).
+- **Step 2 (3 Oct, $0 so far):**
+  - Committed step 1 locally as `6183354` (Rohit asked Claude to commit, not push).
+  - `heirloom audit sample|show|sheet|score|models` built. 100 labels judged blind by Claude
+    (`data/audit/judged-claude*.json`, git-ignored) → `runs/analysis/audit.json` + `docs/AUDIT.md`.
+    - Stance holds-or-not: 57/60.
+    - Evidence checks are weak: birth 13/23; corrections 15/17 only when either reading of the rubric is allowed.
+      The rubric frame is ambiguous: judge the line or the belief?
+  - Rohit's blind sheet: `docs/internal/AUDIT-ROHIT.md` (20 items) — waiting on his answers.
+  - Model agreement (`runs/analysis/model-agreement.json`):
+    - Sonnet vs Luna on 2,023 lines: kappa 0.69; holds-or-not 96.6%.
+    - Gemini vs Luna on deciding lines: Gemini rejects 456 of 617 of Luna's "affirms".
+  - **FIXED: two 2026 trails had not converged** (re-check loop hit MAX_CHECK_ROUNDS=6). With Rohit's OK, every
+    "affirms" line in fake-commit-hash and muninn-verification went to Gemini 3.8 Flash ($0.089; spend now $5.60 of
+    $6.00). It kept 14/103 and 42/242. Both trails were rebuilt: 12 → 10 and 8 → 5 copies. All 45 copies in the four
+    2026 trails are now strong-confirmed at their first and last line.
+    **2026 headline: 45 copies → 16 corrected, 28 dropped, 1 still held** (KNOWN-CASES and AUDIT updated; verify
+    passes with the DB: 310/310 quotes, 684/684 lines).
+  - `heirloom chance` (R4, no model): 2026 → 27/45 copies written within 60 min after another agent's affirming chat
+    message. Chance expects 4.8; 11.8 at the agent's own write times (p ≈ 9e-8). 2025 → 10/21 vs 4.2 (p ≈ 0.003).
+  - Also found: plan lines ("posting to #846 at 1 PM") get "affirms", from both models. So some ForwardDiff
+    first-held times are plans, not beliefs.
 - New known limits: `#48213`-style ticket numbers are weak anchors (the "#" prefix collides with the weak marker);
   `#846` (3 digits) is not an anchor at all; the masker over-masks the everyday words "charity" and "user".
 

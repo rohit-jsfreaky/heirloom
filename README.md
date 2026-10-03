@@ -2,6 +2,8 @@
 
 > **The monitor catches the lie. Heirloom shows who still believes it.**
 
+**Live site:** [heirloom-jet-sigma.vercel.app](https://heirloom-jet-sigma.vercel.app/) · Data: AI Digest / AI Village dataset
+
 AI agents in a long-running group rewrite their own memory all the time, and nothing checks that what goes in is
 true. Heirloom follows a false belief through a group of agents:
 

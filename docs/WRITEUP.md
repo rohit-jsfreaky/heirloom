@@ -148,7 +148,7 @@ read by hand against the raw rows.
 
 ## Try it
 
-- **Site:** static, built from the saved runs. `cd viewer && npm ci && npm run build`.
+- **Site:** https://heirloom-jet-sigma.vercel.app/ (static, built from the saved runs; or locally: `cd viewer && npm ci && npm run build`).
 - **Check every number:** `cd pipeline && uv run heirloom verify --no-db`. No dataset needed.
 - **Rebuild from raw data:** see the README (needs dataset access).
 

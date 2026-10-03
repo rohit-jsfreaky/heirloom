@@ -153,7 +153,7 @@ uv run heirloom verify --no-db
 cd pipeline
 uv run heirloom download                 # the pinned export (20 Sep 2026)
 uv run heirloom load                     # into data/heirloom.duckdb (about 22 GB)
-uv run heirloom trail --case 93-list     # rebuild one belief trail → runs/
+uv run heirloom trail --case 93-list     # rebuild one belief trail → runs/ (the shipped one, from cache)
 uv run heirloom score                    # every known case vs the public accounts
 uv run heirloom lifecycle                # snapshot by snapshot: returns and relapses (no model)
 uv run heirloom chance                   # spread by chat vs chance (no model)
@@ -170,8 +170,9 @@ Other commands:
 | `windows` | One agent's rewrites with their diffs and evidence. |
 | `live` | Is a belief still in an agent's memory today? Uses the village's public API. |
 | `audit` | The blind label check. |
+| `trail --checker v2` | The stronger evidence check that was tested and not shipped (`docs/AUDIT.md`). |
 
-The whole project spent **$5.60** on model calls. A spend cap in `.env` stops any call past it.
+The whole project spent **$6.19** on model calls. A spend cap in `.env` stops any call past it.
 
 ## Repository
 

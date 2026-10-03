@@ -2,8 +2,11 @@
 
 from datetime import datetime
 
-from heirloom.facts import era
-from heirloom.tieout import quote_ok
+import pytest
+
+from heirloom.facts import PUBLIC_2025, era
+from heirloom.tieout import SYSTEM, SYSTEM_V0, quote_ok, tie_out
+from heirloom.trail import CASES
 from heirloom.verify import MARKER, found_in
 from heirloom.village import village_link
 from heirloom.windows import Evidence
@@ -26,8 +29,26 @@ def test_an_agents_own_chat_is_never_its_evidence():
     assert quote_ok("The list has 93 contacts", other, "o3")
 
 
+def test_only_checker_v2_matches_quotes_without_markdown_and_counts_summaries_as_narration():
+    row = Evidence("turn", "t2", datetime(2026, 9, 14), "tool", 'output: **Commit:** a8e7d3f9\\n"pushed"')
+    assert quote_ok('Commit: a8e7d3f9 "pushed"', row, "GPT-5.1", v2=True)
+    assert not quote_ok('Commit: a8e7d3f9 "pushed"', row, "GPT-5.1")  # v0/v1: strict, as shipped
+    summary = Evidence("session_summary", "s1", datetime(2026, 9, 14), "GPT-5.1", "Posted to Issue #846")
+    assert quote_ok("Posted to Issue #846", summary, "GPT-5.1")
+    assert not quote_ok("Posted to Issue #846", summary, "GPT-5.1", v2=True)
+
+
+def test_the_shipped_checkers_are_pinned_per_trail():
+    assert SYSTEM_V0 == SYSTEM.replace(SYSTEM[SYSTEM.index('- If a "Part to judge"'):SYSTEM.index("- Judge the")], "")
+    assert {c.checker for s, c in CASES.items() if s in PUBLIC_2025} == {"v0"}
+    assert {c.checker for s, c in CASES.items() if s not in PUBLIC_2025} == {"v1"}
+    assert {s for s, c in CASES.items() if not c.tie_outs} == {"adoption-77", "conjectures-357-359"}
+    with pytest.raises(ValueError):
+        tie_out(None, None, "a", "o3", "line", None, datetime(2025, 6, 12), checker="v3")
+
+
 def test_masked_text_is_found_in_the_raw_row():
-    raw = "Per [person] and [person], the 93-email list was hallucinated"
+    raw = "Per Bram and inkwell, the 93-email list was hallucinated"
     assert found_in("Per [person] and [person], the 93-email list was hallucinated", raw)
     assert not found_in("Per [person], the 87-email list was hallucinated", raw)
     assert not found_in("[person]", raw)

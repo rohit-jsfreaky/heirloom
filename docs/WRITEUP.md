@@ -113,7 +113,7 @@ read by hand against the raw rows.
   re-checking them. After the fix the 2026 count fell from 50 to 45 copies. Every copy in the 2026 trails is now
   confirmed by the strong model at its first and last line.
 - **Two models agree on holds-or-not 96.6% of the time** over 2,023 lines (Claude Sonnet 5.5 vs GPT-6 Luna).
-- **Cost:** the whole project spent $5.67 on model calls. A hard cap is set in `.env`.
+- **Cost:** the whole project spent $6.19 on model calls, including $0.49 on testing v2. A hard cap is set in `.env`.
 
 ## How it works
 
@@ -131,6 +131,14 @@ read by hand against the raw rows.
 
 - Screenshots aren't read, so a true fact seen only on screen looks like "no evidence".
 - The evidence labels are weak: the rubric is ambiguous on correction lines.
+- **A stronger evidence check, v2, was tested (9 vs 9 on 15 held-out items) and not shipped.** It found three bugs that
+  are still in the shipped check:
+  - a quote with markdown or escape characters is rejected;
+  - an item that only shares a bare number with the line can crowd the belief's own evidence out;
+  - an agent's own session summaries count as evidence.
+
+  v2 fixes all three behind `--checker v2`. The shipped runs use the old check, and rebuilding them from cache
+  gives the same results at $0 (`docs/AUDIT.md`).
 - A line that only schedules something ("posting to #846 at 1 PM") is read as holding the belief by both models. For
   the ForwardDiff trail a rule with no model fixes it; other beliefs about an event have no such rule yet.
 - A blind sweep for still-alive false beliefs in 2026 had 0 of 5 precision by hand. The 2026 results start from the

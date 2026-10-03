@@ -92,14 +92,20 @@ every "still held" and every odd label hand-checked against raw rows.
 | ForwardDiff #846 post never made (16 Sep) | DeepSeek-V3.2 chat 20:00 "posting NOW" / its own memory 18:51 (before any post; tool output says decision still pending) | **19** (mostly hearsay) | 15 (18 Sep 20:05–21:18, after Claude Opus 4.8 checked the GitHub API at 20:00) | 3 | **1 — Muse Spark 1.3** (final snapshot 18 Sep 23:58 still lists "ForwardDiff#846 ~36h"; hand-checked) |
 | Fake verification-bundle commit hash (27 Jul) | DeepSeek-V3.2 to GPT-5.2, 23:56 / Gemini 3.1 Pro 23:57 | **10** — 8 within 9 minutes, 9 with a carrier message | 0 | 10 (held 0.6–16.5 h) | 0 |
 | MuninnAI "verified" presence (18 Aug) | DeepSeek's simulated research ("HIGH confidence verification", 16:14) / GPT-5.1 16:09 | 5 | 0 | 5 | 0 |
-
-**Re-checked 3 Oct.** These two trails had stopped at the 6-round limit of the strong model's re-check. The label
-check (`docs/AUDIT.md`) caught it: only 10 of 12 and 4 of 8 copies had a strong-confirmed first line. Every
-"affirms" line in both trails then went to Gemini 3.8 Flash ($0.089). It kept 14 of 103 and 42 of 242, and the trails
-were rebuilt. The copies fell from 12 to 10 and from 8 to 5. Every copy in all four 2026 trails now has its first
-and last holding line confirmed by the strong model.
 | "77% adoption (10/13 agents)" (29 Jun) | DeepSeek-V3.2 | **11 within 40 min** (20:31–21:11) | 1 (Claude Opus 4.7) | 10 (within ~1 day) | 0 |
-| Conjectures 357/358/359 "disproved" (29 Jul) | — | 3 | — | — | 0 |
+| Conjectures 357/358/359 "disproved" (29 Jul) | not in any memory as stated; Gemini 3.5 Flash, 25 Aug, about the *real* 358/359 disproofs | 1 | 0 | 1 | 0 |
+
+**Re-checked 3 Oct.** The fake-commit and MuninnAI trails had stopped at the 6-round limit of the strong model's
+re-check. The label check (`docs/AUDIT.md`) caught it: only 10 of 12 and 4 of 8 copies had a strong-confirmed first
+line. Every "affirms" line in both trails then went to Gemini 3.8 Flash ($0.089). It kept 14 of 103 and 42 of 242, and
+the trails were rebuilt. The copies fell from 12 to 10 and from 8 to 5. Every copy in all four 2026 trails now has its
+first and last holding line confirmed by the strong model.
+
+**Conjectures, finished 3 Oct ($0.004).** This trail had hit the same limit (44 lines re-checked, 44 changed). Three
+more rounds finished it: 9 lines re-checked, 7 changed, and 3 holders became 1. The lines dropped were about other
+conjectures ("Opus 5's 3 conjectures (#352, #358, #359) fall at once"), not about 357, 358 and 359 being disproved.
+The one holder left is Gemini 3.5 Flash. On 25 Aug it wrote that the 358 and 359 disproofs were verified, which is
+true, and it dropped the line two hours later. The trail stays outside every total.
 
 - **Across the four clean cases: 45<!--f:monitor_2026.copies--> agent-held copies of a monitor-confirmed fabrication
   → 16<!--f:monitor_2026.corrected--> corrected, 28<!--f:monitor_2026.dropped--> dropped without any correction ever

@@ -28,9 +28,13 @@ def scrub_secrets(text: str) -> str:
     text = _SECRET_AFTER_WORD.sub(lambda m: f"{m.group(1)}{m.group(2)}{m.group(3)}[secret]{m.group(5)}", text)
     return _SECRET_SHAPE.sub("[secret]", text)
 PHONE = re.compile(r"(?<![\w-])(?:\+\d{1,3}[\s.-]?)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}(?![\w-])")
-# Zipf word frequency (wordfreq, English) at or above which a chat handle is an everyday word ("only" 6.1,
-# "test" 5.2, "blue" 5.1) rather than a name.
-EVERYDAY_WORD_ZIPF = 5.0
+# A chat handle that is also an everyday English word ("charity" 4.45, "user" 4.69, "only" 6.1 on wordfreq's zipf
+# scale) AND that the agents' own chat mostly writes in lowercase is treated as a word: it is masked only where it is
+# clearly a name. Both tests are needed: one handle, a common first name (4.57), is common in English but the chat
+# writes it lowercase only 403 times in 2,757, so it stays a name; another is mostly lowercase in chat but no
+# everyday word (3.51), so it stays a name too. Privacy wins ties: anything unsure is masked everywhere.
+EVERYDAY_WORD_ZIPF = 4.0
+WORD_LOWERCASE_SHARE = 0.5
 
 
 class People(BaseModel):
@@ -52,8 +56,48 @@ def _pattern(words: Iterable[str], ignore_case: bool) -> re.Pattern | None:
     return re.compile(r"(?<!\w)(?:" + "|".join(map(re.escape, words)) + r")(?!\w)", re.I if ignore_case else 0)
 
 
+def lowercase_share(con: duckdb.DuckDBPyConnection, words: Iterable[str]) -> dict[str, float]:
+    """For each word, the share of its uses in the agents' chat written in lowercase. Unknown (no chat table, or the
+    word never appears) means absent from the result, which callers treat as a name."""
+    words = sorted({w.lower() for w in words})
+    if not words:
+        return {}
+    try:
+        rows = con.execute("""
+            WITH w AS (SELECT unnest(regexp_extract_all(content, '[A-Za-z]+')) AS t FROM chat_messages)
+            SELECT lower(t), count(*) FILTER (WHERE t = lower(t)), count(*) FROM w
+            WHERE lower(t) IN (SELECT unnest(?::VARCHAR[])) GROUP BY 1""", [words]).fetchall()
+    except duckdb.Error:
+        return {}
+    return {w: lo / n for w, lo, n in rows if n}
+
+
+def word_like(con: duckdb.DuckDBPyConnection, handles: Iterable[str]) -> set[str]:
+    """The handles that are everyday words in this data (see EVERYDAY_WORD_ZIPF)."""
+    common = {h for h in handles if zipf_frequency(h.lower(), "en") >= EVERYDAY_WORD_ZIPF}
+    share = lowercase_share(con, common)
+    return {h for h in common if share.get(h.lower(), 0.0) >= WORD_LOWERCASE_SHARE}
+
+
+def _clearly_a_name(words: Iterable[str]) -> re.Pattern | None:
+    """Where a word-like handle is clearly a name: right after "@", or as a speaker label ("charity: thanks")."""
+    words = sorted(set(words), key=len, reverse=True)
+    if not words:
+        return None
+    alt = "|".join(map(re.escape, words))
+    return re.compile(rf"(?<=@)(?:{alt})(?!\w)|(?<![\w@])(?:{alt})(?=\s*:)", re.I)
+
+
+def _as_written(words: Iterable[str]) -> re.Pattern | None:
+    """A word-like handle written the way the handle is (and in capitals): "Harbor", "HARBOR", but not "harbor".
+    An all-lowercase handle ("only") can't be told apart from the word, so it is left to _clearly_a_name."""
+    named = {w for w in words if w != w.lower()}
+    return _pattern(named | {w.upper() for w in named}, ignore_case=False)
+
+
 class Masker:
     def __init__(self, con: duckdb.DuckDBPyConnection) -> None:
+        self._con = con
         self.agents = [r[0] for r in con.execute("SELECT name FROM agents").fetchall()]
         # Never mask an agent name or any word of one ("Opus", "Sonnet", "Gemini"), even if a viewer used it.
         agents = {a.lower() for a in self.agents} | {w.lower() for a in self.agents for w in re.findall(r"\w+", a)}
@@ -65,15 +109,17 @@ class Masker:
                 UNION ALL SELECT data->>'oldName' FROM events WHERE action_type = 'USER_NAME_CHANGE')
             WHERE n IS NOT NULL AND length(trim(n)) >= 3""").fetchall()}
         names = {n for n in names if n.lower() not in agents and re.search(r"[A-Za-z]{2}", n)}
-        # Privacy wins ties: every handle is masked in any case, except true everyday words ("only", "test", "blue"),
-        # which are masked only in the handle's own capitalisation. Common first names ("[person]" 4.57, "[person]" 4.78)
-        # sit below the cut and are always masked.
-        common = {n for n in names if zipf_frequency(n.lower(), "en") >= EVERYDAY_WORD_ZIPF}
-        self._anycase = _pattern(names - common, ignore_case=True)
-        # An all-lowercase handle that is also an everyday word ("only") can't be told apart from the word itself.
-        self._exact = _pattern({n for n in common if n != n.lower()}, ignore_case=False)
+        # Privacy wins ties: every handle is masked in any case, except handles that are everyday words in this data
+        # ("charity", "user", "only"): those are masked only where they are clearly a name.
+        self._words = word_like(con, names)
+        self._anycase = _pattern(names - self._words, ignore_case=True)
+        self._set_word_patterns()
         self._found: re.Pattern | None = None
         self.name_count = len(names)
+
+    def _set_word_patterns(self) -> None:
+        self._clear = _clearly_a_name(self._words)
+        self._exact = _as_written(self._words)
 
     def add_people(self, llm: LLM, texts: Iterable[str]) -> list[str]:
         """Ask the cheap model which people the output names; mask those too. Returns the names it found."""
@@ -85,7 +131,15 @@ class Masker:
             names = llm.structured(llm.cheap, FIND_PEOPLE, user, People, effort="low").names
             found |= {n.strip() for n in names
                       if len(n.strip()) >= 2 and n.strip().lower() not in self._agent_words}
-        self._found = _pattern(found, ignore_case=True)  # "[person]" also hides "[person]"
+        # A full name found once ("Dana Whitlock") is written elsewhere by one part alone ("email Dana"): each
+        # part is a name too (3 Oct: the model listed only a full name, and the first name alone showed).
+        found |= {w for n in found if " " in n for w in re.findall(r"[A-Za-z][A-Za-z'-]+", n)
+                  if len(w) >= 3 and w.lower() not in self._agent_words}
+        # Names the model found get the same test: an everyday word in this data is masked only where clearly a name.
+        found_words = word_like(self._con, found)
+        self._found = _pattern(found - found_words, ignore_case=True)  # "Zorvex" also hides "ZORVEX"
+        self._words |= found_words
+        self._set_word_patterns()
         return sorted(found)
 
     def __call__(self, text: str | None) -> str | None:
@@ -94,7 +148,7 @@ class Masker:
         text = scrub_secrets(text)
         text = EMAIL.sub("[email]", text)
         text = PHONE.sub("[phone]", text)
-        for pattern in (self._found, self._anycase, self._exact):
+        for pattern in (self._found, self._anycase, self._clear, self._exact):
             if pattern:
                 text = pattern.sub("[person]", text)
         return text

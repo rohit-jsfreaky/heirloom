@@ -77,8 +77,56 @@ Read at the start of every session. Update at the end.
   - forwarddiff-846 rebuilt: still 19 copies (15/3/1), all strong-confirmed; 7 first-held times moved later.
   - Chance test 2026: **33/45** within an hour (was 27), vs 11.8 expected (p ≈ 4e-14). came_by_chat 35/45.
   - Docs updated; verify checks 88 numbers. Video script line reworded (two messages 30 s apart, 18 of 19 copies).
-- New known limits: `#48213`-style ticket numbers are weak anchors (the "#" prefix collides with the weak marker);
-  `#846` (3 digits) is not an anchor at all; the masker over-masks the everyday words "charity" and "user".
+- **#8 + #9 + #7 round (3 Oct; spend $5.6887 → $6.1781, +$0.49):**
+  - **#8 done:** ticket numbers are strong anchors `no.846` and searched as `#846`; HTML entities like `&#8470;` are
+    no longer anchors; `score.belief_case` handles them. Tests added. runs/ untouched by #8.
+  - **#9 code done:** a handle is a "word" only if wordfreq zipf ≥ 4.0 AND the agents' chat writes it mostly lowercase
+    (35 handles: charity, user, only, test…). Those are masked only after @, as a speaker label, or as written / in
+    capitals. "[person]" (403/2,757 lowercase) stays a name; zipf ≥ 3.5 alone would have re-leaked it ("[person]'s Blog")
+    and "[person]". Tests added.
+  - Applied only to store-360: a $0 cached rebuild, `runs/20261003T113514Z-store-360.json`; it un-masks only
+    zero / Echo / cat. Other trails keep the old, stricter masking. (Corrected 3 Oct: a 2025 rebuild needs no new
+    evidence checks with checker v0, only new masking calls; see below.)
+  - **#7 tested, not shipped:** prompt v2 (one definition, COPY/CORRECTION, 8 examples) plus three fixes (quote
+    comparison without markdown or escapes; retrieval ranked by belief and strong anchors, not bare numbers; session
+    summaries count as narration). Held-out birth test: old 9/15; v2 8 → 9/15 (low effort) and 9/15 (medium). Pass
+    mark 12/15 → **stopped, no rebuild** (see docs/AUDIT.md).
+    - ~~Code defaults to v2~~ → **Rohit decided (3 Oct): defaults back to what built the shipped runs; v2 behind a
+      flag.** Done, see next item.
+  - verify (with DB) passes: 373/373 quotes, 994/994 lines, 88 doc numbers. 38 tests.
+- **Defaults restored, v2 behind `--checker v2` (3 Oct; $0 spent, still $6.1781):**
+  - The cache holds every evidence-check prompt ever sent. v0 (= v1 without the "Part to judge" rule, matched byte
+    for byte) built the 2025 trails, belief-88f4b90fcf and the alive sweep; v1 built the 2026 trails; the discover
+    sweep used an earlier draft (not kept). Each Case pins `checker` / `tie_outs`; `trail.BUILT_WITH` covers
+    belief-88f4b90fcf; `discover.CHECKER = "v0"` for the sweeps. v0/v1 rank evidence with legacy anchors
+    (`diff.anchors(legacy=True)`, checked equal to the old diff.py on all 1,151 lines in runs/).
+  - Quote-match fix: changes 0 quotes in the 13 trails but 6/100 alive birth labels → v2 only (rule 3).
+  - Rebuild check (scratchpad `rebuild_check.py`, spend limit 0): all 13 trails identical in believers, labels,
+    quotes, links; differences are masking (#9, by design) and run counters. alive: 100/100 birth labels from cache.
+  - Not $0 in a default rebuild (not run, ask first): 2025 trails' masking (name-finding prompt strengthened 2 Oct
+    12:10 UTC, after they were saved: 14 calls ≈ $0.005); conjectures-357-359 never finished its re-check (6-round
+    limit, 44/44 changed; ≈ $0.02; outside every total).
+  - `belief_case` now finds a belief in any discover/alive run (newest first), so `trail --belief 88f4b90fcf` works.
+  - 41 tests. Docs: AUDIT (v2 section + "What a rebuild reproduces"), WRITEUP Limits, README, METHOD.
+- **Paid gaps closed (3 Oct, Rohit's OK, cap +$0.10; spend $6.1781 → $6.1866, +$0.0085):**
+  - 2025 trails + belief-88f4b90fcf re-saved with current masking ($0.0049; runs/20261003T1252…–1253…). Content
+    identical to the shipped files; only masks and run counters differ.
+  - **Privacy fix found on the way:** the model returned a full name and the first name alone (a private
+    insurance contact) showed. `privacy.add_people` now masks each part of a full name; test added. The leaky files were moved to
+    scratchpad (never kept). A scan of every run file for parts of names the model ever returned found one more first name ×32 in
+    the superseded 2 Oct MuninnAI run (committed in 6183354): masked in place. Still in local git history: not pushed.
+- **History scrub prepared (3 Oct, read-only):** `../heirloom-scrub/` (outside the repo) has the scanner, hits,
+  `replacements.txt` and COMMANDS.md. No secret anywhere in history. Real handles in tests/comments swapped for
+  invented ones (Harbor, Victor, ZORVEX, Tamsin, Dana Whitlock, Bram, inkwell) so the rewrite touches only old commits.
+  - conjectures-357-359 finished its re-check ($0.0036): 3 more rounds, 9 lines, 7 changed; holders 3 → 1 (Gemini
+    3.5 Flash, 25 Aug, about the real 358/359 disproofs). Outside every total: facts and chance identical.
+    Its hand-checked "relapse" (Claude Opus 5, verdict "not") is no longer flagged → moved to `retired` in
+    hand-checks.json.
+  - Lifecycle re-run for the 8 changed trails and store-360 (now points at runs/20261003T113514Z-store-360.json, the
+    newest; kept). Facts, site and verify all read the newest file per trail (verify also walks every file).
+  - 42 tests, 6 API tests, verify with DB passes (50,772 checks), site builds (13 trails).
+- Known limits: ~~ticket numbers weak / #846 not an anchor~~ fixed 3 Oct (#8). ~~The masker over-masks "charity" /
+  "user"~~ fixed in code 3 Oct (#9), but applied so far only to store-360 (see above).
 
 ## Earlier (2 Oct 2026, ~20:30 IST)
 - **Claude writes the code** (Rohit, 2 Oct). Rohit does git. **LLM spend: $5.51 of the $6.00 cap** in `.env`
@@ -165,7 +213,8 @@ novelty → lineage → disputes → rank → claims → tie-outs · `score` kno
   signal and full trails cover the "later" part.
 - A belief phrased with different numbers or units splits into several discovered entries (93 contacts / 93
   emails / 93 addresses).
-- Name masking over-masks a little ("max 5 people" can become "[person] 5 people") — privacy wins ties.
+- Name masking over-masks everyday words that are also chat handles ("max 5 people" → "[person] 5 people"):
+  fixed in code 3 Oct (#9) but applied so far only to store-360; the other saved runs still over-mask (privacy-safe).
 
 ## LLM setup (decided 2 Oct, prices read live from openrouter.ai/api/v1/models)
 - Provider: **OpenRouter**, called with the `openai` SDK (`base_url=https://openrouter.ai/api/v1`, per their quickstart).

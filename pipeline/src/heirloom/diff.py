@@ -28,8 +28,13 @@ _WHOLE = [
     re.compile(r"https?://\S+"),  # URLs
     re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+"),  # emails
     re.compile(r"\b(?=[A-Za-z0-9_-]*\d)(?=[A-Za-z0-9_-]*[A-Za-z])[A-Za-z0-9_-]{12,}\b"),  # ids, hashes, doc keys
-    re.compile(r"#\d{4,}\b"),  # order / quote / ticket numbers
 ]
+# Ticket, issue and order numbers ("Issue #846", "order #48213"): strong, written "no.846" so they never clash with
+# the "#" that marks weak anchors ("#93", "#5 day"). Not after "&" (HTML entities such as "&#8470;") or a word.
+_TICKET = re.compile(r"(?<![\w&#])#(\d{3,})\b")
+# Before 3 Oct a ticket was a weak "#48213" (4+ digits only). The v0/v1 evidence checks rank evidence with these
+# anchors, so a rebuild shows the checker exactly what it saw then (tieout.py).
+_LEGACY_TICKET = re.compile(r"#\d{4,}\b")
 _MONTH = r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?"
 _MODEL = (r"\b(?:Claude|Gemini|GPT|Grok|Kimi|GLM|DeepSeek|Qwen|Llama|Muse|o)[\s-]?\d+(?:\.\d+)?"
           r"(?:[\s-]?(?:Sonnet|Opus|Haiku|Pro|Flash|Lite|mini|Terra|Sol|Luna|Astra|Fable|Spark|V\d[\w.-]*))*"
@@ -130,9 +135,10 @@ def line_hash(line: str) -> str:
 
 
 @functools.lru_cache(maxsize=1_000_000)
-def anchors(line: str) -> frozenset[str]:
-    """The exact things a line pins down: URLs, emails, ids, money, counts with their unit ("93 contact"), quoted
-    names. A bare number with no unit is kept as "#93": weaker, never enough on its own to make a line novel."""
+def anchors(line: str, legacy: bool = False) -> frozenset[str]:
+    """The exact things a line pins down: URLs, emails, ids, ticket numbers ("no.846"), money, counts with their unit
+    ("93 contact"), quoted names. A bare number with no unit is kept as "#93": weaker, never enough on its own to make
+    a line novel."""
     found: set[str] = set()
     text = line
 
@@ -146,6 +152,10 @@ def anchors(line: str) -> frozenset[str]:
 
     for pattern in _WHOLE:
         take(pattern, lambda m: m.group(0).rstrip(".,;:)]'\"").lower())
+    if legacy:
+        take(_LEGACY_TICKET, lambda m: m.group(0).lower())
+    else:
+        take(_TICKET, lambda m: f"no.{m.group(1)}")
 
     def quoted(m: re.Match) -> str | None:
         q = m.group(1).strip().lower()
@@ -184,7 +194,10 @@ def strong(anchor: str) -> bool:
 
 
 def search_terms(anchor: str) -> list[str]:
-    """What to look for in evidence text: "93 contact" is also found as "93-contact" or just "93"."""
+    """What to look for in evidence text: "93 contact" is also found as "93-contact" or just "93"; a ticket number
+    "no.846" is looked for as written, "#846"."""
+    if anchor.startswith("no."):
+        return [f"#{anchor[3:]}"]
     if anchor.startswith("#"):
         return [anchor[1:].split(" ")[0]]
     m = re.match(r"(\d[\d,.]*) (\S+)$", anchor)

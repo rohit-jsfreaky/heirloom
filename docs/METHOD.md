@@ -57,7 +57,9 @@ label ∈ supported | contradicted | no_evidence | hearsay | instruction
   an affirming line. From that: first held, last held, rewrites survived (k distance), snapshots holding belief and
   denial at once, status (`held at end of scan` / `corrected` / `dropped without correction` / `never held`).
 - **Carrier:** the latest affirming chat message from someone else before an agent first holds it.
-- **Tie-outs (strong model):** each agent's first affirming line and first denying line.
+- **Tie-outs:** each agent's first affirming line and first denying line. They use the cheap model, except on the
+  showcase trail (the strong model). Each trail pins the prompt version that built it (v0 or v1, `tieout.py`), so a
+  rebuild reproduces it; v2 is opt-in (`--checker v2`, `docs/AUDIT.md`).
 - Output is masked (emails, phones, every human chat name in the export) and saved to `runs/<ts>-<case>.json`.
 
 - **Inheritance:** a claim from S(A,k) is matched in S(A,k+1…) by anchors (exact) then text similarity; each hit =

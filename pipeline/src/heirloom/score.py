@@ -53,15 +53,25 @@ def latest_discover() -> Path:
 
 
 def belief_case(belief_id: str, run: Path | None = None, tail_days: int = 21) -> Case:
-    """Turn a discovered belief into a Case, so `heirloom trail` can follow it like a named one."""
-    data = json.loads((run or latest_discover()).read_text(encoding="utf-8"))
-    pool = data["ranked"] + data.get("unchecked_head", [])
-    b = next((x for x in pool if x["id"] == belief_id), None)
+    """Turn a discovered belief into a Case, so `heirloom trail` can follow it like a named one. Without `run`, the
+    newest `discover` or `alive` run that holds the belief."""
+    latest_discover()  # fails clearly when there is no run at all
+    runs = [run] if run else sorted([*RUNS.glob("*-discover-*.json"), *RUNS.glob("*-alive-*.json")],
+                                    key=lambda p: p.name, reverse=True)
+    b = None
+    for path in runs:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        b = next((x for x in data["ranked"] + data.get("unchecked_head", []) if x["id"] == belief_id), None)
+        if b is not None:
+            break
     if b is None:
-        raise ValueError(f"belief {belief_id} is not in {run or latest_discover()}")
+        raise ValueError(f"belief {belief_id} is in no discover/alive run in {RUNS}")
     parts = []
     for a in b["anchors"]:
         if "[" in a:  # masked email or name: not searchable
+            continue
+        if a.startswith("no."):  # a ticket number is written "#846" in the text
+            parts.append(rf"#{re.escape(a[3:])}\b")
             continue
         m = re.match(r"^(\d[\d,.]*) (\S+)$", a)
         parts.append(rf"\b{re.escape(m.group(1))}\b[\s-]*{re.escape(m.group(2))}" if m else re.escape(a))

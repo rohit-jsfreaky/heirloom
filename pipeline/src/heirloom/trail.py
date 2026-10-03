@@ -43,6 +43,11 @@ class Case:
     lead_days: int = 3
     tail_days: int = 21  # beliefs outlive the goal that produced them
     showcase: bool = False  # the demo trail: its evidence checks use the strong model
+    # The evidence checker that built the shipped trail (tieout.py), so a rebuild reproduces it; `--checker` overrides.
+    # The 2025 trails were built on 2 Oct before "Part to judge" existed (v0); adoption-77 and conjectures-357-359
+    # were built without evidence checks.
+    checker: str = "v1"
+    tie_outs: bool = True
     # For a belief that an event happened ("was posted"): a line matching plan_pattern only schedules the event, so
     # it is "plan", not holding the belief, unless it also matches done_pattern. No model involved.
     plan_pattern: str | None = None
@@ -68,6 +73,7 @@ CASES = {c.slug: c for c in [
         pattern=r"\b(?:87|93)\b",
         goal_match="celebrate it with 100 people",
         correction_pattern=r"hallucinat|never existed|does ?n[o']t exist|memory compression",
+        checker="v0",
         showcase=True,
         expect_birth="o3",
         expect_believers=("o3", "Gemini 2.5 Pro", "Claude 3.7 Sonnet", "Claude Opus 4"),
@@ -82,6 +88,7 @@ CASES = {c.slug: c for c in [
         goal_match="celebrate it with 100 people",
         correction_pattern=r"no budget|do ?n[o']t have (?:a |the |any )?(?:budget|money)|went (?:to|for) charity|"
                            r"hallucinat|\$0\b",
+        checker="v0",
         expect_birth="o3",
         source=("CO/AI news ('a non-existent $7,500 budget'). In the data $7,500 is a venue's price quote that every "
                 "line calls far over budget: not found as described"),
@@ -94,6 +101,7 @@ CASES = {c.slug: c for c in [
         goal_match="celebrate it with 100 people",
         correction_pattern=r"went (?:to|for) charity|do ?n[o']t have (?:any )?money|no money|ring-?fenced|"
                            r"untouched|\$0\b",
+        checker="v0",
         expect_birth="o3",
         expect_correction=True,
         source=("AI Digest 2025 retrospective ('o3 … hallucinated a budget'); the money belief as it appears in the "
@@ -107,6 +115,7 @@ CASES = {c.slug: c for c in [
         pattern=r"\b[5-9]\d(?:\s*-\s*\d+)?\+?\s*(?:benchmark\s*)?(?:tasks?|tests?)\b",
         goal_match="Design the AI Village benchmark",
         correction_pattern=r"fell short|only ~?\d+ tasks|~?4\d\+? tasks",
+        checker="v0",
         expect_birth="Claude Opus 4",
         source=("AI Digest 2025 retrospective ('Opus 4 claimed over 50 benchmark tests completed when it had done "
                 "only a fraction'); matched to Opus's 23 Jul '~63-73 tasks complete' vs 24 Jul '~43+' — our reading"),
@@ -120,6 +129,7 @@ CASES = {c.slug: c for c in [
                 r"broken (?:UI|interface|environment)",
         goal_match="Create your own merch store",
         correction_pattern=r"misclick|my (?:own )?(?:mistake|error)|not a (?:system |platform )?bug|user error",
+        checker="v0",
         expect_birth="Gemini 2.5 Pro",
         source=("AI Digest 2025 retrospective ('logged repeated UI errors in its memory, creating an expectation "
                 "that the next misclick was also a system bug')"),
@@ -133,6 +143,7 @@ CASES = {c.slug: c for c in [
         goal_match="Reduce global poverty",
         correction_pattern=r"no (?:actual |real )?partnership|not (?:partnered|affiliated|endorsed)|fabricat|"
                            r"never (?:agreed|responded|confirmed)|unverified",
+        checker="v0",
         expect_birth="Claude",
         source="'What Do We Tell the Humans?' (AI Digest, 21 Nov 2025): fake Heifer International 'validation'",
     ),
@@ -193,6 +204,7 @@ CASES = {c.slug: c for c in [
         goal_match="",
         start=datetime(2026, 7, 26), end=datetime(2026, 9, 21),
         correction_pattern=r"invented|fabricat|not disproved|never disproved|actually disproved",
+        tie_outs=False,
         expect_birth="DeepSeek-V3.2",
         source="AI Village Monitor, 29 Jul 2026 (high): 'Fabricated math in sale-ready product'",
     ),
@@ -217,10 +229,15 @@ CASES = {c.slug: c for c in [
         goal_match="",
         start=datetime(2026, 6, 26), end=datetime(2026, 9, 21),
         correction_pattern=r"only 6|fabricat|self-generated|inflat|not (?:actually )?adopt",
+        tie_outs=False,
         expect_birth="DeepSeek-V3.2",
         source="AI Village Monitor, 29 Jun 2026 (high): 'False milestone announcements in chat'",
     ),
 ]}
+
+
+# A discovered belief has no Case of its own: the checker that built its shipped trail (2 Oct, before v1).
+BUILT_WITH = {"belief-88f4b90fcf": "v0"}
 
 
 def stance_of(case: Case, labels: dict[str, str], line: str) -> str:
@@ -434,7 +451,11 @@ def _assemble(scans: dict, chat: list, chat_text: dict, says) -> _State:
     return _State(chat_nodes, affirming_chat, humans, believers, firsts, denials, born)
 
 
-def build(con: duckdb.DuckDBPyConnection, llm: LLM, case: Case, tie_outs: bool = True) -> Trail:
+def build(con: duckdb.DuckDBPyConnection, llm: LLM, case: Case, tie_outs: bool | None = None,
+          checker: str | None = None) -> Trail:
+    """`tie_outs` and `checker` default to the case's own (what built the shipped trail)."""
+    tie_outs = case.tie_outs if tie_outs is None else tie_outs
+    checker = checker or BUILT_WITH.get(case.slug, case.checker)
     pattern = re.compile(case.pattern, re.I)
     start, end, goal = _scope(con, case)
     agents = con.execute("""SELECT a.id, a.name FROM agents a WHERE EXISTS (
@@ -481,17 +502,20 @@ def build(con: duckdb.DuckDBPyConnection, llm: LLM, case: Case, tie_outs: bool =
         return stance_of(case, current, line)
 
     # 4. Tie-outs at the key moments.
-    tieout_model = llm.strong if case.showcase else llm.cheap
+    # The cheap model, except on the showcase trail; checker v2 (opt-in) always uses the strong one.
+    tieout_model = llm.strong if checker == "v2" or case.showcase else llm.cheap
     if tie_outs:
         for agent_id, believer, snap in state.denials:
             with console.status(f"tie-out: {believer.agent}'s first correction"):
                 believer.first_denial.tieout = _tieout_dict(tie_out(
                     con, llm, agent_id, believer.agent, believer.first_denial.text, snap.prev_at, snap.at,
-                    tieout_model, focus=case.statement))
+                    tieout_model, focus=case.statement, checker=checker, role="correction",
+                    belief_pattern=case.pattern))
         for agent_id, node, snap in state.firsts:
             with console.status(f"tie-out: {node.agent}'s first affirming line"):
                 node.tieout = _tieout_dict(tie_out(con, llm, agent_id, node.agent, node.text, snap.prev_at, snap.at,
-                                                   tieout_model, focus=case.statement))
+                                                   tieout_model, focus=case.statement, checker=checker, role="copy",
+                                                   belief_pattern=case.pattern))
 
     meta = con.execute("SELECT exported_at, revision FROM meta").fetchone()
     born, humans = state.born, state.humans
@@ -559,7 +583,7 @@ def save(con: duckdb.DuckDBPyConnection, llm: LLM, trail: Trail) -> tuple[dict, 
     mask.add_people(llm, _strings(raw, []))
     data = _mask_tree(raw, mask)
     # Our own words are not village text and stay as written: the slug, and a named case's title and statement
-    # (chat handles that are also words, "[person]", "User", were masking them).
+    # (chat handles that are also everyday words were masking them).
     data["case"] = trail.case
     if trail.case in CASES:
         data["title"], data["statement"] = trail.title, trail.statement

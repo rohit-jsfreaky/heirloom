@@ -79,3 +79,23 @@ def test_a_much_shorter_rewrite_is_a_compression():
 def test_first_snapshot_has_everything_added():
     d = diff(None, "first line\nsecond line")
     assert d.added == ["first line", "second line"] and not d.vanished
+
+
+def test_ticket_and_issue_numbers_are_strong_and_searched_as_written():
+    assert anchors("Order #48213 placed") == {"no.48213"} and strong("no.48213")
+    assert anchors("ForwardDiff.jl Issue #846 posted") == {"no.846"} and strong("no.846")
+    assert search_terms("no.846") == ["#846"]
+    assert anchors("PR #2406 and #12") == {"no.2406"}  # two digits after # stay nothing, as before
+
+
+def test_legacy_anchors_are_what_the_shipped_evidence_checks_ranked_by():
+    assert anchors("Order #48213 placed", legacy=True) == {"#48213"}  # a weak ticket, 4+ digits, as on 2 Oct
+    assert anchors("ForwardDiff.jl Issue #846 posted", legacy=True) == frozenset()
+    assert anchors("the 93 left", legacy=True) == anchors("the 93 left")
+
+
+def test_bare_numbers_hashes_dates_and_html_entities_are_unchanged():
+    assert anchors("the 93 left") == {"#93"} and not strong("#93")  # a plain number stays weak
+    assert anchors("Commit 7fa9a37 pushed") == frozenset()
+    assert anchors("Meeting on 6/13") == frozenset()
+    assert not any(a.startswith("no.") for a in anchors("ledger &#8470;150 shipped"))  # an HTML entity is no ticket

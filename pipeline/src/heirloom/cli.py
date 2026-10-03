@@ -118,9 +118,14 @@ def alive_cmd(
 def trail(
     case: Annotated[str | None, typer.Option(help="Known case to rebuild, e.g. 93-list.")] = None,
     belief: Annotated[str | None, typer.Option(help="Id of a belief from the latest `discover` run.")] = None,
-    tie_outs: Annotated[bool, typer.Option("--tieout/--no-tieout", help="Check key lines against evidence.")] = True,
+    tie_outs: Annotated[bool | None, typer.Option(
+        "--tieout/--no-tieout", help="Check key lines against evidence (default: as the shipped trail).")] = None,
+    checker: Annotated[str | None, typer.Option(
+        help="Evidence checker: v0, v1 or v2 (opt-in: new prompt on the strong model, tested and not shipped; "
+             "docs/AUDIT.md). Default: the one that built the shipped trail.")] = None,
 ) -> None:
     """Rebuild one belief's trail from the raw data and save it to runs/."""
+    from heirloom.tieout import CHECKERS
     from heirloom import trail as trails
     from heirloom.db import connect
     from heirloom.llm import LLM
@@ -131,10 +136,12 @@ def trail(
         raise typer.BadParameter("give exactly one of --case or --belief")
     if case and case not in trails.CASES:
         raise typer.BadParameter(f"known cases: {', '.join(trails.CASES)}")
+    if checker and checker not in CHECKERS:
+        raise typer.BadParameter(f"checkers: {', '.join(CHECKERS)}")
     chosen = trails.CASES[case] if case else belief_case(belief)
     llm = LLM()
     with connect() as con:
-        result = trails.build(con, llm, chosen, tie_outs)
+        result = trails.build(con, llm, chosen, tie_outs, checker)
         data, path = trails.save(con, llm, result)
     print_trail(data, path)
 

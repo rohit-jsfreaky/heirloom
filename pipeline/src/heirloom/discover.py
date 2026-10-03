@@ -40,6 +40,8 @@ CHECKABLE = {"exists", "count", "done", "broken", "identity", "instruction-to-se
 # no_evidence is also how true facts seen only on screen look (screenshots are not read), so it stays neutral.
 LABEL_WEIGHT = {"contradicted": 3.0, "hearsay": 1.5, "no_evidence": 1.0, "instruction": 1.2, "supported": 0.3}
 WORKERS = 6
+# The evidence checker that made the shipped sweeps' birth checks (tieout.py); re-derived from cache 3 Oct.
+CHECKER = "v0"
 # Words that dispute a fact. A belief that keeps meeting them and still survives is what we are looking for.
 DISPUTE = re.compile(
     r"never existed|does ?n[o']t exist|did ?n[o']t exist|hallucinat\w*|fabricat\w*|placeholder\w*|\bfake\b|"
@@ -223,7 +225,7 @@ def _check(con: duckdb.DuckDBPyConnection, llm: LLM, beliefs: list[Belief], top:
     def check_one(b: Belief) -> Belief:
         cur = con.cursor()  # one DuckDB cursor per thread
         t = tie_out(cur, llm, b.born["agent_id"], b.born["agent"], b.line, b.born["prev_at"], b.born["at"],
-                    focus=(b.claim or {}).get("text"))
+                    focus=(b.claim or {}).get("text"), checker=CHECKER)
         b.tieout = {"label": t.label, "reason": t.reason, "model": llm.cheap,
                     "evidence": [{"source": e.source, "id": e.id, "at": e.created_at, "speaker": e.speaker,
                                   "quote": q, "link": village_link(e.created_at)} for e, q in t.quotes]}

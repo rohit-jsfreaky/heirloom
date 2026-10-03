@@ -79,6 +79,91 @@ Result file: `runs/analysis/audit.json` (ids, links and labels only, no text). T
   no model now marks those 14 ForwardDiff lines as "plan". The trail was rebuilt; copies are unchanged, and 7
   first-held times moved later.
 
+## Evidence-check prompt v2 — tested, not shipped (3 Oct)
+
+**v2 was tested (9 vs 9 on 15 held-out items), not shipped.** It stays in the code as an option,
+`heirloom trail --case <slug> --checker v2`: the new prompt on Gemini 3.8 Flash, with the three fixes below. Every
+default is what built the shipped runs (see "What a rebuild reproduces").
+
+The audit's verdict on the evidence labels led to the new prompt (`tieout.py`).
+- **One definition:** judge the trail's belief as the line asserts it, from this agent's window up to the moment the
+  line was written. The line is a COPY (claim: the belief) or a CORRECTION (claim: the belief is false). The
+  "instruction" label is gone; plan lines are excluded upstream.
+- **Eight worked examples from audited rows.**
+- **Three bugs the test found.** All three are still in the shipped checker; only v2 has the fixes.
+  - **Quote matching:** a quote is compared to its row only up to spacing and case. Three correct v2 verdicts were
+    rejected because the model dropped `**` or wrote a real newline for `\n`. v2 compares without markdown or
+    escape characters. In the shipped runs this fix would change no trail, but 6 of the 100 birth labels of the
+    `alive` sweep, so it is not in the default.
+  - **Evidence ranking:** any item that shares a number with the line ranks high. "17" and "94%" filled the window
+    and pushed the commit message out. v2 ranks by the belief and the line's strong anchors first.
+  - **Own narration:** the agent's own session summaries are shown as evidence; only its own chat is marked as
+    narration. v2 marks both.
+
+**Test:** the 23 audited birth items with Gemini 3.8 Flash.
+- Not scored: 4 items reused as worked examples, and 4 that are now plan lines. That leaves **15 held-out items**.
+- The blind judgments were fixed before the run; the two old "instruction" ones were re-read under the new definition.
+- The pass mark was set in advance: 12 of 15. The old checker scored 9 of 15 on the same items.
+
+| setting | held-out (15) | the 4 example items | cost |
+|---|---|---|---|
+| old checker (as shipped) | 9 | — | — |
+| v2, low effort, 24k-char window | 8 | 2 (quotes rejected) | $0.149 |
+| v2 + the three fixes, low effort | 9 | 4 | $0.108 |
+| v2 + the three fixes, medium effort | 9 | 4 | $0.233 |
+
+**Result: no setting cleared 12/15, so the trails were not rebuilt.** The shipped evidence labels are still the old
+ones described above.
+
+**What still disagrees (the same 6 in both settings).** Most are judgment calls where the blind label itself is
+debatable:
+- A042: my own note said nothing in the window speaks to the commit, yet I labelled it hearsay.
+- A045: the agent's own tool output shows it created the sheet empty, which is arguably "contradicted" under the new
+  rule.
+- A073, A076: does a line that only tracks outreach to @MuninnAI assert that MuninnAI's presence was verified?
+- A004: is "~92-97 tasks total" the same as "more than 50 finished"?
+- A067: only this one looks like a pure retrieval miss. The first-hand report is a day earlier in a long window.
+
+The next useful step is a second human reading of these six, not another prompt.
+
+### What a rebuild reproduces (checked 3 Oct, $0)
+
+Each trail pins the checker that built it; `--checker` overrides.
+
+| checker | prompt | model | built |
+|---|---|---|---|
+| v0 | before "Part to judge" existed (2 Oct) | GPT-6 Luna; the 93-list on Gemini 3.8 Flash | the six 2025 trails, `belief-88f4b90fcf`, the `alive` sweep's birth checks |
+| v1 | judges the "Part to judge" (the belief) inside the line | GPT-6 Luna | ForwardDiff #846, fake commit hash, MuninnAI, store $360.67 |
+| none | — | — | 77% adoption, conjectures 357-359 |
+| an earlier draft, not kept | — | GPT-6 Luna | the 2025 `discover` sweep's birth checks |
+
+v0 and v1 rank evidence with the anchors as they were then: ticket numbers ("#846") became strong anchors on 3 Oct.
+
+**The check.** Every trail was rebuilt from the cache with the spend limit at zero, so any call not already made
+would have stopped the run. Each was then compared with its file in `runs/`, field by field. Spend was $6.1781
+before and after.
+- **All 13 trails:** every believer, status, time, label, evidence quote and link is the same.
+- **What differs:**
+  - Masking, by design: since 3 Oct a chat handle that is an everyday word ("zero", "charity") is masked only where
+    it is clearly a name.
+  - Run counters: strong re-checks done in this run (0 now, because they are stored), and a "plan: 0" count that
+    older runs lack.
+- **The `alive` sweep:** its 100 birth checks were re-derived from the cache with v0. All 100 have the same label;
+  $0. The `discover` sweep's birth checks were not re-derived (their prompt is not kept).
+
+**Two things a default rebuild had to pay for, both done 3 Oct ($0.0085 together):**
+- **The 2025 trails' masking ($0.0049).** They were masked just before the name-finding prompt was made stronger
+  (2 Oct, 12:10 UTC), so 14 masking calls were new. With the old prompt they rebuilt at $0, which is how they were
+  checked. They were then saved again with the current masking (`runs/20261003T1252…`): content unchanged.
+  - That re-save found a leak. The model listed a person's full name, but the text also uses the first name alone,
+    and only the full name was masked. Each part of a full name is now masked too (`privacy.add_people`, tested).
+  - A scan of every run file for parts of names the model ever returned found one more first name (32 times) in the
+    superseded 2 Oct MuninnAI run. It is masked in that file now.
+- **Conjectures 357-359 finished its re-check ($0.0036).** It had stopped at the 6-round limit on 2 Oct (44 lines
+  re-checked, 44 changed), like the two trails fixed above. Three more rounds finished it: 9 lines, 7 changed, 3
+  holders became 1 (`docs/KNOWN-CASES.md`). It is outside every total: facts and the chance test came out
+  identical.
+
 ## Model vs model (`heirloom audit models` → `runs/analysis/model-agreement.json`)
 
 - **Claude Sonnet 5.5 vs GPT-6 Luna, every matched line of one belief (2,023 lines):**
@@ -92,5 +177,5 @@ Result file: `runs/analysis/audit.json` (ids, links and labels only, no text). T
 ## Next
 
 - Rohit's 20 (`docs/internal/AUDIT-ROHIT.md`, git-ignored): human vs reader 1 and human vs model.
-- Possible fix (costs a model re-run): state the rubric's frame explicitly (always judge the belief), and add
-  "plan" as its own case. Then re-score against the same fixed blind judgments.
+- The rubric's frame stated explicitly (always judge the belief), with plan lines taken out: tested 3 Oct as v2
+  (above), 9 vs 9, not shipped. Next is a second human reading of the six disputed items.

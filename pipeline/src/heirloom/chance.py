@@ -13,7 +13,7 @@ from types import SimpleNamespace
 
 import duckdb
 
-from heirloom.diff import line_hash, normalize
+from heirloom.diff import normalize
 from heirloom.facts import MONITOR_2026, NOTES, PUBLIC_2025
 from heirloom.lifecycle import case_from_run
 from heirloom.stance import labels

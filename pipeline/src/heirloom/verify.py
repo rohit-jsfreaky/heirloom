@@ -18,6 +18,7 @@ from heirloom.config import ROOT
 from heirloom.diff import lines_in_context, normalize
 from heirloom.lifecycle import ANALYSIS
 from heirloom.privacy import EMAIL, PHONE, scrub_secrets
+from heirloom.tieout import comparable
 from heirloom.trail import RUNS, _KEEP
 from heirloom.village import village_link
 
@@ -52,10 +53,11 @@ def _squash(text: str) -> str:
 
 def found_in(masked: str, raw: str) -> bool:
     """`masked` (a quote or line as saved, after masking) occurs in `raw`; each masked span stands for 1-300 chars."""
-    parts = [re.escape(_squash(p)) for p in MASKED.split(masked)]
+    parts = [re.escape(comparable(p)) for p in MASKED.split(masked)]
     if not any(parts):
         return False  # nothing but masks or punctuation: nothing to find
-    return re.search(r"[\s\S]{1,300}?".join(parts), _squash(raw)) is not None
+    # The same comparison the evidence check used to accept the quote (tieout.comparable).
+    return re.search(r"[\s\S]{1,300}?".join(parts), comparable(raw)) is not None
 
 
 def _at(value: str) -> datetime:

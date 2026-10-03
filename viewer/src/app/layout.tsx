@@ -25,6 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <span className="hidden text-xs text-muted sm:inline">belief trails in agent memory</span>
             </Link>
             <nav className="flex items-center gap-5 text-sm text-ink-2">
+              <Link href="/findings" className="hover:text-accent">Findings</Link>
               <Link href="/#trails" className="hover:text-accent">Trails</Link>
               <Link href="/#monitor" className="hover:text-accent">2026</Link>
               <Link href="/method" className="hover:text-accent">Method</Link>

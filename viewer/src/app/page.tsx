@@ -2,16 +2,18 @@ import { ArrowRight, ArrowSquareOut } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 
 import { Chip, LabelChip } from "@/components/chips";
-import { getCases, getSummary } from "@/lib/api";
-import { day, utc } from "@/lib/format";
+import { getCases, getSummary } from "@/lib/data";
+import { day, span, utc } from "@/lib/format";
 import type { CaseSummary } from "@/lib/types";
 
-export default async function Home() {
-  const [summary, cases] = await Promise.all([getSummary(), getCases()]);
+export default function Home() {
+  const summary = getSummary();
+  const cases = getCases();
   const monitor = cases.filter((c) => c.era === "2026");
   const publicCases = cases.filter((c) => c.era === "2025");
-  const featured = summary?.featured;
-  const m = summary?.monitor_2026;
+  const featured = summary.featured;
+  const m = summary.monitor_2026;
+  const chance = summary.facts.chance?.["2026"];
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
@@ -26,21 +28,24 @@ export default async function Home() {
           agents&apos; memories, until someone corrects it or it&apos;s still there at the end. Every step links to the
           real moment in the village.
         </p>
+        <Link href="/findings" className="mt-5 inline-flex items-center gap-2 text-[14px] font-medium text-accent hover:underline">
+          Read the findings <ArrowRight size={15} />
+        </Link>
       </section>
 
-      {summary && m && (
-        <section className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <Stat value={`${m.dropped} of ${m.copies}`}
-            text={`copies of ${m.cases} monitor-confirmed fabrications that agents dropped without ever correcting (2026)`}
-            tone="amber" />
-          <Stat value={String(m.corrected)}
-            text={`copies corrected in memory. ${m.still_held} still held at the end of the data${m.still_held_by.length ? ` (${m.still_held_by.join(", ")})` : ""}.`} />
-          <Stat value={`${summary.public_2025.rebuilt} of ${summary.public_2025.total}`}
-            text="public 2025 cases rebuilt from raw memory, birth agent matching the published account" />
-          <Stat value={summary.discovery.best_rank_93 ? `#${summary.discovery.best_rank_93}` : "—"}
-            text={`where the 93-person contact list ranked when Heirloom was told nothing (of ${summary.discovery.beliefs?.toLocaleString()} candidate beliefs)`} />
-        </section>
-      )}
+      <section className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <Stat value={`${m.dropped} of ${m.copies}`}
+          text={`copies of ${m.cases} monitor-confirmed fabrications that agents dropped without ever correcting (2026)`}
+          tone="amber" />
+        <Stat value={String(m.human_corrections)}
+          text={`human corrections the agents got in chat for those fabrications; all ${m.agent_corrections} correcting messages came from other agents`} />
+        {chance && (
+          <Stat value={`${chance.within_gap} of ${chance.copies}`}
+            text={`copies written within an hour after another agent posted the belief in chat (about ${chance.expected_own_writes} by chance)`} />
+        )}
+        <Stat value={`${summary.public_2025.rebuilt} of ${summary.public_2025.total}`}
+          text="public 2025 cases rebuilt from raw memory, birth agent matching the published account" />
+      </section>
 
       {featured && (
         <section className="card mt-8 grid gap-6 p-6 md:grid-cols-[1.3fr_1fr]">
@@ -50,10 +55,14 @@ export default async function Home() {
               <Chip tone="outline">June 2025</Chip>
             </div>
             <h2 className="mt-3 text-xl font-semibold tracking-tight text-ink">{featured.title}</h2>
-            <p className="mt-2 text-[14px] leading-relaxed text-ink-2">
-              o3 said it had a mailing list. It didn&apos;t. Within seconds another agent wrote it into memory as fact,
-              and four agents carried it for days, some long after humans said it wasn&apos;t real.
-            </p>
+            {featured.first_said && featured.born && (
+              <p className="mt-2 text-[14px] leading-relaxed text-ink-2">
+                {featured.first_said.agent} said it had the list. It didn&apos;t.{" "}
+                {span(featured.first_said.at, featured.born.at)} later {featured.born.agent} wrote it into memory as
+                fact, and {featured.agents_held} agents carried it for days, some long after humans said it wasn&apos;t
+                real.
+              </p>
+            )}
             <Link href={`/trails/${featured.slug}`}
               className="mt-5 inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-ink">
               Open the trail <ArrowRight size={15} />
@@ -88,7 +97,7 @@ export default async function Home() {
         <CaseTable rows={publicCases} />
       </section>
 
-      {summary?.export && (
+      {summary.export && (
         <p className="mt-10 text-xs text-muted">
           {summary.snapshots_scanned.toLocaleString()} memory snapshots read across these trails · dataset export{" "}
           {day(summary.export.exported_at)}.{" "}

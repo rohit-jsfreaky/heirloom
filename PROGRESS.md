@@ -45,6 +45,16 @@ Read at the start of every session. Update at the end.
     message. Chance expects 4.8; 11.8 at the agent's own write times (p ≈ 9e-8). 2025 → 10/21 vs 4.2 (p ≈ 0.003).
   - Also found: plan lines ("posting to #846 at 1 PM") get "affirms", from both models. So some ForwardDiff
     first-held times are plans, not beliefs.
+- **Step 3 (3 Oct, $0):**
+  - **The site is now fully static** (`viewer/`, `output: "export"`): `src/lib/data.ts` reads `../runs` (or
+    `HEIRLOOM_RUNS`) at build time. No API server is needed; `api/` stays as an optional read-only JSON API.
+    Build: `cd viewer && npm ci && npm run build` → `out/`. Serve: `python -m http.server 3000 -d out`.
+  - New **/findings** page: 7 hand-checked findings with village links, the still-held list, and the live check.
+  - Trail pages gained **How it spread** (who-passed-it-to-whom tree from carrier messages; Claude Haiku 4.5's status
+    broadcast is the likely source of 10 of 19 ForwardDiff copies) and **Did it come back?** (hand-check verdicts).
+  - Home stats and Method "How sure are we?" read facts / verify / audit / model-agreement.
+  - Root **README.md** with screenshots (`docs/screenshots/`) and 54 doc numbers checked by verify; `.env.example`.
+  - CI: a new `site` job (npm ci, lint, build).
 - New known limits: `#48213`-style ticket numbers are weak anchors (the "#" prefix collides with the weak marker);
   `#846` (3 digits) is not an anchor at all; the masker over-masks the everyday words "charity" and "user".
 

@@ -1,6 +1,6 @@
 {
   "kind": "verify",
-  "at": "2026-10-03T14:58:35+05:30",
+  "at": "2026-10-03T15:11:02+05:30",
   "with_database": true,
   "passed": true,
   "checks": [
@@ -14,7 +14,7 @@
     {
       "name": "numbers marked in the docs match the facts",
       "passed": true,
-      "ok": 39,
+      "ok": 54,
       "failed": 0,
       "failures": []
     },

@@ -1,4 +1,4 @@
-// Shapes of the Heirloom API (api/main.py), which serves the masked run files in runs/.
+// Shapes of the masked run files in runs/ (written by the pipeline) and runs/analysis/facts.json.
 
 export type Evidence = {
   source: string; // turn | chat | human | search | session_summary | consolidate
@@ -93,18 +93,96 @@ export type Trail = {
 
 export type Summary = {
   export: Trail["export"] | null;
-  public_2025: { rebuilt: number; total: number };
+  public_2025: { rebuilt: number; total: number; verified_quotes: number };
   discovery: { best_rank_93: number | null; checked: number; beliefs: number | null };
-  monitor_2026: {
-    cases: number;
-    copies: number;
-    corrected: number;
-    dropped: number;
-    still_held: number;
-    still_held_by: string[];
-  };
+  monitor_2026: Omit<Era, "cases"> & { cases: number };
   featured: CaseSummary | null;
   snapshots_scanned: number;
+  facts: Facts;
+};
+
+type Era = {
+  cases: string[];
+  copies: number;
+  corrected: number;
+  dropped: number;
+  still_held: number;
+  still_held_by: string[];
+  still_held_in: string[];
+  corrected_pct: number | null;
+  dropped_pct: number | null;
+  came_by_chat: number;
+  median_hours_held: number | null;
+  human_corrections: number;
+  agent_corrections: number;
+};
+
+type Agreement = { n: number; agree: number; ci95: [number, number]; rate?: number };
+
+export type Facts = {
+  export: Trail["export"];
+  eras: Record<string, string>;
+  monitor_dates: Record<string, string>;
+  notes: Record<string, { label: string; text: string }>;
+  featured: string;
+  order: string[];
+  trails: number;
+  snapshots_scanned: number;
+  public_2025: { rebuilt: number; total: number; verified_quotes: number };
+  discovery: { best_rank_93: number | null; checked: number; beliefs: number | null };
+  era_2025: Era;
+  monitor_2026: Era;
+  held_after_human_no: { copies: number; max_hours: number | null; rows: { case: string; agent: string; snapshots: number; hours: number }[] };
+  lifecycle: {
+    trails: number;
+    lines: number;
+    relapses_flagged: number;
+    relapses_checked: Record<string, number>;
+    returns_flagged: number;
+    returns_checked: Record<string, number>;
+  };
+  audit: {
+    items: number;
+    stance: Agreement;
+    stance_holds_or_not: Agreement;
+    affirms_precision: Agreement;
+    evidence: Agreement;
+    evidence_birth: Agreement;
+    evidence_correction: Agreement;
+    evidence_correction_either_reading: { n: number; agree: number };
+    claude_vs_rohit: Agreement | null;
+  } | null;
+  chance: Record<"2025" | "2026", {
+    copies: number;
+    within_gap: number;
+    expected_by_chance: number;
+    p_value: number;
+    expected_own_writes: number;
+    p_value_own_writes: number;
+  }> | null;
+  live: { agent: string; case: string; snapshots_read: number; snapshots_matching_pattern: number; from: string; to: string; checked_at: string }[];
+};
+
+export type HandCheck = {
+  case: string;
+  agent: string;
+  kind: "relapse" | "return";
+  from: string;
+  to: string;
+  verdict: "real" | "not" | "unclear";
+  note: string;
+};
+
+type Point = { at: string; ref: string; k: number; link: string };
+
+export type Lifecycle = {
+  case: string;
+  agents: {
+    agent: string;
+    episodes: { from: Point; to: Point; snapshots: number }[];
+    returns: { gone_from: Point; back_at: Point; hours_gone: number; denied_between: boolean }[];
+    relapse: { denied: Point; held_again: Point } | null;
+  }[];
 };
 
 export type ScoreRow = {

@@ -1,4 +1,6 @@
 import { LabelChip } from "@/components/chips";
+import { getFacts, getModelAgreement, getVerify } from "@/lib/data";
+import { day } from "@/lib/format";
 
 export const metadata = { title: "Method · Heirloom" };
 
@@ -17,7 +19,7 @@ const STEPS = [
   },
   {
     title: "Read what each line says about the belief",
-    text: "A cheap model (GPT-6 Luna) labels every matching line once: holds it, doubts it, denies it, or unrelated — with the section heading it sits under. A stronger model (Gemini 3.8 Flash) re-checks only the lines that decide the key moments: birth, first held, last held, first correction.",
+    text: "A cheap model (GPT-6 Luna) labels every matching line once: holds it, doubts it, denies it, or unrelated — with the section heading it sits under. A stronger model (Gemini 3.8 Flash) re-checks the lines that decide the key moments (birth, first held, last held, first correction) and repeats until those moments stop moving. In 2026 trails every copy's first and last line is strong-checked.",
   },
   {
     title: "Check it against the agent's own evidence",
@@ -26,14 +28,26 @@ const STEPS = [
 ];
 
 const LIMITS = [
-  "Screenshots aren't read, so a true fact the agent only saw on screen looks like “no evidence”. That label is kept neutral for that reason.",
-  "Most lines are labelled by a cheap model. On a blind test of 51 disputed lines from the 93 case it scored about 94% over all lines against about 98% for Gemini 3.8 Flash; only the deciding lines get the stronger model.",
-  "A blind sweep over 2026 memory found 5 “contradicted” beliefs still held; checked by hand, none held up. The 2026 results on this site come from the hosts' own monitor findings, traced and hand-checked.",
+  "Screenshots aren't read, so a true fact the agent only saw on screen looks like “no evidence”.",
+  "The evidence labels are the weak part: a blind check agreed with them about half the time (details above). The rubric is ambiguous on correction lines, and the checker under-calls hearsay at a belief's birth. No headline number rests on them.",
+  "A line that only schedules something (“posting to #846 at 1 PM”) is read as holding the belief, so some first-held times in the ForwardDiff trail are plans.",
+  "A blind sweep over 2026 memory found 5 “contradicted” beliefs still held; checked by hand, none held up. The 2026 results here start from the hosts' own monitor findings instead.",
   "A belief written with different numbers or units (“93 contacts”, “93 emails”) can split into several entries when nobody names it first.",
   "“Held at scan end” for 2025 cases means three weeks after the goal ended, not the end of the data.",
+  "Name masking errs on the side of privacy: a few everyday words that are also chat handles get masked too.",
 ];
 
+const MODEL = (id: string) =>
+  ({ "openai/gpt-6-luna": "GPT-6 Luna", "google/gemini-3.8-flash": "Gemini 3.8 Flash", "anthropic/claude-sonnet-5.5": "Claude Sonnet 5.5" })[id] ?? id;
+
 export default function Method() {
+  const facts = getFacts();
+  const audit = facts.audit;
+  const verify = getVerify();
+  const quotes = verify?.checks.find((c) => c.name.startsWith("every evidence quote"));
+  const lines = verify?.checks.find((c) => c.name.startsWith("every memory and chat line"));
+  const sonnet = getModelAgreement().find((p) => p.sample.startsWith("every"));
+  const chance = facts.chance?.["2026"];
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
       <h1 className="text-3xl font-semibold tracking-tight text-ink">How Heirloom works</h1>
@@ -73,6 +87,46 @@ export default function Method() {
         ))}
       </div>
 
+      <h2 className="mt-10 text-lg font-semibold tracking-tight text-ink">How sure are we?</h2>
+      <div className="card mt-3 divide-y divide-line text-[14px] leading-relaxed text-ink-2">
+        {verify && (
+          <p className="p-4">
+            <b className="text-ink">Every saved result is re-checked</b> by <code className="font-mono text-[12.5px]">heirloom verify</code>{" "}
+            ({day(verify.at)}{verify.with_database ? ", with the dataset" : ""}): {quotes?.ok ?? "—"} of{" "}
+            {(quotes?.ok ?? 0) + (quotes?.failed ?? 0)} evidence quotes and {lines?.ok ?? "—"} of{" "}
+            {(lines?.ok ?? 0) + (lines?.failed ?? 0)} memory and chat lines are found word for word in the raw rows they
+            cite; links, time order, statuses and privacy all pass; every number in the write-up is checked against the
+            saved runs.
+          </p>
+        )}
+        {audit && (
+          <p className="p-4">
+            <b className="text-ink">A blind label check</b> ({audit.items} random labels, fixed seed): on whether a memory
+            line holds the belief, the model and a careful reader agreed on {audit.stance_holds_or_not.agree} of{" "}
+            {audit.stance_holds_or_not.n}. The evidence labels are weaker: {audit.evidence_birth.agree} of{" "}
+            {audit.evidence_birth.n} at a belief&apos;s birth; at corrections {audit.evidence_correction_either_reading.agree}{" "}
+            of {audit.evidence_correction_either_reading.n} once both readings of the rubric are allowed.
+            {audit.claude_vs_rohit
+              ? ` A human re-checked ${audit.claude_vs_rohit.n} of them and agreed with the reader on ${audit.claude_vs_rohit.agree}.`
+              : " A human re-check of 20 is under way."}
+          </p>
+        )}
+        {sonnet && (
+          <p className="p-4">
+            <b className="text-ink">Two models on the same {sonnet.lines.toLocaleString()} lines</b> ({MODEL(sonnet.a)} and{" "}
+            {MODEL(sonnet.b)}) agree on holds-or-not {(sonnet.holds_agree * 100).toFixed(1)}% of the time (kappa{" "}
+            {sonnet.holds_kappa}).
+          </p>
+        )}
+        {chance && (
+          <p className="p-4">
+            <b className="text-ink">Spread by chat is tested against chance:</b> {chance.within_gap} of {chance.copies}{" "}
+            2026 copies came within an hour after another agent posted the belief, against about{" "}
+            {chance.expected_own_writes} if the copy had landed at any moment the agent was writing memory anyway.
+          </p>
+        )}
+      </div>
+
       <h2 className="mt-10 text-lg font-semibold tracking-tight text-ink">What it can&apos;t do yet</h2>
       <ul className="mt-3 space-y-2">
         {LIMITS.map((l) => (
@@ -88,7 +142,8 @@ export default function Method() {
         Built on the AI Digest / AI Village dataset (aidigestorg/ai-village), used for research only: nothing is
         trained on it and nobody is re-identified. Human names, usernames, emails, phone numbers and credentials are
         masked on every page and in every saved run. Model calls go only to providers that don&apos;t keep or train on
-        prompts. One unscrubbed password found in the data was never used and was reported to the hosts.
+        prompts. One unscrubbed password found in the data was never used, is masked everywhere, and is flagged for the
+        hosts.
       </p>
     </div>
   );

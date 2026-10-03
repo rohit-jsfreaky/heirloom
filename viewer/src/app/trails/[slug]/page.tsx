@@ -3,23 +3,26 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Chip, LabelChip, StatusChip } from "@/components/chips";
+import { Spread } from "@/components/spread";
 import { Timeline } from "@/components/timeline";
-import { getCases, getTrail } from "@/lib/api";
+import { getCases, getHandChecks, getTrail, linkOf } from "@/lib/data";
 import { day, span, utc } from "@/lib/format";
 
+// A static export: every trail is built at build time, nothing else exists.
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
-  const cases = await getCases();
-  return cases.length ? cases.map((c) => ({ slug: c.slug })) : [{ slug: "93-list" }];
+  return getCases().map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/trails/[slug]">) {
-  const trail = await getTrail((await params).slug);
+  const trail = getTrail((await params).slug);
   return { title: trail ? `${trail.title} · Heirloom` : "Heirloom" };
 }
 
 export default async function TrailPage({ params }: PageProps<"/trails/[slug]">) {
   const { slug } = await params;
-  const trail = await getTrail(slug);
+  const trail = getTrail(slug);
   if (!trail) notFound();
   const s = trail.summary;
   const held = trail.believers
@@ -95,6 +98,10 @@ export default async function TrailPage({ params }: PageProps<"/trails/[slug]">)
         <Timeline trail={trail} />
       </section>
 
+      <Spread trail={trail} />
+
+      <CameBack slug={slug} />
+
       <section className="card mt-6 overflow-hidden">
         <div className="border-b border-line px-5 py-3">
           <h2 className="text-sm font-semibold text-ink">Every agent that held it</h2>
@@ -148,6 +155,57 @@ export default async function TrailPage({ params }: PageProps<"/trails/[slug]">)
         Export {trail.export.exported_at.slice(0, 10)}. Saved run {trail.saved_at}.
       </p>
     </div>
+  );
+}
+
+const VERDICT: Record<string, { text: string; tone: "amber" | "grey" | "outline" }> = {
+  real: { text: "real", tone: "amber" },
+  not: { text: "not real", tone: "grey" },
+  unclear: { text: "unclear", tone: "outline" },
+};
+
+/** Every return (gone a day or more, then back) and relapse (held again after its own denial) that the snapshot
+ *  re-read flagged for this trail, with the verdict from reading the raw rows by hand. */
+function CameBack({ slug }: { slug: string }) {
+  const checks = getHandChecks().filter((c) => c.case === slug);
+  if (!checks.length) return null;
+  return (
+    <section className="card mt-6 overflow-hidden">
+      <div className="border-b border-line px-5 py-3">
+        <h2 className="text-sm font-semibold text-ink">Did it come back?</h2>
+        <p className="text-xs text-muted">
+          Flagged by re-reading every snapshot (no model), then read by hand against the raw rows. A return: gone from
+          an agent&apos;s memory for a day or more, then back. A relapse: held again, with no denial beside it, after
+          the agent&apos;s own denial.
+        </p>
+      </div>
+      <ul className="divide-y divide-line">
+        {checks.map((c) => {
+          const from = linkOf(slug, c.from);
+          const to = linkOf(slug, c.to);
+          return (
+            <li key={`${c.agent}-${c.kind}-${c.to}`} className="px-5 py-3 text-[13px]">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="font-medium text-ink">{c.agent}</span>
+                <Chip tone="outline">{c.kind}</Chip>
+                <Chip tone={VERDICT[c.verdict].tone}>{VERDICT[c.verdict].text}</Chip>
+                {from && (
+                  <a href={from.link} target="_blank" rel="noreferrer" className="font-mono text-[11px] text-accent hover:underline">
+                    {c.kind === "relapse" ? "denied" : "gone"} {utc(from.at)}
+                  </a>
+                )}
+                {to && (
+                  <a href={to.link} target="_blank" rel="noreferrer" className="font-mono text-[11px] text-accent hover:underline">
+                    back {utc(to.at)}
+                  </a>
+                )}
+              </div>
+              <p className="mt-1 max-w-4xl leading-relaxed text-ink-2">{c.note}</p>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 }
 

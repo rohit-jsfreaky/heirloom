@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  tests:
+  pipeline-and-api:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -19,3 +19,19 @@ jobs:
       - name: API tests
         working-directory: api
         run: uv run pytest -q
+
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: viewer/package-lock.json
+      - name: Build the static site from runs/
+        working-directory: viewer
+        run: |
+          npm ci
+          npm run lint
+          npm run build

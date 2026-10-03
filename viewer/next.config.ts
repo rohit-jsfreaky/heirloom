@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Run data only changes when the pipeline is re-run, so pages are cached and prerendered (`'use cache'`).
-  cacheComponents: true,
+  // A static site: every page is built from the saved run files in ../runs (no server, no API). Host the `out`
+  // folder anywhere.
+  output: "export",
+  trailingSlash: true,
 };
 
 export default nextConfig;

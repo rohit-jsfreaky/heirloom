@@ -38,7 +38,7 @@ ahead of time!").
 ## What to submit (FAQ, verbatim)
 "(a) a short write-up / video explaining your project, (b) a link to github repo with your code, and (c) optionally a
 write-up of real results you identified by using your tool."
-- [ ] Short write-up (`docs/WRITEUP.md` → final) **and** a short video
+- [~] Short write-up (`docs/WRITEUP.md` — drafted 3 Oct, numbers checked by `heirloom verify`) **and** a short video (script in WRITEUP.md)
 - [ ] Public GitHub repo (no data files, no keys)
 - [ ] **Real results write-up** — optional, but it is our edge: the 93-list reconstruction + new 2026 findings
 - [ ] Where/how to submit: **not announced yet** — watch Discord `#hackathon-chat` and email; note it here
@@ -60,11 +60,11 @@ verified; if so, he lived that case). Advisor: Daniel
 Kokotajlo. Grove Research: Larissa Schiavo, Deepfates. Possibly Transluce (sharing tooling at the event).
 
 ## Ship checklist (Mon Oct 5, by 6:00 AM IST)
-- [ ] The 93-list trail rebuilds from raw data with one command (`heirloom trail --case 93-list`)
+- [x] The 93-list trail rebuilds from raw data with one command (`heirloom trail --case 93-list`)
 - [ ] The "still alive" list on 2026 data, each item with evidence quotes and live-village links
-- [ ] Every number in the write-up comes from a saved run (`runs/<timestamp>.json`) with the export date
-- [ ] Human names / emails masked everywhere; AI Digest / AI Village cited
-- [ ] README: one-line pitch → what it does → how to run (download + `uv run`) → data terms → results
+- [x] Every number in the write-up comes from a saved run (`runs/<timestamp>.json`) with the export date
+- [x] Human names / emails masked everywhere; AI Digest / AI Village cited
+- [x] README: one-line pitch → what it does → how to run (download + `uv run`) → data terms → results
 - [ ] Repo public, no data, no keys in history
 - [ ] Video recorded (aim ≤ 3 min), write-up + results submitted the way the hosts ask, confirmation saved
 - [ ] HACKATHONS sheet updated (append only)

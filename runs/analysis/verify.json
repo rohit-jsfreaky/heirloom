@@ -1,7 +1,7 @@
 {
   "kind": "verify",
-  "at": "2026-10-03T15:18:34+05:30",
-  "with_database": true,
+  "at": "2026-10-03T15:19:44+05:30",
+  "with_database": false,
   "passed": true,
   "checks": [
     {
@@ -14,7 +14,7 @@
     {
       "name": "numbers marked in the docs match the facts",
       "passed": true,
-      "ok": 61,
+      "ok": 82,
       "failed": 0,
       "failures": []
     },
@@ -50,20 +50,6 @@
       "name": "snapshot-by-snapshot re-read agrees with every trail; hand checks cite flagged items",
       "passed": true,
       "ok": 40,
-      "failed": 0,
-      "failures": []
-    },
-    {
-      "name": "every evidence quote is in the raw row it cites",
-      "passed": true,
-      "ok": 324,
-      "failed": 0,
-      "failures": []
-    },
-    {
-      "name": "every memory and chat line is in the raw snapshot or message it cites",
-      "passed": true,
-      "ok": 773,
       "failed": 0,
       "failures": []
     }

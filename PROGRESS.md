@@ -61,6 +61,8 @@ Read at the start of every session. Update at the end.
   - All 19 copies are strong-confirmed (38 deciding lines re-checked, 0 changed).
   - Not shown false → facts block `discovered`, kept out of the false-belief totals.
   - On the site: home "Found blind" section and Findings #6. Facts now also count `first_hour` per era.
+- **Write-up drafted (3 Oct):** `docs/WRITEUP.md` = submission text + a ~2:50 video script. `verify` checks its numbers
+  (82 doc numbers in total; markers can now index lists: `held_after_human_no.rows.0.hours`).
 - New known limits: `#48213`-style ticket numbers are weak anchors (the "#" prefix collides with the weak marker);
   `#846` (3 digits) is not an anchor at all; the masker over-masks the everyday words "charity" and "user".
 

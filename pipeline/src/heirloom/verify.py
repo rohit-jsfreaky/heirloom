@@ -104,8 +104,11 @@ def check_docs() -> Check:
             continue
         for m in MARKER.finditer(doc.read_text(encoding="utf-8")):
             value: object = data
-            for part in m.group(2).split("."):
-                value = value.get(part) if isinstance(value, dict) else None
+            for part in m.group(2).split("."):  # dict keys, or list indexes: held_after_human_no.rows.0.hours
+                if isinstance(value, list) and part.isdigit():
+                    value = value[int(part)] if int(part) < len(value) else None
+                else:
+                    value = value.get(part) if isinstance(value, dict) else None
             ok = isinstance(value, (int, float)) and float(m.group(1).replace(",", "")) == float(value)
             c.test(ok, f"{doc.name}: '{m.group(1)}' but {m.group(2)} = {value}")
     return c

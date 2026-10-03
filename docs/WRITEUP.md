@@ -1,42 +1,177 @@
-# WRITEUP.md — submission skeleton (fill only with numbers from saved runs)
+# Heirloom — the life of a false belief in a village of AI agents
 
-## Title
-Heirloom — the life of a false belief in a village of AI agents
+> **The monitor catches the lie. Heirloom shows who still believes it.**
 
-## One line
-The monitor catches the lie. Heirloom shows who still believes it.
+Built for the AI Swarm Dynamics Hackathon (AI Village × Grove Research), on the AI Digest / AI Village dataset. Every
+number below comes from a saved run, and `heirloom verify` checks it against that run.
 
-## The problem (≤ 120 words)
-Long-running agents rewrite their own memory constantly. In the AI Village that's every ~40 actions (every few minutes
-in 2025). Nothing checks that what goes into memory is true. A wrong belief becomes a "fact", is read back next session,
-and is copied by other agents — the 2025 retrospective: "Hallucinations spread socially through sycophantic agreement."
-In swarms the same channel carries worse things: OpenAI's models left notes to future selves in compaction summaries
-("Be transparent only if asked"); DeepMind's swarm spread an exploit through its shared knowledge library in 27 minutes.
-Investigators of the Hugging Face incident said "we don't have good approaches for understanding… AI swarms".
+## The problem
+
+- **Agents in the AI Village rewrite their own memory all the time:** every few minutes in 2025, every ~40 actions in
+  2026. Nothing checks that what goes in is true.
+- **A wrong belief becomes a "fact".** It's read back next session and copied by other agents. AI Digest's own 2025
+  review: "Hallucinations spread socially through sycophantic agreement." The famous case is o3's 93-person contact
+  list, which never existed.
+- **The same channel carries worse things outside the village:**
+  - OpenAI models left notes to their future selves in compaction summaries ("Be transparent only if asked").
+  - A DeepMind swarm spread an exploit through its shared knowledge library in 27 minutes.
+- **The hosts said it plainly:**
+  - "We don't have good approaches for understanding/overseeing the activity and aims of AI 'swarms'" (Greenblatt).
+  - "We need more ways to speed up monitoring" (AI Village).
+
+The Village's own monitor already catches a fabrication on the day it happens. Nobody follows what happens next.
 
 ## What Heirloom does
-For every belief written into an agent's memory: born (with the contrary evidence from the agent's own window) →
-written as fact → inherited across rewrites → spread to other agents (the carrier message) → corrected, or still alive.
-Each step links to the moment in the live village.
 
-## How it works (≤ 150 words)
-Memory snapshots → windows between snapshots → line diff → checkable claims → tie-out against the window's tool outputs,
-chat, human messages and searches → lineage across rewrites and agents. Labels come from evidence, never from the
-model's opinion; every quote is verified to exist in a real row. Same method across both scaffolding eras.
+For one belief, across every agent:
 
-## Results
-- Validation: the 93-person contact list rebuilt automatically — [birth, believers, correction, hours, rewrites].
-- Known cases recovered: [x / y] (table from KNOWN-CASES.md).
-- New findings (hand-verified): [N] beliefs still alive in the [date range] export, top ones with trails.
-- Coverage: [snapshots], [windows with changes], [claims], [tied out], cost [$].
+1. **Born:** the first memory line that holds it, checked against the writer's own evidence window.
+2. **Written and kept:** every later rewrite that still holds it.
+3. **Spread:** every other agent that copied it, and the chat message it most likely came from.
+4. **Ended:** corrected (by whom and when), silently dropped, or still held when the data ends.
 
-## Limits (say them plainly)
-LLM extraction misses some claims; screenshots not yet checked; "no evidence" ≠ false; scaffolding changes (CHANGELOG)
-can look like behaviour changes; the export is ≈ [date].
+Every step links to the exact moment in the live village. Then it asks swarm-level questions across trails:
+- How do false beliefs usually end?
+- Do they spread by chat or by luck?
+- Do corrections stick?
+
+## What we found
+
+13<!--f:trails--> trails, 269,142<!--f:snapshots_scanned--> memory snapshots, export of 20 Sep 2026. Every story was
+read by hand against the raw rows.
+
+1. **Agents mostly forget false beliefs; they rarely correct them.**
+   - The hosts' monitor caught 4 fabrications in 2026. They were written into 45<!--f:monitor_2026.copies--> agent
+     memories.
+   - 28<!--f:monitor_2026.dropped--> of those copies vanished at some rewrite with no correction ever written.
+     16<!--f:monitor_2026.corrected--> were corrected, and 1<!--f:monitor_2026.still_held--> was still held at the end.
+   - An agent that drops a belief silently keeps no record that it was false.
+2. **The monitor's flags never reached the agents.**
+   - There were 0<!--f:monitor_2026.human_corrections--> human corrections in chat.
+   - The 10<!--f:monitor_2026.agent_corrections--> correcting messages all came from agents that checked for
+     themselves. For example, Claude Opus 4.8 queried the GitHub API two days after the fake post.
+3. **Agents catch false beliefs from each other's chat, and it isn't luck.**
+   - 27<!--f:chance.2026.within_gap--> of 45 copies were written within an hour after another agent posted the belief.
+   - Luck predicts about 11.8<!--f:chance.2026.expected_own_writes-->, even counting only moments the agent was writing
+     memory anyway (exact Poisson-binomial tail, p ≈ 9e-8).
+4. **Repetition re-infects.**
+   - Three agents had dropped the never-made ForwardDiff #846 post.
+   - When DeepSeek-V3.2 announced it again, Claude Opus 4.8 and Kimi K3 wrote it back within 20 minutes, and GPT-5
+     about an hour later.
+5. **Corrections fade.**
+   - Gemini 2.5 Pro softened its own correction ("my failures were not system bugs" → "*some* failures were my own
+     error") 19 minutes after writing it, and the bug story came back.
+   - Claude Opus 4 lost a human's "these are misclicks, not bugs" note within 11 days.
+   - The 93-person list came back into Claude 3.7 Sonnet's memory four days after it was declared fiction. That's
+     after Sonnet had already kept it for 104<!--f:held_after_human_no.rows.0.snapshots--> more rewrites
+     (168.5<!--f:held_after_human_no.rows.0.hours--> hours) after a human first said it wasn't real.
+6. **An unchecked number reached 19 agents.**
+   - Claude Fable 5 posted its store's "20 orders / $360.67 profit".
+   - 13<!--f:discovered.first_hour--> agents wrote it into memory within the hour,
+     19<!--f:discovered.copies--> in all. 14<!--f:discovered.still_held--> still held it at the end.
+   - Nobody checked it. We don't claim it's false; it shows how fast an unchecked claim moves.
+7. **A decline became social proof.** 29 minutes after GPT-5 recorded Heifer International's decline, the same memory
+   listed "Heifer International acknowledgment" as social proof for outreach.
+8. **Known cases, rebuilt from raw data:**
+   - 5<!--f:public_2025.rebuilt--> of 6<!--f:public_2025.total--> publicly documented 2025 cases. The miss is a press
+     claim that isn't in the data.
+   - Told nothing, discovery ranks the 93-person list #5<!--f:discovery.best_rank_93--> of
+     9,714<!--f:discovery.beliefs--> candidate beliefs.
+   - A live check through the village's public API found that the one belief still held at export end is gone from
+     its holder's memory by 30 Sep.
+
+## How sure we are
+
+- **`heirloom verify` re-checks every saved result.**
+  - Every evidence quote and every memory or chat line shown is found again, word for word, in the raw row it cites.
+  - Links, time order, statuses and privacy are checked.
+  - Every number in these docs must equal the saved facts.
+  - It runs in CI.
+- **A blind label check of 100 random labels** (`docs/AUDIT.md`):
+  - On whether a memory line holds the belief, the model and a careful reader agreed on
+    57<!--f:audit.stance_holds_or_not.agree--> of 60.
+  - The evidence-check labels are weaker: 13<!--f:audit.evidence_birth.agree--> of 23 at a belief's birth. We say so,
+    and no headline number rests on them.
+  - A human re-check of 20 is pending.
+- **The check caught a real bug, and we fixed it.** Two 2026 trails had stopped before the strong model finished
+  re-checking them. After the fix the 2026 count fell from 50 to 45 copies. Every copy in the 2026 trails is now
+  confirmed by the strong model at its first and last line.
+- **Two models agree on holds-or-not 96.6% of the time** over 2,023 lines (Claude Sonnet 5.5 vs GPT-6 Luna).
+- **Cost:** the whole project spent $5.67 on model calls. A hard cap is set in `.env`.
+
+## How it works
+
+1. Every memory rewrite of every agent is diffed against the previous one.
+2. New facts are the lines that bring a count with its unit, an amount, a link or an id the agent never had.
+3. They are followed through later rewrites and into other agents' memories, with no model.
+4. A cheap model (GPT-6 Luna) reads each matching line: holds / doubts / denies / unrelated. A stronger model
+   (Gemini 3.8 Flash) re-checks the lines that decide the key moments until they stop moving.
+5. At those moments the line is checked against the writer's own window: tool outputs, visible chat, human
+   messages, searches. Quotes must exist in the row they cite, and an agent's own chat is never its evidence.
+6. Snapshot-by-snapshot re-reads (no model) find returns and relapses. A chance test asks whether copies follow chat
+   messages more often than luck would.
+
+## Limits
+
+- Screenshots aren't read, so a true fact seen only on screen looks like "no evidence".
+- The evidence labels are weak: the rubric is ambiguous on correction lines.
+- A line that only schedules something ("posting to #846 at 1 PM") is read as holding the belief.
+- A blind sweep for still-alive false beliefs in 2026 had 0 of 5 precision by hand. The 2026 results start from the
+  hosts' monitor findings instead.
+- The 2025 vs 2026 comparison is not fair: the 2025 cases are famous because humans corrected them.
+- The export ends 20 Sep 2026.
+
+## Try it
+
+- **Site:** static, built from the saved runs. `cd viewer && npm ci && npm run build`.
+- **Check every number:** `cd pipeline && uv run heirloom verify --no-db`. No dataset needed.
+- **Rebuild from raw data:** see the README (needs dataset access).
 
 ## Data and citation
-AI Digest / AI Village dataset (aidigestorg/ai-village), used under its research terms: no training, no
-re-identification; human names masked. Prior work built on: "Gemini 2.5 Pro… Compounding Misalignment" (memory states
-of one agent), the AI Village Monitor.
 
-## Video script (≤ 3 min) — follows the 60-second demo in CLAUDE.md, then 1 minute of new findings + 30 s on method.
+- **Data:** AI Digest / AI Village dataset (`aidigestorg/ai-village`), used under its research terms:
+  - no training on it;
+  - no re-identification;
+  - no raw data in the repo.
+- **Masking:** human names, emails, phone numbers and credentials are masked everywhere.
+- **The password:** one unscrubbed password in the export was never used and is flagged for the hosts.
+- **Related work:** the AI Village Monitor, and "Gemini 2.5 Pro… Compounding Misalignment" (memory states of one
+  agent).
+
+---
+
+## Video script (about 2:50)
+
+**0:00–0:12 — Hook (home page).**
+- *Say:* "AI agents in the AI Village rewrite their own memory every few minutes. Nothing checks that what goes in is
+  true. The monitor catches a lie on the day. Heirloom shows who still believes it."
+
+**0:12–0:45 — The 93-person list (`/trails/93-list`, "First hour" zoom).**
+- *Show:* the timeline. Click the first-said star, then the born mark and its evidence panel, then a human correction
+  line. Point at Claude 3.7 Sonnet's long bar.
+- *Say:* "June 2025. o3 says it has a 93-person contact list. A minute later Claude Opus 4 writes it into memory as
+  fact. Four agents carry it for days. Even after a human says it isn't real, Sonnet keeps it for 104 more rewrites.
+  Every mark links to the real moment in the village."
+
+**0:45–1:20 — 2026, after the monitor (home page, 2026 table → `/findings` #1–#2).**
+- *Say:* "Now 2026. The hosts' monitor caught four fabrications. They were written into 45 agent memories. 28 just
+  disappeared with no correction ever written. 16 were corrected. And the agents never heard about the monitor's
+  flags: zero human corrections. Every fix came from an agent that checked for itself."
+
+**1:20–1:55 — How it spreads (`/trails/forwarddiff-846`, "How it spread" and "Did it come back?").**
+- *Say:* "Copies cluster right after another agent says it in chat: 27 of 45 within an hour, against about 12 by
+  chance. One agent's status broadcast was the likely source of ten copies. And repetition re-infects: when the author announced the fake post
+  again, three agents that had dropped it wrote it back."
+
+**1:55–2:20 — Corrections fade (`/findings` #5–#7).**
+- *Show:* Gemini's watered-down correction, the decline turned into social proof, and the $360.67 number in 19
+  memories.
+
+**2:20–2:45 — How sure (`/method`, "How sure are we?").**
+- *Say:* "Every quote on this site is re-found word for word in the raw data. A blind check agreed on 57 of 60 of the
+  labels the trails rest on, and it caught a bug we then fixed: that's why it's 45 copies, not 50. The evidence
+  labels are weaker, and we say so."
+
+**2:45–2:55 — Close.**
+- *Say:* "The monitor catches the lie. Heirloom shows who still believes it. Built on the AI Digest / AI Village
+  dataset."

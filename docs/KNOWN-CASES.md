@@ -108,20 +108,25 @@ and last holding line confirmed by the strong model.
 - **The monitor's flags never reached the agents:** 0<!--f:monitor_2026.human_corrections--> human corrections in
   chat across the four cases; all 10<!--f:monitor_2026.agent_corrections--> correcting chat messages came from
   agents.
-  29<!--f:monitor_2026.came_by_chat--> of the 45 copies arrived with a carrier: another agent's chat message just
+  35<!--f:monitor_2026.came_by_chat--> of the 45 copies arrived with a carrier: another agent's chat message just
   before the copy was written.
 - **Spread by chat is not luck (`heirloom chance` → `runs/analysis/chance.json`, no model).**
   - The test: is a copy written within 60 minutes after another agent's chat message affirming the belief?
-  - 2026: 27<!--f:chance.2026.within_gap--> of 45 copies were. Luck would give
+  - 2026: 33<!--f:chance.2026.within_gap--> of 45 copies were. Luck would give
     4.8<!--f:chance.2026.expected_by_chance--> (copy moved to a random moment of the belief's active period), or
     11.8<!--f:chance.2026.expected_own_writes--> under the stricter test that only uses moments the same agent
-    actually wrote memory (this controls for busy hours). Exact Poisson-binomial tail, p ≈ 9e-8.
+    actually wrote memory (this controls for busy hours). Exact Poisson-binomial tail, p ≈ 4e-14.
   - 2025: 10<!--f:chance.2025.within_gap--> of 21 against 4.2<!--f:chance.2025.expected_own_writes--> under the
     stricter test (p ≈ 0.003).
 - **Live check, 3 Oct (`heirloom live --case forwarddiff-846` → `runs/analysis/live-forwarddiff-846.json`):** Muse
   Spark 1.3's 10 newest memory snapshots on the public village API (30 Sep 16:06 → 2 Oct 19:30 UTC) no longer mention
   ForwardDiff, #846 or Julia at all. Gone, but the API shows only the newest snapshots, so when and how it left is not
   visible. We do not claim "still held today".
+- **Plan lines (3 Oct, `trail.stance_of`, no model):** 14 ForwardDiff lines only schedule the post ("posting to Issue
+  #846 at 1-2 PM PT") and now count as "plan", not holding the belief. Rebuilt for $0.018. Seven agents' first-held
+  moved later, to their first "it was posted" line. Copies and statuses did not change (19: 15 corrected, 3 dropped,
+  1 held), and all 19 are still strong-confirmed. Measured from the real first-held lines, more copies follow a chat
+  message within the hour (see the chance test below).
 - **Why stance matters:** a plain text search says 9 agents still mention #846 in their final memory; the stance
   step shows 8 of them carry the *correction* and only Muse Spark still holds the belief.
 - **Same fabrication signature 14 months apart:** the fake 2026 hash ends "…b7c9d0e1f2a3b4c5d6e7"; the fake 2025
@@ -129,8 +134,11 @@ and last holding line confirmed by the strong model.
 - **Twist (excluded from the counts):** the later "357/358/359" memory lines are about a *real* result — Claude Opus
   5 genuinely disproved conjectures 358 and 359 on 20 Aug; 357 is TRUE (Opus 5's 29 Jul calibration). DeepSeek's
   July fabrication was partly made true three weeks later.
-- Labels at first-held for ForwardDiff (GPT-6 Luna, with the belief as the "part to judge"): hearsay 10,
-  contradicted 5, no_evidence 4.
+- Labels at first-held for ForwardDiff (GPT-6 Luna, with the belief as the "part to judge"; rebuilt 3 Oct with the plan
+  rule): hearsay 16, no_evidence 3. These are the model's reading; see `docs/AUDIT.md` on how weak evidence labels are.
+- Likely sources (the last affirming message before each copy): DeepSeek-V3.2's "posting NOW" (20:00:39 UTC) and
+  Claude Haiku 4.5's "posting LIVE" status broadcast (20:01:09) came just before 18 of the 19 copies. The two are 30
+  seconds apart, so which one gets the credit is close to arbitrary.
 
 ## Lifecycle — beliefs that came back (3 Oct, `heirloom lifecycle` → `runs/analysis/lifecycle-*.json`, no model)
 Every saved trail re-read snapshot by snapshot with its own stored labels: 8,020<!--f:lifecycle.lines--> matched

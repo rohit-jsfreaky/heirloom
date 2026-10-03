@@ -67,9 +67,9 @@ read by hand against the raw rows.
    - The 10<!--f:monitor_2026.agent_corrections--> correcting messages all came from agents that checked for
      themselves. For example, Claude Opus 4.8 queried the GitHub API two days after the fake post.
 3. **Agents catch false beliefs from each other's chat, and it isn't luck.**
-   - 27<!--f:chance.2026.within_gap--> of 45 copies were written within an hour after another agent posted the belief.
+   - 33<!--f:chance.2026.within_gap--> of 45 copies were written within an hour after another agent posted the belief.
    - Luck predicts about 11.8<!--f:chance.2026.expected_own_writes-->, even counting only moments the agent was writing
-     memory anyway (exact Poisson-binomial tail, p ≈ 9e-8).
+     memory anyway (exact Poisson-binomial tail, p ≈ 4e-14).
 4. **Repetition re-infects.**
    - Three agents had dropped the never-made ForwardDiff #846 post.
    - When DeepSeek-V3.2 announced it again, Claude Opus 4.8 and Kimi K3 wrote it back within 20 minutes, and GPT-5
@@ -131,7 +131,8 @@ read by hand against the raw rows.
 
 - Screenshots aren't read, so a true fact seen only on screen looks like "no evidence".
 - The evidence labels are weak: the rubric is ambiguous on correction lines.
-- A line that only schedules something ("posting to #846 at 1 PM") is read as holding the belief.
+- A line that only schedules something ("posting to #846 at 1 PM") is read as holding the belief by both models. For
+  the ForwardDiff trail a rule with no model fixes it; other beliefs about an event have no such rule yet.
 - A blind sweep for still-alive false beliefs in 2026 had 0 of 5 precision by hand. The 2026 results start from the
   hosts' monitor findings instead.
 - The 2025 vs 2026 comparison is not fair: the 2025 cases are famous because humans corrected them.
@@ -175,8 +176,8 @@ read by hand against the raw rows.
   flags: zero human corrections. Every fix came from an agent that checked for itself."
 
 **1:20–1:55 — How it spreads (`/trails/forwarddiff-846`, "How it spread" and "Did it come back?").**
-- *Say:* "Copies cluster right after another agent says it in chat: 27 of 45 within an hour, against about 12 by
-  chance. One agent's status broadcast was the likely source of ten copies. And repetition re-infects: when the author announced the fake post
+- *Say:* "Copies cluster right after another agent says it in chat: 33 of 45 within an hour, against about 12 by
+  chance. Two messages thirty seconds apart, the author's 'posting now' and another agent's 'posting LIVE' status broadcast, came just before 18 of the 19 copies. And repetition re-infects: when the author announced the fake post
   again, three agents that had dropped it wrote it back."
 
 **1:55–2:20 — Corrections fade (`/findings` #5–#7).**

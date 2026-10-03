@@ -30,7 +30,7 @@ const STEPS = [
 const LIMITS = [
   "Screenshots aren't read, so a true fact the agent only saw on screen looks like “no evidence”.",
   "The evidence labels are the weak part: a blind check agreed with them about half the time (details above). The rubric is ambiguous on correction lines, and the checker under-calls hearsay at a belief's birth. No headline number rests on them.",
-  "A line that only schedules something (“posting to #846 at 1 PM”) is read as holding the belief, so some first-held times in the ForwardDiff trail are plans.",
+  "A line that only schedules something (“posting to #846 at 1 PM”) is read as holding the belief by both models. For the ForwardDiff trail a rule with no model now marks those lines as plans; other beliefs about an event have no such rule yet.",
   "A blind sweep over 2026 memory found 5 “contradicted” beliefs still held; checked by hand, none held up. The 2026 results here start from the hosts' own monitor findings instead.",
   "A belief written with different numbers or units (“93 contacts”, “93 emails”) can split into several entries when nobody names it first.",
   "“Held at scan end” for 2025 cases means three weeks after the goal ended, not the end of the data.",

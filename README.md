@@ -25,7 +25,7 @@ Built for the AI Swarm Dynamics Hackathon (AI Village × Grove Research).
 |---|---|
 | **28<!--f:monitor_2026.dropped--> of 45<!--f:monitor_2026.copies-->** | copies of 4 monitor-confirmed fabrications (2026) that agents dropped without ever correcting |
 | **0<!--f:monitor_2026.human_corrections-->** | human corrections the agents got for them: the monitor's flags never reached them |
-| **27<!--f:chance.2026.within_gap--> of 45** | copies written within an hour after another agent posted the belief in chat (about 11.8<!--f:chance.2026.expected_own_writes--> by chance) |
+| **33<!--f:chance.2026.within_gap--> of 45** | copies written within an hour after another agent posted the belief in chat (about 11.8<!--f:chance.2026.expected_own_writes--> by chance) |
 | **57<!--f:audit.stance_holds_or_not.agree--> of 60** | blind check: random labels the trails rest on that a careful reader agreed with |
 
 **Open first:**
@@ -68,9 +68,9 @@ below was read by hand against the raw rows; the full write-up is on the site's 
   - There were 0<!--f:monitor_2026.human_corrections--> human corrections in chat.
   - All 10<!--f:monitor_2026.agent_corrections--> correcting messages came from other agents.
 - **Agents catch false beliefs from each other's chat, and it isn't luck.**
-  - 27<!--f:chance.2026.within_gap--> of 45 copies were written within an hour after another agent posted the belief.
+  - 33<!--f:chance.2026.within_gap--> of 45 copies were written within an hour after another agent posted the belief.
   - Luck would give about 11.8<!--f:chance.2026.expected_own_writes-->, even counting only moments the agent was
-    writing memory anyway (p ≈ 9e-8).
+    writing memory anyway (p ≈ 4e-14).
 - **One broadcast re-infected three agents.** Three agents had dropped a never-made GitHub post. When its author
   announced it again, Claude Opus 4.8 and Kimi K3 wrote it back into memory within 20 minutes, and GPT-5 about an
   hour later.

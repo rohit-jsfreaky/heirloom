@@ -16,11 +16,11 @@
     },
     "2026": {
       "copies": 45,
-      "within_gap": 27,
+      "within_gap": 33,
       "expected_by_chance": 4.8,
-      "p_value": 4.4556608099847876e-17,
+      "p_value": 8.711003325674465e-26,
       "expected_own_writes": 11.8,
-      "p_value_own_writes": 9.344197565669223e-08
+      "p_value_own_writes": 3.557410836140056e-14
     }
   },
   "cases": {
@@ -304,9 +304,9 @@
     {
       "case": "forwarddiff-846",
       "agent": "Claude Haiku 4.5",
-      "first_held": "2026-09-16 19:31:41.743198",
-      "gap_minutes": null,
-      "within": false,
+      "first_held": "2026-09-16 20:23:36.140134",
+      "gap_minutes": 22.9,
+      "within": true,
       "p_null": 0.1303,
       "p_null_own_writes": 0.3509,
       "own_writes": 57
@@ -354,9 +354,9 @@
     {
       "case": "forwarddiff-846",
       "agent": "Gemini 3.1 Pro",
-      "first_held": "2026-09-16 19:28:49.004871",
-      "gap_minutes": null,
-      "within": false,
+      "first_held": "2026-09-16 20:04:05.132080",
+      "gap_minutes": 2.9,
+      "within": true,
       "p_null": 0.1303,
       "p_null_own_writes": 0.3585,
       "own_writes": 106
@@ -364,9 +364,9 @@
     {
       "case": "forwarddiff-846",
       "agent": "Kimi K2.6",
-      "first_held": "2026-09-16 19:10:14.712320",
-      "gap_minutes": null,
-      "within": false,
+      "first_held": "2026-09-16 20:10:06.632175",
+      "gap_minutes": 8.9,
+      "within": true,
       "p_null": 0.1303,
       "p_null_own_writes": 0.3958,
       "own_writes": 48
@@ -374,9 +374,9 @@
     {
       "case": "forwarddiff-846",
       "agent": "Claude Opus 4.8",
-      "first_held": "2026-09-16 19:12:44.413959",
-      "gap_minutes": null,
-      "within": false,
+      "first_held": "2026-09-16 20:09:28.536161",
+      "gap_minutes": 8.3,
+      "within": true,
       "p_null": 0.1303,
       "p_null_own_writes": 0.3333,
       "own_writes": 57
@@ -394,9 +394,9 @@
     {
       "case": "forwarddiff-846",
       "agent": "DeepSeek-V4-Pro",
-      "first_held": "2026-09-16 19:11:33.809052",
-      "gap_minutes": null,
-      "within": false,
+      "first_held": "2026-09-16 20:21:45.499421",
+      "gap_minutes": 20.6,
+      "within": true,
       "p_null": 0.1303,
       "p_null_own_writes": 0.4038,
       "own_writes": 52
@@ -404,8 +404,8 @@
     {
       "case": "forwarddiff-846",
       "agent": "GLM-5.2",
-      "first_held": "2026-09-16 20:02:48.457315",
-      "gap_minutes": 1.6,
+      "first_held": "2026-09-16 20:26:30.837006",
+      "gap_minutes": 25.4,
       "within": true,
       "p_null": 0.1303,
       "p_null_own_writes": 0.3333,
@@ -444,9 +444,9 @@
     {
       "case": "forwarddiff-846",
       "agent": "GLM-5.3 Flash",
-      "first_held": "2026-09-16 19:11:34.146195",
-      "gap_minutes": null,
-      "within": false,
+      "first_held": "2026-09-16 20:15:57.409217",
+      "gap_minutes": 14.8,
+      "within": true,
       "p_null": 0.1303,
       "p_null_own_writes": 0.3571,
       "own_writes": 42

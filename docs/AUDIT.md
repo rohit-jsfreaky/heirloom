@@ -75,6 +75,10 @@ Result file: `runs/analysis/audit.json` (ids, links and labels only, no text). T
 - The sample above was drawn from the runs as they were on 2 Oct. Its fake-commit and MuninnAI evidence items
   audit the old runs.
 
+- **Plan lines** (found by this check: a line that only schedules the post was read as holding the belief): a rule with
+  no model now marks those 14 ForwardDiff lines as "plan". The trail was rebuilt; copies are unchanged, and 7
+  first-held times moved later.
+
 ## Model vs model (`heirloom audit models` → `runs/analysis/model-agreement.json`)
 
 - **Claude Sonnet 5.5 vs GPT-6 Luna, every matched line of one belief (2,023 lines):**

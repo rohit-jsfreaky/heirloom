@@ -51,7 +51,7 @@ Read at the start of every session. Update at the end.
     Build: `cd viewer && npm ci && npm run build` → `out/`. Serve: `python -m http.server 3000 -d out`.
   - New **/findings** page: 7 hand-checked findings with village links, the still-held list, and the live check.
   - Trail pages gained **How it spread** (who-passed-it-to-whom tree from carrier messages; Claude Haiku 4.5's status
-    broadcast is the likely source of 10 of 19 ForwardDiff copies) and **Did it come back?** (hand-check verdicts).
+    broadcast and DeepSeek's own message, 30 s apart, came just before 18 of 19 ForwardDiff copies after the plan rule) and **Did it come back?** (hand-check verdicts).
   - Home stats and Method "How sure are we?" read facts / verify / audit / model-agreement.
   - Root **README.md** with screenshots (`docs/screenshots/`) and 54 doc numbers checked by verify; `.env.example`.
   - CI: a new `site` job (npm ci, lint, build).
@@ -73,6 +73,10 @@ Read at the start of every session. Update at the end.
     the same function. Test added (34 tests).
   - Dry run: copies stay 19 (15/3/1); 7 agents' first-held moves later; the rebuild needs ~$0.03 (7 strong re-checks,
     7 new evidence checks, masking). **Waiting on Rohit's OK.** Until then the saved forwarddiff run predates the rule.
+- **Plan-rule rebuild done (3 Oct, $0.018; spend $5.69 of $6.00):**
+  - forwarddiff-846 rebuilt: still 19 copies (15/3/1), all strong-confirmed; 7 first-held times moved later.
+  - Chance test 2026: **33/45** within an hour (was 27), vs 11.8 expected (p ≈ 4e-14). came_by_chat 35/45.
+  - Docs updated; verify checks 88 numbers. Video script line reworded (two messages 30 s apart, 18 of 19 copies).
 - New known limits: `#48213`-style ticket numbers are weak anchors (the "#" prefix collides with the weak marker);
   `#846` (3 digits) is not an anchor at all; the masker over-masks the everyday words "charity" and "user".
 

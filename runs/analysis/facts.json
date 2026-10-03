@@ -1,6 +1,6 @@
 {
   "kind": "facts",
-  "computed_at": "2026-10-03T09:47:55+00:00",
+  "computed_at": "2026-10-03T11:20:03+00:00",
   "export": {
     "exported_at": "2026-09-20 13:05:12.097000",
     "revision": "838b4150303ca8228e8edb432d8b8ccae353d258",
@@ -177,15 +177,15 @@
     "corrected_pct": 36,
     "dropped_pct": 62,
     "said_it_first": 3,
-    "first_hour": 19,
-    "came_by_chat": 29,
+    "first_hour": 13,
+    "came_by_chat": 35,
     "median_hours_held": 16.4,
-    "max_hours_held": 48.3,
+    "max_hours_held": 47.4,
     "median_rewrites_survived": 17,
     "birth_labels": {
-      "contradicted": 8,
-      "hearsay": 19,
-      "no_evidence": 7,
+      "contradicted": 3,
+      "hearsay": 25,
+      "no_evidence": 6,
       "not checked": 11
     },
     "human_corrections": 0,
@@ -343,11 +343,11 @@
     },
     "2026": {
       "copies": 45,
-      "within_gap": 27,
+      "within_gap": 33,
       "expected_by_chance": 4.8,
-      "p_value": 4.4556608099847876e-17,
+      "p_value": 8.711003325674465e-26,
       "expected_own_writes": 11.8,
-      "p_value_own_writes": 9.344197565669223e-08
+      "p_value_own_writes": 3.557410836140056e-14
     }
   },
   "model_agreement": [

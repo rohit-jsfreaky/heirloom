@@ -5,14 +5,20 @@ Read at the start of every session. Update at the end.
 ## Final push (4 Oct 2026, evening; hard freeze 3:00 AM IST 5 Oct; $0 model spend)
 - **Step 1 done:** the false "Other tools check a claim at one moment" line is replaced everywhere (README, WRITEUP,
   home page) by the real edge: other tools trace where a claim came from; Heirloom shows what happens to it inside
-  memory (most 2026 copies silently forgotten, some came back). Video link placeholder `[ADD VIDEO LINK]` in README
-  and WRITEUP. "Limits" block in README. Heifer finding: outside confirmation line (other entry not named).
+  memory (most 2026 copies silently forgotten, some came back). Video link (https://youtu.be/plHSidj_YVQ) in README and WRITEUP
+  (placeholder until 5 Oct 00:40). "Limits" block in README. Heifer finding: outside confirmation line (other entry not named).
   The video still says the old line aloud (segment H, ~2:04–2:10).
 - **Step 3 done:** `/verify` page ("Check it" in the header, linked from home, README, WRITEUP). Shows every
   `heirloom verify` check from `runs/analysis/verify.json`; re-hashes every `runs/**/*.json` in the browser (Web
   Crypto SHA-256) against `public/results/manifest.json`, written before every build by `viewer/scripts/results.mjs`
   (`prebuild`/`predev`). Hashes are of the LF (git) bytes: checked equal to `git show HEAD:<file> | sha256sum`.
   Tamper switch flips one bit of facts.json → "1 of N changed". Tested headless (desktop + 390 px phone).
+- **Video fixed (5 Oct, ~00:30 IST, $0):** segment H re-voiced with the cloned voice ("Other tools trace where a
+  claim came from. Heirloom shows what happens to it inside the agents' memory."; picks h1-v1, h2-v3, transcribed
+  word for word) and the README shot re-filmed from the pushed README (`heirloom-video/recorder/record_h.js` →
+  `out-h/`, scrolled so the `[ADD VIDEO LINK]` line is out of frame, the edge line highlighted). Rebuilt
+  `heirloom-video.mp4`: 2:27.2, -18.1 LUFS; the old cut is kept as `heirloom-video.before-h.mp4`. WRITEUP's video
+  script, VOICEOVER.md and VIDEO-SCRIPT.md now quote the new line.
 - **Step 2:** `heirloom population [--era 2025|2026]` (`population.py`) → `runs/analysis/population-<era>.json`
   (ids, agent names, times, counts; no text). Whole-village numbers, no model, beliefs in general (true or false).
   - 2025 = exactly the discover scan: today's parser finds 9,524 candidates (the 2 Oct run's 9,714 still read units

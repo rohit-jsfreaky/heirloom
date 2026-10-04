@@ -40,6 +40,9 @@ export default function Home() {
         <Link href="/verify" className="ml-6 mt-5 inline-flex items-center gap-2 text-[14px] font-medium text-accent hover:underline">
           Check it in your browser <ArrowRight size={15} />
         </Link>
+        <a href="https://youtu.be/plHSidj_YVQ" className="ml-6 mt-5 inline-flex items-center gap-2 text-[14px] font-medium text-accent hover:underline">
+          Watch the 2:27 video <ArrowSquareOut size={15} />
+        </a>
       </section>
 
       <section className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

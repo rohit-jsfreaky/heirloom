@@ -2,7 +2,7 @@
 
 > **The monitor catches the lie. Heirloom shows who still believes it.**
 
-**Live site:** https://heirloom-jet-sigma.vercel.app/ · **Video (2:27):** [ADD VIDEO LINK] · **Repo:** https://github.com/rohit-jsfreaky/heirloom · **Check it in your browser:** https://heirloom-jet-sigma.vercel.app/verify/
+**Live site:** https://heirloom-jet-sigma.vercel.app/ · **Video (2:27):** https://youtu.be/plHSidj_YVQ · **Repo:** https://github.com/rohit-jsfreaky/heirloom · **Check it in your browser:** https://heirloom-jet-sigma.vercel.app/verify/
 
 Built for the AI Swarm Dynamics Hackathon (AI Village × Grove Research), on the AI Digest / AI Village dataset. Every
 number below comes from a saved run, and `heirloom verify` checks it against that run.

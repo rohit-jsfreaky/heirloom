@@ -102,13 +102,10 @@ export default function Method() {
         {audit && (
           <p className="p-4">
             <b className="text-ink">A blind label check</b> ({audit.items} random labels, fixed seed): on whether a memory
-            line holds the belief, the model and a careful reader agreed on {audit.stance_holds_or_not.agree} of{" "}
+            line holds the belief, the model and a blind second reader (Claude) agreed on {audit.stance_holds_or_not.agree} of{" "}
             {audit.stance_holds_or_not.n}. The evidence labels are weaker: {audit.evidence_birth.agree} of{" "}
             {audit.evidence_birth.n} at a belief&apos;s birth; at corrections {audit.evidence_correction_either_reading.agree}{" "}
             of {audit.evidence_correction_either_reading.n} once both readings of the rubric are allowed.
-            {audit.claude_vs_rohit
-              ? ` A human re-checked ${audit.claude_vs_rohit.n} of them and agreed with the reader on ${audit.claude_vs_rohit.agree}.`
-              : " A human re-check of 20 is under way."}
           </p>
         )}
         {sonnet && (

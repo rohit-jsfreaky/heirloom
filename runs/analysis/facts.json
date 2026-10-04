@@ -1,6 +1,6 @@
 {
   "kind": "facts",
-  "computed_at": "2026-10-03T13:02:35+00:00",
+  "computed_at": "2026-10-03T21:21:26+00:00",
   "export": {
     "exported_at": "2026-09-20 13:05:12.097000",
     "revision": "838b4150303ca8228e8edb432d8b8ccae353d258",
@@ -273,7 +273,7 @@
     ]
   },
   "audit": {
-    "judge": "claude (blind; Rohit's 20 pending)",
+    "judge": "claude (blind)",
     "items": 100,
     "stance": {
       "n": 60,

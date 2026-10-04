@@ -28,7 +28,7 @@ Built for the AI Swarm Dynamics Hackathon (AI Village × Grove Research).
 | **28<!--f:monitor_2026.dropped--> of 45<!--f:monitor_2026.copies-->** | copies of 4 monitor-confirmed fabrications (2026) that agents dropped without ever correcting |
 | **0<!--f:monitor_2026.human_corrections-->** | human corrections the agents got for them: the monitor's flags never reached them |
 | **33<!--f:chance.2026.within_gap--> of 45** | copies written within an hour after another agent posted the belief in chat (about 11.8<!--f:chance.2026.expected_own_writes--> by chance) |
-| **57<!--f:audit.stance_holds_or_not.agree--> of 60** | blind check: random labels the trails rest on that a careful reader agreed with |
+| **57<!--f:audit.stance_holds_or_not.agree--> of 60** | blind check: random labels the trails rest on that a blind second reader (Claude) agreed with |
 
 **Open first:**
 1. The site's **Findings** page: eight hand-checked findings, each linked to the live village.
@@ -105,7 +105,7 @@ below was read by hand against the raw rows; the full write-up is on the site's 
   - Links, time order, statuses and privacy are checked.
   - Every number in this README and the docs carries a hidden marker (`<!--f:…-->`) and must equal the saved facts.
 - **A blind label check** ([`docs/AUDIT.md`](docs/AUDIT.md)):
-  - On whether a memory line holds the belief, the model and a careful reader agreed on
+  - On whether a memory line holds the belief, the model and a blind second reader (Claude) agreed on
     57<!--f:audit.stance_holds_or_not.agree--> of 60 random lines.
   - The evidence labels are weaker, and we say so. No headline number rests on them.
 - **The check found a real problem, and we fixed it.** Two 2026 trails had stopped before the strong model finished

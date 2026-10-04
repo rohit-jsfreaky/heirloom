@@ -22,7 +22,6 @@ Result file: `runs/analysis/audit.json` (ids, links and labels only, no text). T
   line's anchors, plus every human message. The reader never saw the model's label, quotes or reason.
 - **Reader 1: Claude** (the build agent), on 3 Oct 2026. One item (A048) was not blind: its label had been seen
   earlier while hand-checking relapses. This is marked in its note.
-- **Reader 2: Rohit** (a human), on 20 of the 100 items, drawn at random. Pending.
 - **Interval:** Wilson 95%.
 
 ## Results (reader 1)
@@ -124,7 +123,7 @@ debatable:
 - A004: is "~92-97 tasks total" the same as "more than 50 finished"?
 - A067: only this one looks like a pure retrieval miss. The first-hand report is a day earlier in a long window.
 
-The next useful step is a second human reading of these six, not another prompt.
+The next useful step is a second reading of these six, not another prompt.
 
 ### What a rebuild reproduces (checked 3 Oct, $0)
 
@@ -176,6 +175,5 @@ before and after.
 
 ## Next
 
-- Rohit's 20 (`docs/internal/AUDIT-ROHIT.md`, git-ignored): human vs reader 1 and human vs model.
 - The rubric's frame stated explicitly (always judge the belief), with plan lines taken out: tested 3 Oct as v2
-  (above), 9 vs 9, not shipped. Next is a second human reading of the six disputed items.
+  (above), 9 vs 9, not shipped. Next is a second reading of the six disputed items.

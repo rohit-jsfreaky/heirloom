@@ -104,11 +104,10 @@ read by hand against the raw rows.
   - Every number in these docs must equal the saved facts.
   - It runs in CI.
 - **A blind label check of 100 random labels** (`docs/AUDIT.md`):
-  - On whether a memory line holds the belief, the model and a careful reader agreed on
+  - On whether a memory line holds the belief, the model and a blind second reader (Claude) agreed on
     57<!--f:audit.stance_holds_or_not.agree--> of 60.
   - The evidence-check labels are weaker: 13<!--f:audit.evidence_birth.agree--> of 23 at a belief's birth. We say so,
     and no headline number rests on them.
-  - A human re-check of 20 is pending.
 - **The check caught a real bug, and we fixed it.** Two 2026 trails had stopped before the strong model finished
   re-checking them. After the fix the 2026 count fell from 50 to 45 copies. Every copy in the 2026 trails is now
   confirmed by the strong model at its first and last line.

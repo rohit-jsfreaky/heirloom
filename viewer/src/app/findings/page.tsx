@@ -141,7 +141,7 @@ export default function Findings() {
           {f.audit && (
             <li>
               The labels the trails rest on were checked blind: whether a memory line holds the belief or not, the model
-              and a careful reader agreed on {f.audit.stance_holds_or_not.agree} of {f.audit.stance_holds_or_not.n}{" "}
+              and a blind second reader (Claude) agreed on {f.audit.stance_holds_or_not.agree} of {f.audit.stance_holds_or_not.n}{" "}
               random lines. The evidence labels are weaker; see <Link href="/method" className="text-accent hover:underline">Method</Link>.
             </li>
           )}

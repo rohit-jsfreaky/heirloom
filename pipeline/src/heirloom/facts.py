@@ -182,7 +182,7 @@ def audit_summary(audit: dict) -> dict | None:
     rows = [x for x in audit["items"] if x["kind"] == "tieout" and x["role"] == "first_denial"]
     either = sum(1 for x in rows if x["model_label"] in (x.get("claude_label"), x.get("claude_firstpass_label")))
     return {
-        "judge": "claude (blind; Rohit's 20 pending)",
+        "judge": "claude (blind)",
         "items": claude["all"]["n"],
         "stance": {k: claude["stance"][k] for k in ("n", "agree", "ci95")},
         "stance_holds_or_not": claude["stance_holds_or_not"],

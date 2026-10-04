@@ -2,6 +2,42 @@
 
 Read at the start of every session. Update at the end.
 
+## Final push (4 Oct 2026, evening; hard freeze 3:00 AM IST 5 Oct; $0 model spend)
+- **Step 1 done:** the false "Other tools check a claim at one moment" line is replaced everywhere (README, WRITEUP,
+  home page) by the real edge: other tools trace where a claim came from; Heirloom shows what happens to it inside
+  memory (most 2026 copies silently forgotten, some came back). Video link placeholder `[ADD VIDEO LINK]` in README
+  and WRITEUP. "Limits" block in README. Heifer finding: outside confirmation line (other entry not named).
+  The video still says the old line aloud (segment H, ~2:04–2:10).
+- **Step 3 done:** `/verify` page ("Check it" in the header, linked from home, README, WRITEUP). Shows every
+  `heirloom verify` check from `runs/analysis/verify.json`; re-hashes every `runs/**/*.json` in the browser (Web
+  Crypto SHA-256) against `public/results/manifest.json`, written before every build by `viewer/scripts/results.mjs`
+  (`prebuild`/`predev`). Hashes are of the LF (git) bytes: checked equal to `git show HEAD:<file> | sha256sum`.
+  Tamper switch flips one bit of facts.json → "1 of N changed". Tested headless (desktop + 390 px phone).
+- **Step 2:** `heirloom population [--era 2025|2026]` (`population.py`) → `runs/analysis/population-<era>.json`
+  (ids, agent names, times, counts; no text). Whole-village numbers, no model, beliefs in general (true or false).
+  - 2025 = exactly the discover scan: today's parser finds 9,524 candidates (the 2 Oct run's 9,714 still read units
+    like "4 has" as facts; shown by diffing its top 150 ids). Scan 2 min, lifetime pass 4 min (cached in data/).
+  - 1,220 (12.8%) spread; 800 of 1,519 copies within 1 h after another agent's chat vs 495.1 by the strict own-writes
+    null (p ≈ 3e-219); median 0.4 h held; 99.7% gone by the agent's last snapshot; 574 (5.2%) came back (strict:
+    gone ≥ 1 h, returning line is the same fact).
+  - Hand-read: 3 within-hour copies were real chat → memory copies; 2 of 4 strict returns were clearly the same fact,
+    2 the same words in a new context → published as an upper bound. Lifetimes agree with the scan's own lineage on
+    all 11,039 holdings.
+  - facts.json `population.<era>`; verify `check_population` re-adds every number from the rows and rejects any
+    extra (text) field; 5 tests. README "Across the whole village", Findings page section, WRITEUP finding 9,
+    judge table row.
+  - 2026 era: the whole era (24 Mar on, ~130k snapshots, 4.7 GB of text) was too big for the laptop's RAM with
+    this scan (first run killed by the system; second stopped at Rohit's OK). Shipped: the last 8 weeks (25 Jul–20
+    Sep, 32 agents, 14 days of earlier memory), ~1 h: 240,758 beliefs; 23,327 (9.7%) spread, max 19 agents;
+    29,562 of 49,009 copies within 1 h after chat vs 12,204.1 by chance (p underflows to 0 → "below 1e-300");
+    median 0.9 h held; 99.0% gone; 11,223 (3.9%) came back. Hand-read: copies are real (demo URL, SHA-256 copied
+    minutes after chat); most 2026 "facts" are working artefacts (links, hashes, file names, titles).
+  - Rows saved column-wise, gzipped (`population-<era>-rows.json.gz`, 2026 = 9.4 MB; plain JSON was 109 MB, over
+    GitHub's limit). Re-running 2025 from cache gives byte-identical files. Verify allows the 0.1-min rounding of
+    a saved gap (2 copies at "60.0" min were really a few seconds over the hour).
+  - The /verify page hashes the .gz rows too (52 files).
+  - Caches in data/: population_scan_*.pkl, population_presence_*.pkl (the 520 MB full-2026 scan cache is unused).
+
 ## Now (3 Oct 2026)
 - **Read `docs/internal/COMPETITION-AND-PLAN.md` first.** It has the rival teams, our top-5 ranking, and the plan to
   raise each score (Rigor, Findings, Fit, Novelty, Build), with item IDs (R1–R5, F1–F6, T1–T3, N1–N3, B1–B4), costs

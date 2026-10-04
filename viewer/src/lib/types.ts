@@ -162,7 +162,35 @@ export type Facts = {
     expected_own_writes: number;
     p_value_own_writes: number;
   }> | null;
+  population: Record<string, Population>;
   live: { agent: string; case: string; snapshots_read: number; snapshots_matching_pattern: number; from: string; to: string; checked_at: string }[];
+};
+
+export type Population = {
+  beliefs: number;
+  agents: number;
+  spread: { beliefs: number; pct: number; copies: number; mean_other_agents: number; max_other_agents: number };
+  chat_timing: {
+    copies: number;
+    within_gap: number;
+    within_pct: number;
+    expected_own_writes: number;
+    expected_pct: number;
+    no_chat_before: number;
+    p_value_own_writes: number;
+  };
+  lifetime: {
+    holdings: number;
+    gone_for_good_pct: number;
+    came_back: number;
+    came_back_pct: number;
+    median_hours_held: number;
+    held_over_a_day_pct: number;
+    copies: number;
+    copies_gone_for_good_pct: number;
+    copies_came_back: number;
+    copies_median_hours_held: number;
+  };
 };
 
 export type HandCheck = {

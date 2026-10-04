@@ -1,0 +1,59 @@
+{
+ "kind": "population",
+ "what": "every candidate belief discover finds (true or false: no model labels truth here)",
+ "era": "2025",
+ "agents": 6,
+ "discover_run": "20261002T113934Z-discover-2025-05-12.json",
+ "discover_run_beliefs": 9714,
+ "scan": {
+  "from": "2025-05-12 18:00:00",
+  "to": "2025-07-10 12:00:00",
+  "history_from": "2025-04-01 18:00:00"
+ },
+ "export": {
+  "exported_at": "2026-09-20 13:05:12.097000",
+  "revision": "838b4150303ca8228e8edb432d8b8ccae353d258",
+  "source": "AI Digest / AI Village dataset (aidigestorg/ai-village)"
+ },
+ "gap_minutes": 60.0,
+ "null_own_writes": "copy time = any moment the same agent wrote memory while the belief was active (its birth or first chat mention, to its last holding line in the scan)",
+ "chat": "agent chat messages whose own anchors include the belief's anchor (same parser as memory lines)",
+ "lifetime_horizon": "each holder's memory read to its last snapshot in the export",
+ "summary": {
+  "beliefs": 9524,
+  "spread": {
+   "beliefs": 1220,
+   "pct": 12.8,
+   "copies": 1519,
+   "mean_other_agents": 1.25,
+   "max_other_agents": 3
+  },
+  "chat_timing": {
+   "copies": 1519,
+   "within_gap": 800,
+   "within_pct": 52.7,
+   "expected_own_writes": 495.1,
+   "expected_pct": 32.6,
+   "no_chat_before": 673,
+   "p_value_own_writes": 2.96330390488408e-219
+  },
+  "lifetime": {
+   "holdings": 11043,
+   "gone_pct": 99.8,
+   "gone": 11023,
+   "gone_for_good": 11014,
+   "gone_for_good_pct": 99.7,
+   "came_back": 574,
+   "came_back_pct_of_gone": 5.2,
+   "came_back_pct": 5.2,
+   "flickers_or_other_lines": 1476,
+   "median_hours_held": 0.4,
+   "held_over_a_day_pct": 21.8,
+   "copies": 1519,
+   "copies_gone_for_good_pct": 99.7,
+   "copies_came_back": 97,
+   "copies_median_hours_held": 0.4
+  }
+ },
+ "rows": "population-2025-rows.json.gz"
+}

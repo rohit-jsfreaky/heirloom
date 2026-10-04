@@ -20,15 +20,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col">
         <header className="border-b border-line bg-surface/80 backdrop-blur">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-            <Link href="/" className="flex items-baseline gap-2">
+            <Link href="/" className="mr-4 flex items-baseline gap-2">
               <span className="text-[17px] font-semibold tracking-tight text-ink">Heirloom</span>
               <span className="hidden text-xs text-muted sm:inline">belief trails in agent memory</span>
             </Link>
-            <nav className="flex items-center gap-5 text-sm text-ink-2">
+            <nav className="flex items-center gap-3 whitespace-nowrap text-[13px] text-ink-2 sm:gap-5 sm:text-sm">
               <Link href="/findings" className="hover:text-accent">Findings</Link>
               <Link href="/#trails" className="hover:text-accent">Trails</Link>
               <Link href="/#monitor" className="hover:text-accent">2026</Link>
               <Link href="/method" className="hover:text-accent">Method</Link>
+              <Link href="/verify" className="hover:text-accent">Check it</Link>
             </nav>
           </div>
         </header>

@@ -168,6 +168,9 @@ def compute() -> dict:
         },
         "audit": audit_summary(_load(ANALYSIS / "audit.json")),
         "chance": _load(ANALYSIS / "chance.json").get("eras"),
+        # Every candidate belief, true or false, no model (`heirloom population`).
+        "population": {_load(p)["era"]: _load(p)["summary"] | {"agents": _load(p)["agents"]}
+                       for p in sorted(ANALYSIS.glob("population-*.json"))},
         "model_agreement": _load(ANALYSIS / "model-agreement.json").get("pairs"),
         "live": [a | {"case": d["case"], "checked_at": d["checked_at"]}
                  for p in sorted(ANALYSIS.glob("live-*.json")) for d in [_load(p)] for a in d["agents"]],

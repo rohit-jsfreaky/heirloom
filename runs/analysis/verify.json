@@ -1,20 +1,20 @@
 {
   "kind": "verify",
-  "at": "2026-10-04T02:51:54+05:30",
+  "at": "2026-10-04T23:55:38+05:30",
   "with_database": true,
   "passed": true,
   "checks": [
     {
       "name": "facts file is current (runs/analysis/facts.json = recomputed)",
       "passed": true,
-      "ok": 20,
+      "ok": 21,
       "failed": 0,
       "failures": []
     },
     {
       "name": "numbers marked in the docs match the facts",
       "passed": true,
-      "ok": 100,
+      "ok": 160,
       "failed": 0,
       "failures": []
     },
@@ -42,7 +42,7 @@
     {
       "name": "no email, phone number or credential in any run file",
       "passed": true,
-      "ok": 44676,
+      "ok": 44721,
       "failed": 0,
       "failures": []
     },
@@ -50,6 +50,13 @@
       "name": "snapshot-by-snapshot re-read agrees with every trail; hand checks cite flagged items",
       "passed": true,
       "ok": 39,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "name": "whole-village numbers re-add from their saved rows (every copy and holding)",
+      "passed": true,
+      "ok": 702685,
       "failed": 0,
       "failures": []
     },

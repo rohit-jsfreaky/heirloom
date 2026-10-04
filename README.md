@@ -2,7 +2,7 @@
 
 > **The monitor catches the lie. Heirloom shows who still believes it.**
 
-**Live site:** [heirloom-jet-sigma.vercel.app](https://heirloom-jet-sigma.vercel.app/) · Data: AI Digest / AI Village dataset
+**Live site:** [heirloom-jet-sigma.vercel.app](https://heirloom-jet-sigma.vercel.app/) · **Video (2:27):** [ADD VIDEO LINK] · Data: AI Digest / AI Village dataset
 
 AI agents in a long-running group rewrite their own memory all the time, and nothing checks that what goes in is
 true. Heirloom follows a false belief through a group of agents:
@@ -15,29 +15,34 @@ true. Heirloom follows a false belief through a group of agents:
 Every step links to the real moment in the [AI Village](https://theaidigest.org/village). It runs on the
 AI Digest / AI Village dataset.
 
-**Other tools check a claim at one moment. Heirloom follows it over time and across agents.**
+**Other tools trace where a claim came from. Heirloom shows what happens to it inside the agents' memory: most copies of the 2026 fabrications were silently forgotten, not corrected, and some came back.**
 
 Built for the AI Swarm Dynamics Hackathon (AI Village × Grove Research).
 
 ## Judge it in 90 seconds
 
-**Four numbers**, each from a saved run and re-checked by `heirloom verify`:
+**Five numbers**, each from a saved run and re-checked by `heirloom verify`:
 
 | | |
 |---|---|
 | **28<!--f:monitor_2026.dropped--> of 45<!--f:monitor_2026.copies-->** | copies of 4 monitor-confirmed fabrications (2026) that agents dropped without ever correcting |
 | **0<!--f:monitor_2026.human_corrections-->** | human corrections the agents got for them: the monitor's flags never reached them |
 | **33<!--f:chance.2026.within_gap--> of 45** | copies written within an hour after another agent posted the belief in chat (about 11.8<!--f:chance.2026.expected_own_writes--> by chance) |
+| **29,562<!--f:population.2026.chat_timing.within_gap--> of 49,009<!--f:population.2026.chat_timing.copies-->** | the same test over every new fact in 8 weeks of 2026 (240,758<!--f:population.2026.beliefs--> beliefs, no model, true or false): copies within an hour after another agent's chat, against 12,204.1<!--f:population.2026.chat_timing.expected_own_writes--> by chance (2025: 800<!--f:population.2025.chat_timing.within_gap--> of 1,519 vs 495.1<!--f:population.2025.chat_timing.expected_own_writes-->) |
 | **57<!--f:audit.stance_holds_or_not.agree--> of 60** | blind check: random labels the trails rest on that a blind second reader (Claude) agreed with |
 
 **Open first:**
 1. The site's **Findings** page: eight hand-checked findings, each linked to the live village.
 2. **The 93-person contact list** trail: the famous 2025 case, rebuilt from raw data alone.
 
+**Check it in your browser:** the site's [**Check it**](https://heirloom-jet-sigma.vercel.app/verify/) page shows every
+`heirloom verify` check and re-hashes every saved result file with your browser's own SHA-256 against the hashes taken
+when the site was built. A "tamper" switch flips one bit so you can watch a hash fail.
+
 **Check it yourself, without the dataset** (from the repo root):
 
 ```bash
-(cd pipeline && uv run heirloom verify --no-db)        # re-check every saved number (about 30 s)
+(cd pipeline && uv run heirloom verify --no-db)        # re-check every saved number (seconds)
 (cd viewer && npm ci && npm run build)                 # build the site from runs/ (about 1 min)
 python -m http.server 3000 -d viewer/out               # open http://localhost:3000
 ```
@@ -88,7 +93,8 @@ below was read by hand against the raw rows; the full write-up is on the site's 
   - 14<!--f:discovered.still_held--> still held it when the data ends. Nobody checked it or questioned it.
   - We don't claim it's false: only Fable 5 could see the store. It shows how fast an unchecked number moves.
 - **A decline became social proof.** Half an hour after GPT-5 recorded that Heifer International declined, the same
-  memory listed "Heifer International acknowledgment" as social proof for outreach emails.
+  memory listed "Heifer International acknowledgment" as social proof for outreach emails. Another hackathon entry
+  found the same story on its own, which confirms it from outside.
 - **Known cases rebuilt from raw data:**
   - 5<!--f:public_2025.rebuilt--> of 6<!--f:public_2025.total--> publicly documented 2025 cases. The miss is a press
     claim that isn't in the data.
@@ -96,6 +102,47 @@ below was read by hand against the raw rows; the full write-up is on the site's 
     9,714<!--f:discovery.beliefs--> candidate beliefs.
 
 ![A belief trail](docs/screenshots/trail.png)
+
+## Across the whole village
+
+The findings above rest on 13<!--f:trails--> hand-checked trails. `heirloom population` runs the same model-free
+steps over **every** new fact the agents wrote into memory (a count with its unit, an amount, a link, an id, held in
+at least 3 snapshots): who else wrote it down, whether that followed another agent's chat, and how long it lasted.
+**No model reads anything, so these are beliefs in general, true or false.** Truth can't be labelled at this scale;
+the false-belief evidence stays the hand-checked trails.
+
+Two scans, the same rules, memory read on to each agent's last snapshot. **2025:** exactly the scan `discover` ran
+(12 May to 10 Jul 2025, 6<!--f:population.2025.agents--> agents). **2026:** the export's last 8 weeks (25 Jul to 20 Sep
+2026, 32<!--f:population.2026.agents--> agents), which hold 3 of the 4 monitor cases.
+
+| | 2025 | 2026 |
+|---|---|---|
+| candidate beliefs (new facts held in 3+ snapshots) | 9,524<!--f:population.2025.beliefs--> | 240,758<!--f:population.2026.beliefs--> |
+| reached at least one other agent's memory | 1,220<!--f:population.2025.spread.beliefs--> (12.8%<!--f:population.2025.spread.pct-->) | 23,327<!--f:population.2026.spread.beliefs--> (9.7%<!--f:population.2026.spread.pct-->) |
+| other agents per belief that spread (mean · max) | 1.25<!--f:population.2025.spread.mean_other_agents--> · 3<!--f:population.2025.spread.max_other_agents--> | 2.1<!--f:population.2026.spread.mean_other_agents--> · 19<!--f:population.2026.spread.max_other_agents--> |
+| **copies written within an hour after another agent posted the fact in chat** | **800<!--f:population.2025.chat_timing.within_gap--> of 1,519<!--f:population.2025.chat_timing.copies-->** | **29,562<!--f:population.2026.chat_timing.within_gap--> of 49,009<!--f:population.2026.chat_timing.copies--> (60.3%<!--f:population.2026.chat_timing.within_pct-->)** |
+| by chance, at moments the agent was writing memory anyway | 495.1<!--f:population.2025.chat_timing.expected_own_writes--> (p ≈ 3e-219) | 12,204.1<!--f:population.2026.chat_timing.expected_own_writes--> (24.9%<!--f:population.2026.chat_timing.expected_pct-->; p below 1e-300) |
+| median time a fact stayed in an agent's memory | 0.4<!--f:population.2025.lifetime.median_hours_held--> h | 0.9<!--f:population.2026.lifetime.median_hours_held--> h |
+| stayed more than a day | 21.8%<!--f:population.2025.lifetime.held_over_a_day_pct--> | 14.7%<!--f:population.2026.lifetime.held_over_a_day_pct--> |
+| gone by the agent's last snapshot | 99.7%<!--f:population.2025.lifetime.gone_for_good_pct--> | 99.0%<!--f:population.2026.lifetime.gone_for_good_pct--> |
+| came back after being gone an hour or more (upper bound) | 574<!--f:population.2025.lifetime.came_back--> (5.2%<!--f:population.2025.lifetime.came_back_pct-->) | 11,223<!--f:population.2026.lifetime.came_back--> (3.9%<!--f:population.2026.lifetime.came_back_pct-->) |
+
+- **Chat spreads memory, at village scale.** The trails were not special: across every belief, copies follow another agent's chat message far more often than chance, under the same strict null as `heirloom chance`
+  (only the moments the agent was writing memory anyway).
+- **Memory forgets almost everything, silently.** Nearly every fact is gone by the agent's last snapshot, most
+  within about an hour. In 2026 most new facts are working artefacts (links, hashes, file names, titles); the one
+  that spread furthest, a post title, reached 19 agents. That is the background the false beliefs live in: a dropped belief leaves no record that it was
+  ever doubted.
+- **How it was counted:** a copy is another agent writing the same fact (same exact anchor, and similar wording or
+  two shared anchors) after its birth. "Gone" means no memory line holds the exact anchor any more; memory is read on
+  to each agent's last snapshot in the export. "Came back" needs the returning line to be the same fact and a gap of
+  at least an hour; by hand, 2 of 4 sampled returns were clearly the same fact and 2 were the same words in a new
+  context, so treat it as an upper bound.
+- **Scope.** The 2025 column is exactly the `discover` scan. Today's parser finds
+  9,524<!--f:population.2025.beliefs--> candidates there; the 2 Oct run counted 9,714 because it still read units
+  like "4 has" as facts. The whole 2026 era (35 agents, about 130,000 snapshots) needs more RAM than the laptop has
+  with this scan, so 2026 covers its last 8 weeks, reading 14 days of earlier memory so old facts don't look new.
+  Every number above re-adds from the saved rows (`runs/analysis/population-*-rows.json.gz`) in `heirloom verify`.
 
 ## How sure we are
 
@@ -110,8 +157,19 @@ below was read by hand against the raw rows; the full write-up is on the site's 
   - The evidence labels are weaker, and we say so. No headline number rests on them.
 - **The check found a real problem, and we fixed it.** Two 2026 trails had stopped before the strong model finished
   re-checking them. That's fixed, and the numbers above are the corrected ones.
-- **Everything is reproducible:** 39 pipeline + API tests, and fixed random seeds.
+- **Everything is reproducible:** 47 pipeline tests + 6 API tests, fixed random seeds, and a rebuild from the model
+  cache reproduces every saved trail at $0.
 - **What it can't do yet** is listed on the site's Method page and in [`docs/METHOD.md`](docs/METHOD.md).
+
+**Limits, said as plainly as the wins:**
+- **Small sample.** The false-belief findings rest on 4 monitor-flagged 2026 cases and
+  13<!--f:trails--> hand-checked trails in all. Big effects, few cases. The whole-village numbers cover every belief
+  but can't say which are false, and 2026 covers only its last 8 weeks.
+- **Stance labels come from a model.** A blind second reader (Claude) agreed on 57<!--f:audit.stance_holds_or_not.agree-->
+  of 60 holds-or-not labels; the evidence labels are weaker (13<!--f:audit.evidence_birth.agree--> of 23 at birth),
+  and no headline rests on them.
+- **The data ends 20 Sep 2026** (the export date). Anything after it is out of view, except one live check through the
+  village's public API.
 
 ## How it works
 
@@ -159,6 +217,7 @@ uv run heirloom trail --case 93-list     # rebuild one belief trail → runs/ (t
 uv run heirloom score                    # every known case vs the public accounts
 uv run heirloom lifecycle                # snapshot by snapshot: returns and relapses (no model)
 uv run heirloom chance                   # spread by chat vs chance (no model)
+uv run heirloom population --era 2025    # the whole village: spread, chat timing, lifetime (no model; also --era 2026)
 uv run heirloom facts                    # every headline number → runs/analysis/facts.json
 uv run heirloom verify                   # re-check everything, including the raw rows
 ```

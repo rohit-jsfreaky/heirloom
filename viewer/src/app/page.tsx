@@ -30,8 +30,15 @@ export default function Home() {
           agents&apos; memories, until someone corrects it or it&apos;s still there at the end. Every step links to the
           real moment in the village.
         </p>
+        <p className="mt-3 text-[16px] font-medium leading-relaxed text-ink">
+          Other tools trace where a claim came from. Heirloom shows what happens to it inside the agents&apos; memory:
+          most copies of the 2026 fabrications were silently forgotten, not corrected, and some came back.
+        </p>
         <Link href="/findings" className="mt-5 inline-flex items-center gap-2 text-[14px] font-medium text-accent hover:underline">
           Read the findings <ArrowRight size={15} />
+        </Link>
+        <Link href="/verify" className="ml-6 mt-5 inline-flex items-center gap-2 text-[14px] font-medium text-accent hover:underline">
+          Check it in your browser <ArrowRight size={15} />
         </Link>
       </section>
 

@@ -2,6 +2,8 @@
 
 > **The monitor catches the lie. Heirloom shows who still believes it.**
 
+**Live site:** https://heirloom-jet-sigma.vercel.app/ · **Video (2:27):** [ADD VIDEO LINK] · **Repo:** https://github.com/rohit-jsfreaky/heirloom · **Check it in your browser:** https://heirloom-jet-sigma.vercel.app/verify/
+
 Built for the AI Swarm Dynamics Hackathon (AI Village × Grove Research), on the AI Digest / AI Village dataset. Every
 number below comes from a saved run, and `heirloom verify` checks it against that run.
 
@@ -25,7 +27,7 @@ The Village's own monitor already catches a fabrication on the day it happens. N
 
 ## What Heirloom does
 
-**Other tools check a claim at one moment. Heirloom follows it over time and across agents.**
+**Other tools trace where a claim came from. Heirloom shows what happens to it inside the agents' memory: most copies of the 2026 fabrications were silently forgotten, not corrected, and some came back.**
 
 For one belief, across every agent:
 
@@ -87,7 +89,8 @@ read by hand against the raw rows.
      19<!--f:discovered.copies--> in all. 14<!--f:discovered.still_held--> still held it at the end.
    - Nobody checked it. We don't claim it's false; it shows how fast an unchecked claim moves.
 7. **A decline became social proof.** 29 minutes after GPT-5 recorded Heifer International's decline, the same memory
-   listed "Heifer International acknowledgment" as social proof for outreach.
+   listed "Heifer International acknowledgment" as social proof for outreach. Another hackathon entry found the
+   same story on its own, which confirms it from outside.
 8. **Known cases, rebuilt from raw data:**
    - 5<!--f:public_2025.rebuilt--> of 6<!--f:public_2025.total--> publicly documented 2025 cases. The miss is a press
      claim that isn't in the data.
@@ -95,6 +98,27 @@ read by hand against the raw rows.
      9,714<!--f:discovery.beliefs--> candidate beliefs.
    - A live check through the village's public API found that the one belief still held at export end is gone from
      its holder's memory by 30 Sep.
+
+9. **Across the whole village (no model; beliefs in general, true or false).** `heirloom population` runs the
+   model-free steps over every candidate belief in two scans: the `discover` scan (12 May to 10 Jul 2025,
+   6<!--f:population.2025.agents--> agents, 9,524<!--f:population.2025.beliefs--> beliefs) and the export's last 8
+   weeks (25 Jul to 20 Sep 2026, 32<!--f:population.2026.agents--> agents,
+   240,758<!--f:population.2026.beliefs--> beliefs).
+   - 12.8%<!--f:population.2025.spread.pct--> (2025) and 9.7%<!--f:population.2026.spread.pct--> (2026) reached at
+     least one other agent's memory; in 2026 one reached 19<!--f:population.2026.spread.max_other_agents--> agents.
+   - Copies follow chat at village scale, under the same strict null as finding 3:
+     800<!--f:population.2025.chat_timing.within_gap--> of 1,519<!--f:population.2025.chat_timing.copies--> copies
+     within an hour after another agent posted the fact vs 495.1<!--f:population.2025.chat_timing.expected_own_writes-->
+     by chance (p ≈ 3e-219); in 2026, 29,562<!--f:population.2026.chat_timing.within_gap--> of
+     49,009<!--f:population.2026.chat_timing.copies--> vs 12,204.1<!--f:population.2026.chat_timing.expected_own_writes-->
+     (p below 1e-300). The trails were not special.
+   - Memory forgets almost everything, silently: a median of 0.4<!--f:population.2025.lifetime.median_hours_held--> h
+     (2025) and 0.9<!--f:population.2026.lifetime.median_hours_held--> h (2026) held;
+     99.7%<!--f:population.2025.lifetime.gone_for_good_pct--> and 99.0%<!--f:population.2026.lifetime.gone_for_good_pct-->
+     gone by the agent's last snapshot; at most 5.2%<!--f:population.2025.lifetime.came_back_pct--> and
+     3.9%<!--f:population.2026.lifetime.came_back_pct--> came back after an hour or more away (by hand, 2 of 4 sampled
+     2025 returns were clearly the same fact).
+   - Truth can't be labelled at this scale, so the false-belief evidence stays the hand-checked trails.
 
 ## How sure we are
 
@@ -143,6 +167,8 @@ read by hand against the raw rows.
 - A blind sweep for still-alive false beliefs in 2026 had 0 of 5 precision by hand. The 2026 results start from the
   hosts' monitor findings instead.
 - The 2025 vs 2026 comparison is not fair: the 2025 cases are famous because humans corrected them.
+- The whole-village numbers can't say which beliefs are false, and 2026 covers only its last 8 weeks (the whole
+  era needs more RAM than the laptop has with this scan).
 - The export ends 20 Sep 2026.
 
 ## Try it
@@ -213,8 +239,8 @@ first human mark, Sonnet's row in "Every agent that held it").**
   September."
 
 **2:04–2:16 — Against the field, and the judge path (README, then `heirloom verify --no-db`).**
-- *Say:* "Other tools check a claim at one moment. Heirloom follows it over time and across agents. To check our
-  work you don't need the dataset: build the site and run verify, about two minutes."
+- *Say:* "Other tools trace where a claim came from. Heirloom shows what happens to it inside the agents' memory. To
+  check our work you don't need the dataset: build the site and run verify, about two minutes."
 
 **2:16–2:27 — Outro (rendered).** Citation, the hook again, the repo and site links, the two no-dataset commands.
 - *Say:* "Built on the AI Digest and AI Village dataset. The monitor catches the lie. Heirloom shows who still

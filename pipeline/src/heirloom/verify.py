@@ -13,7 +13,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
 
-from heirloom import facts
+from heirloom import facts, population
 from heirloom.config import ROOT
 from heirloom.diff import lines_in_context, normalize
 from heirloom.lifecycle import ANALYSIS
@@ -249,8 +249,34 @@ def check_lifecycle() -> Check:
     return c
 
 
+def check_population() -> Check:
+    """The whole-village numbers re-add up from their own saved rows, and the file holds no memory or chat text."""
+    c = Check("whole-village numbers re-add from their saved rows (every copy and holding)")
+    eras = [p.stem.removeprefix("population-") for p in sorted(ANALYSIS.glob("population-*.json"))]
+    c.test(bool(eras), "no population file: run `heirloom population`")
+    for era in eras:
+        _check_population(c, population.load(era))
+    return c
+
+
+def _check_population(c: Check, d: dict) -> None:
+    again = population.summarize(d["summary"]["beliefs"], d["copies"], d["holdings"])
+    for key, value in again.items():
+        c.test(json.dumps(value, sort_keys=True) == json.dumps(d["summary"][key], sort_keys=True), f"{key} differs")
+    for row in d["copies"]:
+        c.test(set(row) == population.COPY_KEYS, f"unexpected fields in a copy row: {sorted(set(row))}")
+        gap = row["gap_minutes"]  # saved to 0.1 min, so a gap of a few seconds over the hour reads "60.0"
+        c.test(row["within"] == (gap is not None and gap <= d["gap_minutes"])
+               or (gap is not None and abs(gap - d["gap_minutes"]) <= 0.05),
+               f"{row['belief']} {row['agent']}: within the hour disagrees with its gap")
+    for row in d["holdings"]:
+        c.test(set(row) == population.HOLDING_KEYS, f"unexpected fields in a holding row: {sorted(set(row))}")
+        c.test(_at(row["first"]) <= _at(row["last_held"]) <= _at(row["agent_last_snapshot"]),
+               f"{row['belief']} {row['agent']}: time order")
+
+
 def run(con=None) -> list[Check]:
-    checks = [check_facts(), check_docs(), *check_trails(), check_privacy(), check_lifecycle()]
+    checks = [check_facts(), check_docs(), *check_trails(), check_privacy(), check_lifecycle(), check_population()]
     if con is not None:
         checks += check_against_raw(con)
     return checks

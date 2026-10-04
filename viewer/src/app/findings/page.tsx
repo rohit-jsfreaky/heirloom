@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Chip } from "@/components/chips";
 import { getFacts, getHandChecks, linkOf } from "@/lib/data";
 import { day, utc } from "@/lib/format";
-import type { HandCheck } from "@/lib/types";
+import type { HandCheck, Population } from "@/lib/types";
 
 export const metadata = { title: "Findings · Heirloom" };
 
@@ -102,6 +102,7 @@ export default function Findings() {
       )}
 
       <Finding n={7} title="A decline became social proof.">
+        <p>Another hackathon entry found the same story on its own, which confirms it from outside.</p>
         <Stories checks={by("heifer-partnership")} slug="heifer-partnership" />
       </Finding>
 
@@ -128,6 +129,8 @@ export default function Findings() {
           </p>
         ))}
       </Finding>
+
+      <Village population={f.population} trails={f.trails} />
 
       <section className="mt-10 rounded-xl border border-line bg-surface-2 p-5 text-[13px] leading-relaxed text-ink-2">
         <h2 className="text-sm font-semibold text-ink">How these were checked</h2>
@@ -195,5 +198,82 @@ function Stories({ checks, slug }: { checks: HandCheck[]; slug?: string }) {
       })}
       {slug && <More href={`/trails/${slug}`}>The whole trail</More>}
     </ul>
+  );
+}
+
+const SCOPE: Record<string, string> = {
+  "2025": "12 May to 10 Jul 2025",
+  "2026": "25 Jul to 20 Sep 2026 (the last 8 weeks)",
+};
+
+/** Every candidate belief, true or false, with no model: the same counts the trails make, at village scale. */
+function Village({ population, trails }: { population: Record<string, Population>; trails: number }) {
+  const eras = Object.entries(population ?? {}).sort(([a], [b]) => a.localeCompare(b));
+  if (!eras.length) return null;
+  const pct = (n: number) => `${n.toFixed(1)}%`;
+  const rows: [string, (p: Population) => React.ReactNode][] = [
+    ["Candidate beliefs (new facts held in 3+ snapshots)", (p) => p.beliefs.toLocaleString()],
+    ["Reached at least one other agent's memory", (p) => `${p.spread.beliefs.toLocaleString()} (${pct(p.spread.pct)})`],
+    ["Other agents per belief that spread (mean · max)", (p) => `${p.spread.mean_other_agents} · ${p.spread.max_other_agents}`],
+    ["Copies written within an hour after another agent posted it in chat", (p) =>
+      <><b className="text-ink">{p.chat_timing.within_gap.toLocaleString()} of {p.chat_timing.copies.toLocaleString()}</b> ({pct(p.chat_timing.within_pct)})</>],
+    ["…by chance, at moments the agent was writing memory anyway", (p) =>
+      `${p.chat_timing.expected_own_writes.toLocaleString()} (${pct(p.chat_timing.expected_pct)}) · ${
+        p.chat_timing.p_value_own_writes > 0 ? `p ≈ ${p.chat_timing.p_value_own_writes.toPrecision(1)}` : "p < 1e-300"}`],
+    ["Median time a fact stayed in an agent's memory", (p) => `${p.lifetime.median_hours_held} h`],
+    ["Held more than a day", (p) => pct(p.lifetime.held_over_a_day_pct)],
+    ["Gone by the agent's last snapshot", (p) => <b className="text-amber">{pct(p.lifetime.gone_for_good_pct)}</b>],
+    ["Came back after being gone an hour or more (upper bound)", (p) =>
+      `${p.lifetime.came_back.toLocaleString()} (${pct(p.lifetime.came_back_pct)})`],
+  ];
+  return (
+    <section className="mt-12">
+      <div className="flex items-baseline gap-3">
+        <span className="font-mono text-[12px] text-muted">all</span>
+        <h2 className="text-xl font-semibold tracking-tight text-ink">Across the whole village</h2>
+      </div>
+      <div className="mt-3 space-y-3 text-[15px] leading-relaxed text-ink-2">
+        <p>
+          The findings above rest on {trails} hand-checked trails. Here the same model-free steps run over{" "}
+          <b>every</b> new fact the agents wrote into memory: who else wrote it down, whether that followed another
+          agent&apos;s chat, and how long it lasted. No model reads anything, so these are beliefs in general, true or
+          false. Truth can&apos;t be labelled at this scale; the false-belief evidence stays the hand-checked trails.
+        </p>
+      </div>
+      <div className="card mt-4 overflow-x-auto">
+        <table className="w-full text-left text-[13.5px]">
+          <thead className="bg-surface-2 text-[11px] uppercase tracking-wide text-muted">
+            <tr>
+              <th className="px-4 py-2 font-medium" />
+              {eras.map(([era, p]) => (
+                <th key={era} className="px-4 py-2 font-medium">
+                  {era} <span className="normal-case tracking-normal text-muted">· {p.agents} agents · {SCOPE[era] ?? ""}</span>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-line">
+            {rows.map(([label, cell]) => (
+              <tr key={label}>
+                <td className="px-4 py-2.5 text-ink-2">{label}</td>
+                {eras.map(([era, p]) => (
+                  <td key={era} className="px-4 py-2.5 font-mono text-[12.5px] text-ink-2">{cell(p)}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="mt-3 text-[13px] leading-relaxed text-muted">
+        How: <code className="font-mono text-[12px]">heirloom population</code>. A copy is another agent writing the
+        same fact (same exact anchor, and similar wording or two shared anchors) after its birth. The chance line uses
+        the same strict null as the trails: only the moments that agent wrote memory while the belief was around.
+        &ldquo;Gone&rdquo; means no line holds the exact anchor any more; memory was read on to each agent&apos;s last
+        snapshot in the export. The whole 2026 era needs more RAM than our laptop has with this scan, so 2026 covers its
+        last 8 weeks, which hold 3 of the 4 monitor cases. &ldquo;Came back&rdquo; needs the returning line to be the same fact; by hand, 2 of 4
+        sampled 2025 returns were clearly the same fact and 2 were the same words in a new context, so it is an upper
+        bound. Every number re-adds from the saved rows in <code className="font-mono text-[12px]">heirloom verify</code>.
+      </p>
+    </section>
   );
 }

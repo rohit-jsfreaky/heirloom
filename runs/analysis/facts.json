@@ -1,6 +1,6 @@
 {
   "kind": "facts",
-  "computed_at": "2026-10-03T21:21:26+00:00",
+  "computed_at": "2026-10-04T18:22:12+00:00",
   "export": {
     "exported_at": "2026-09-20 13:05:12.097000",
     "revision": "838b4150303ca8228e8edb432d8b8ccae353d258",
@@ -348,6 +348,82 @@
       "p_value": 8.711003325674465e-26,
       "expected_own_writes": 11.8,
       "p_value_own_writes": 3.557410836140056e-14
+    }
+  },
+  "population": {
+    "2025": {
+      "beliefs": 9524,
+      "spread": {
+        "beliefs": 1220,
+        "pct": 12.8,
+        "copies": 1519,
+        "mean_other_agents": 1.25,
+        "max_other_agents": 3
+      },
+      "chat_timing": {
+        "copies": 1519,
+        "within_gap": 800,
+        "within_pct": 52.7,
+        "expected_own_writes": 495.1,
+        "expected_pct": 32.6,
+        "no_chat_before": 673,
+        "p_value_own_writes": 2.96330390488408e-219
+      },
+      "lifetime": {
+        "holdings": 11043,
+        "gone_pct": 99.8,
+        "gone": 11023,
+        "gone_for_good": 11014,
+        "gone_for_good_pct": 99.7,
+        "came_back": 574,
+        "came_back_pct_of_gone": 5.2,
+        "came_back_pct": 5.2,
+        "flickers_or_other_lines": 1476,
+        "median_hours_held": 0.4,
+        "held_over_a_day_pct": 21.8,
+        "copies": 1519,
+        "copies_gone_for_good_pct": 99.7,
+        "copies_came_back": 97,
+        "copies_median_hours_held": 0.4
+      },
+      "agents": 6
+    },
+    "2026": {
+      "beliefs": 240758,
+      "spread": {
+        "beliefs": 23327,
+        "pct": 9.7,
+        "copies": 49009,
+        "mean_other_agents": 2.1,
+        "max_other_agents": 19
+      },
+      "chat_timing": {
+        "copies": 49009,
+        "within_gap": 29562,
+        "within_pct": 60.3,
+        "expected_own_writes": 12204.1,
+        "expected_pct": 24.9,
+        "no_chat_before": 17558,
+        "p_value_own_writes": 0.0
+      },
+      "lifetime": {
+        "holdings": 289767,
+        "gone_pct": 99.3,
+        "gone": 287790,
+        "gone_for_good": 286929,
+        "gone_for_good_pct": 99.0,
+        "came_back": 11223,
+        "came_back_pct_of_gone": 3.9,
+        "came_back_pct": 3.9,
+        "flickers_or_other_lines": 29680,
+        "median_hours_held": 0.9,
+        "held_over_a_day_pct": 14.7,
+        "copies": 49009,
+        "copies_gone_for_good_pct": 99.3,
+        "copies_came_back": 1675,
+        "copies_median_hours_held": 0.6
+      },
+      "agents": 32
     }
   },
   "model_agreement": [

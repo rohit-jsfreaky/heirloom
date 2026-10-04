@@ -306,6 +306,20 @@ def chance_cmd() -> None:
     typer.echo(f"saved {path}")
 
 
+@app.command("population")
+def population_cmd(era: Annotated[str, typer.Option(help="2025 (the discover scan) or 2026.")] = "2025") -> None:
+    """Whole village, no model: spread, chat timing vs chance and memory lifetime of every candidate belief."""
+    from heirloom import population
+    from heirloom.db import connect
+
+    with connect(read_only=True) as con:
+        data = population.run(con, era)
+    population.save(data)
+    s = data["summary"]
+    typer.echo(f"{s['beliefs']:,} beliefs · spread {s['spread']} · chat {s['chat_timing']} · lifetime {s['lifetime']}")
+    typer.echo(f"saved {population.out(era)}")
+
+
 @app.command("facts")
 def facts_cmd() -> None:
     """Recompute every headline number from the saved runs (no database, no model) into runs/analysis/facts.json."""
